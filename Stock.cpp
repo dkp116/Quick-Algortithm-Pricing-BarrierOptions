@@ -28,12 +28,22 @@ std::vector <double> MJD::JumpTimes(){
     return Times;
 }
 
-
-double MJD::ContinuousDynamics(double Start , double t1, double t2){
-    //so we need to use the guassian disttribution 
-    double mean = Start + 
+void MJD::SetC(){
+    c = riskfree + (sigma * sigma) / 2 - lamda * k; 
 }
+
+
 
 void Jumpsize::SetK(){
     k = std::exp(JumpMu-(JumpSigma*JumpSigma)/2 - 1);
+}
+
+double MJD::ContinuousDynamics(double Start , double t1, double t2){
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    double time = t2 - t1;
+    double mean = Start + c * time;
+    double std = time;
+    std::normal_distribution d{mean, std};
+    return d[gen];      // need to check this code works properly 
 }
