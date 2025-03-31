@@ -47,6 +47,8 @@ class MJD : public Stock{
     void SetC();
     std::vector<double> StockPrices(std::vector<double>times);
     //so we just need the times now and just make a for loop for the rest surely.
+    //the times now need to be multipied by the expiry of the option 
+    // how can i adjust the formula to take the option expiry into account 
 
     
 
