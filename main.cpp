@@ -1,7 +1,6 @@
 // #include "trapezium.h"
 #include <iostream>
 #include "Stock.h"
-#include <iostream>
 
 
 int main(){
@@ -13,11 +12,16 @@ int main(){
     // std::cout << result << std::endl;
 
 
-    MJD stock(0.1,0.05,200);
+    MJD stock(100,0.9,0.9,4,0.9,0.9);
 
-    std::vector<double> Timings = stock.JumpTimes();
+    std::vector<double>Times =  stock.JumpTimes();
+   std::vector<double> Prices = stock.StockPrices(Times);
 
-    for(double time : Timings){
-        std::cout << time << std::endl;
-    }
+   for(double price : Prices){
+    std::cout<< price << std::endl;
+   }
+
+//    std::cout << size << std::endl;
+
+//     std::cout << end << std::endl;
 }

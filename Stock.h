@@ -9,9 +9,10 @@ class Stock{
     protected:
     double sigma;
     double riskfree;
+    double StartPrice;
 
     public:
-    Stock(double rf_, double sigma_) : riskfree(rf_), sigma(sigma_) {}
+    Stock(double initprice, double rf_, double sigma_) : StartPrice(initprice), riskfree(rf_), sigma(sigma_) {}
 
 };
 
@@ -19,29 +20,33 @@ class JumpSize{
     
     private:
     double JumpSigma;
-    double Jumpmu;
+    double JumpMu;
     double k;
 
     public:
-    JumpSize(double mu_ , double sigma_ ) : JumpSigma(simga_), JumpMu(mu_)   { SetK();}
+    JumpSize(double mu_ , double sigma_ ) : JumpSigma(sigma_), JumpMu(mu_)   { SetK();}
     void SetK();
     double GetK(){return k;}
+    double JumpDynamics(); 
+ 
     
 
-}
+};
 
 class MJD : public Stock{
     private:
     double lambda; 
     double c;
     double k;
+    JumpSize jump;
     public:
-    MJD(double riskfree, double sigma_,double lambda_, double Jumpmu, double JumpSig) : Stock(riskfree,sigma_), lambda(lambda_) , JumpSize(Jumpmu, JumpSig) { SetC(); k = JumpSize.getK();}
+    MJD(double initprice, double riskfree, double sigma_,double lambda_, double Jumpmu, double JumpSig) : Stock(initprice, riskfree,sigma_), lambda(lambda_) , jump(Jumpmu, JumpSig) { SetC(); k = jump.GetK();}
     std::vector<double> JumpTimes();     
    
-    double ContinuousDynamics(double StartValue, double t1, double t2,);
-    double JumpDynamic //this just calls the member function of the class 
+    double ContinuousDynamics(double StartValue, double t1, double t2); 
     void SetC();
+    std::vector<double> StockPrices(std::vector<double>times);
+    //so we just need the times now and just make a for loop for the rest surely.
 
     
 

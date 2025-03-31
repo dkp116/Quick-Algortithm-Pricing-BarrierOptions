@@ -5,45 +5,68 @@
 #include <random>
 #include <string>
 #include <vector>
-std::vector <double> MJD::JumpTimes(){
-
-    std::vector<double> Times;   //how do i determine how many rv to generate? 
-    //want to generate rv between 0 and 1 to represent waitiing times between each step
-    //i guess keep generating until between 0 and 1 and subtract from 1 and if goes below or == 0 we stop
-
+std::vector<double> MJD::JumpTimes() {
+    std::vector<double> Times;
     std::random_device rd;
     std::mt19937 gen(rd());
-
     std::exponential_distribution<> exp_dis(lambda);
 
     double count = 0.0;
-
-    while(count<=1){
-        double time  = exp_dis(gen);
-        count = count + time;
-        if(count <=1){
-            Times.push_back(time);      //this array will be in backwards order surely 
-        }
+    Times.push_back(count);
+    while (count <= 1) {
+        double time = exp_dis(gen);
+        if (count + time > 1) break;  // Stop if exceeding 1
+        count += time;
+        Times.push_back(count);  // Store cumulative jump time
     }
+    Times.push_back(1.0);
     return Times;
 }
 
 void MJD::SetC(){
-    c = riskfree + (sigma * sigma) / 2 - lamda * k; 
+    c = riskfree + (sigma * sigma) / 2 - lambda * k; 
 }
 
 
 
-void Jumpsize::SetK(){
-    k = std::exp(JumpMu-(JumpSigma*JumpSigma)/2 - 1);
+void JumpSize::SetK() {
+    k = std::exp(JumpMu + (JumpSigma * JumpSigma) / 2) - 1;
 }
+
 
 double MJD::ContinuousDynamics(double Start , double t1, double t2){
     std::random_device rd;
     std::mt19937 gen(rd());
     double time = t2 - t1;
     double mean = Start + c * time;
-    double std = time;
-    std::normal_distribution d{mean, std};
-    return d[gen];      // need to check this code works properly 
+    double stddev = sigma * std::sqrt(time);
+    std::normal_distribution<> d{mean, stddev};
+    double generate = d(gen);
+    return generate;      
+}
+
+double JumpSize::JumpDynamics(){
+    std::random_device rd;
+    std::mt19937 gen(rd());
+
+    std::normal_distribution <> d(JumpMu,JumpSigma);
+
+    return d(gen);
+}   //so we have a size of the jump. now we need to make a function that generates each tree step by step.
+
+std::vector<double> MJD::StockPrices(std::vector<double>times){
+    std::vector<double> Prices;
+   double  Price = StartPrice;
+    int i =0;
+    for(int i =0 ; i < times.size() - 1 ; i++){
+        // continuous dynamics 
+        Price = ContinuousDynamics(Price,times[i],times[i+1]);
+        Prices.push_back(Price);
+        Price = Price + jump.JumpDynamics();
+        Prices.push_back(Price);
+    
+    }
+    
+   
+    return Prices;
 }
