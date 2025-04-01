@@ -15,6 +15,7 @@ int main(){
     MJD stock(100,0.9,0.9,4,0.9,0.9);
 
     std::vector<double>Times =  stock.JumpTimes();
+    stock.ScaledJumpTimes(Times,10);
    std::vector<double> Prices = stock.StockPrices(Times);
 
    for(double price : Prices){

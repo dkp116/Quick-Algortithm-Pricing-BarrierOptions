@@ -41,15 +41,13 @@ class MJD : public Stock{
     JumpSize jump;
     public:
     MJD(double initprice, double riskfree, double sigma_,double lambda_, double Jumpmu, double JumpSig) : Stock(initprice, riskfree,sigma_), lambda(lambda_) , jump(Jumpmu, JumpSig) { SetC(); k = jump.GetK();}
-    std::vector<double> JumpTimes();     
+    std::vector<double> JumpTimes();  
+    void ScaledJumpTimes(std::vector<double>& JT, double K); 
    
     double ContinuousDynamics(double StartValue, double t1, double t2); 
     void SetC();
-    std::vector<double> StockPrices(std::vector<double>times);
-    //so we just need the times now and just make a for loop for the rest surely.
-    //the times now need to be multipied by the expiry of the option 
-    // how can i adjust the formula to take the option expiry into account 
-
+    std::vector<double> StockPrices(std::vector<double>times); //this just gets removed 
+    
     
 
 };

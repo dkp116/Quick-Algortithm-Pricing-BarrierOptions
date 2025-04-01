@@ -70,3 +70,9 @@ std::vector<double> MJD::StockPrices(std::vector<double>times){
    
     return Prices;
 }
+
+ void MJD::ScaledJumpTimes(std::vector<double>& JT, double K){
+    for( double& time : JT){
+        time = time * K;
+    }
+ }
