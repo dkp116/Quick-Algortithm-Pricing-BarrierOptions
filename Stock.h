@@ -46,6 +46,8 @@ class MJD : public Stock{
    
     double ContinuousDynamics(double StartValue, double t1, double t2); 
     void SetC();
+    double GetC(){return c;}
+    double GetSigma(){reuturn sigma;}
     std::vector<double> StockPrices(std::vector<double>times); //this just gets removed 
     
     
