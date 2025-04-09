@@ -10,7 +10,7 @@
 
 //GET H
 
-double DownAndOut::evaluate_gi(MJD stock,double t, double T1, double T2) {
+double DownAndOut::evaluate_gi(MJD stock, double a, double b, double t, double T1, double T2) {
     double c = stock.GetC();
     double sigma = stock.GetSigma();
     double gamma_val = gamma(stock,T1, T2);
@@ -30,7 +30,7 @@ double DownAndOut::evaluate_gi(MJD stock,double t, double T1, double T2) {
 }
 
 // Gamma function implementation
-double DownAndOut::gamma(MJD stock,double T1, double T2) {
+double DownAndOut::gamma(MJD stock, double a, double b, double T1, double T2) {
     double c = stock.GetC();
     double sigma = stock.GetSigma();
     return 1.0 / (2 * M_PI * (T2 - T1) * sigma) 
@@ -39,12 +39,9 @@ double DownAndOut::gamma(MJD stock,double T1, double T2) {
 }
 
 
-double DownAndOut::NoCrossingDensity(MJD stock, double t1, double t2){
-    //so for this we just need to write out the function in the diss then need to think about how we can overcome a and b terms this would be the overall design, but
-    // once formulas are types we can test to see the output of each
-    // then get started on implementing the methods
-    //then check the intergral gi
-    //update some proofs and this should be most the work for the diss!!1
+double DownAndOut::NoCrossingDensity(MJD stock, double A,double B, double t1, double t2){
+  
+    double sigma = stock.GetSigma();
 
     if(B>std::log(H)){
        double  ExpTerm = (2 * (std::log(H) - A) * (std::log(H)-B))
@@ -55,3 +52,17 @@ double DownAndOut::NoCrossingDensity(MJD stock, double t1, double t2){
         return 0;
     }
 }
+
+
+
+/*
+peudo : Stock jump times -> stock scale jump size 
+        
+        for(i = 1 <= size )
+        {
+            But what do we want out of this. We only want to calcualte this as a one of calculation not all at the same time 
+            just need to make an if statement and evaluate on the conditions of the crossing.
+        }
+
+        We want a way to calculate gi in one instance 
+*/

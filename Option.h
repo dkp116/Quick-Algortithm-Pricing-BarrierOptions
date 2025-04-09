@@ -19,9 +19,9 @@ class Barrier : public Option {
     virtual double Payoff(){return 0;}
     virtual double CrossingDensity(){return 0;}
     double PriceByMJD(MJD stock);
-    virtual double NoCrossingDensity(MJD stock, double t1, double t2);     
-   virtual double evaluate_gi(MJD stock, double t, double T1, double T2);
-   virtual double gamma(MJD stock,double T1, double T2);
+    virtual double NoCrossingDensity(MJD stock,double A,double B, double t1, double t2);     
+   virtual double evaluate_gi(MJD stock, double a, double b, double t, double T1, double T2);
+   virtual double gamma(MJD stock,double a, double b, double T1, double T2);
    
 
 };
@@ -29,10 +29,11 @@ class Barrier : public Option {
 
 class DownAndOut : public Barrier{
     double Payoff();
-    double evaluate_gi(MJD stock, double t, double T1, double T2);
-    double gamma(MJD stock,double T1, double T2);
-    double NoCrossingDensity(MJD stock, double t1, double t2);
-    
+    virtual double evaluate_gi(MJD stock, double a, double b, double t, double T1, double T2);
+    virtual double gamma(MJD stock,double a, double b, double T1, double T2);
+
+    double NoCrossingDensity(MJD stock,double A,double B, double t1, double t2);  
+
 };
 
 
