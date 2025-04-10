@@ -2,6 +2,7 @@
 
 #include "Option.h"
 #include <cmath>
+#include <random>
 
 // we need to deifine each function lets copy out the formula for gi to help make life alot easier
 //this  is our gi function.
@@ -55,7 +56,7 @@ double DownAndOut::NoCrossingDensity(MJD stock, double A,double B, double t1, do
 
 
 
-double Barrier::PriceByMJD_Uniform(MJD stock){
+double Barrier::PriceByMJD_Uniform(MJD stock){      //CHANGE FORMULA TO USE LOGARITHM OF INITIAL PRICE
     std::vector<double> Times;
     Times = stock.JumpTimes();
     stock.ScaledJumpTimes(Times,k);
@@ -70,7 +71,20 @@ double Barrier::PriceByMJD_Uniform(MJD stock){
       StockPriceAfterJump = StockPriceAfterJump + SizeOfJump ; 
       std::random_device rd;
       std::mtt19937 gen(rd());
-       std::uniform_distribution<> d{Times[i], Times[i]+ExtentionOfInterval}; //check if this is in our i and i+1 interval do the if statements .. calc gi  etc.
+        std::uniform_distribution<> d{Times[i], Times[i]+ExtentionOfInterval}; 
+       double Sample = d(gen);
+       if(Sample < Times[i+1] ) //this is included in the time frame so there is a crossing in this interval 
+       {
+        // Add logic for evaluating gi * R
+        break;
+       }
+       else if(StockPriceAfterJump < std::log(H))
+       {
+        break;
+        // Add logic for R * exp-rt
+       }
+
+       //need to repeat until the end and then add the payoff
 
       
       i++;
