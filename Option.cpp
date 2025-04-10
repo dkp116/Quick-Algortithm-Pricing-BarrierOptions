@@ -55,6 +55,34 @@ double DownAndOut::NoCrossingDensity(MJD stock, double A,double B, double t1, do
 
 
 
+double Barrier::PriceByMJD_Uniform(MJD stock){
+    std::vector<double> Times;
+    Times = stock.JumpTimes();
+    stock.ScaledJumpTimes(Times,k);
+
+    double StockPriceAfterJump = stock.GetS0();
+    int i = 0;
+    while(i+1 < Times.size()){
+      double StockPriceBeforeJump = stock.ContinuousDynamics(StockPriceAfterJump,Times[i],Times[i+1]);
+      double SizeOfJump = stock.GetJumpDynamics();
+      double P_i = NoCrossingDensity(stock, StockPriceBeforeJump , StockPriceAfterJump,Times[i],Times[i+1] );
+      double ExtentionOfInterval = (Times[i+1]- Times[i]) / (1-P_i);
+      StockPriceAfterJump = StockPriceAfterJump + SizeOfJump ; 
+      std::random_device rd;
+      std::mtt19937 gen(rd());
+       std::uniform_distribution<> d{Times[i], Times[i]+ExtentionOfInterval}; //check if this is in our i and i+1 interval do the if statements .. calc gi  etc.
+
+      
+      i++;
+
+    }
+
+    
+
+    //so this function will be the workflow flow of the option 
+
+}
+
 /*
 peudo : Stock jump times -> stock scale jump size 
         

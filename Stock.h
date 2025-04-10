@@ -37,14 +37,16 @@ class MJD : public Stock{
     private:
     double lambda; 
     double c;
-    double k;
+    double k; //why do we have a k here?
     JumpSize jump;
     public:
     MJD(double initprice, double riskfree, double sigma_,double lambda_, double Jumpmu, double JumpSig) : Stock(initprice, riskfree,sigma_), lambda(lambda_) , jump(Jumpmu, JumpSig) { SetC(); k = jump.GetK();}
     std::vector<double> JumpTimes();  
+    double GetS0(){return StartPrice;}
     void ScaledJumpTimes(std::vector<double>& JT, double K); 
+    double GetJumpDynamics(){return jump.JumpDynamics();}
    
-    double ContinuousDynamics(double StartValue, double t1, double t2); 
+    double ContinuousDynamics(double StartValue, double t1, double t2); //this gives the end of the cont?
     void SetC();
     double GetC(){return c;}
     double GetSigma(){reuturn sigma;}

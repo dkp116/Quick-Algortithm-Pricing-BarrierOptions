@@ -18,10 +18,12 @@ class Barrier : public Option {
     Barrier(double H_, double K_) : Option(K_) , H(H_) {}
     virtual double Payoff(){return 0;}
     virtual double CrossingDensity(){return 0;}
-    double PriceByMJD(MJD stock);
+    double PriceByMJD_Uniform(MJD stock);
+    double PriceByMJD_Taylor(MJD stock);
     virtual double NoCrossingDensity(MJD stock,double A,double B, double t1, double t2);     
    virtual double evaluate_gi(MJD stock, double a, double b, double t, double T1, double T2);
    virtual double gamma(MJD stock,double a, double b, double T1, double T2);
+   virtual double Payoff();
    
 
 };
