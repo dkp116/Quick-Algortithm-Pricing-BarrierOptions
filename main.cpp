@@ -1,28 +1,35 @@
 // #include "trapezium.h"
 #include <iostream>
 #include "Stock.h"
+#include "Option.h"
+#include <iostream>
 
 
 int main(){
 
 
-    // GI func(10, 20, 8, 0.3, 0.05);
-    // double result = func.evaluate_gi(0.5,0.3,0.7);
-
-    // std::cout << result << std::endl;
 
 
-    MJD stock(100,0.9,0.9,4,0.9,0.9);
+    MJD stock(100,0.05,0.005,100.0,0.8,0.5);                //MJD(double initprice, double riskfree, double sigma_,
+                                                        //double lambda_, double Jumpmu, double JumpSig)
+                                                        //: Stock(initprice, riskfree, sigma_), lambda(lambda_), jump(Jumpmu, JumpSig) { SetC(); k = jump.GetK(); }
+    DownAndOut Derivative(95,110,1.0);
+                                                    //DownAndOut(double H_, double K_, double R_) : Barrier(H_,  K_, R_) {}
 
-    std::vector<double>Times =  stock.JumpTimes();
-    stock.ScaledJumpTimes(Times,10);
-   std::vector<double> Prices = stock.StockPrices(Times);
+    double total = 0 ;
+    for( int q =0 ; q<10000 ; q++){
 
-   for(double price : Prices){
-    std::cout<< price << std::endl;
+    
+    double OneCycle = Derivative.PriceByMJD_Uniform(stock);
+
+    total = total + OneCycle;
+
+    // std::cout <<  OneCycle << std::endl;
+   
+
+    }    
+
+    std::cout <<  total/10000.0  << std::endl;
+
+ 
    }
-
-//    std::cout << size << std::endl;
-
-//     std::cout << end << std::endl;
-}

@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.10) # Specify minimum CMake version
-project(TrapeziumIntegration)       # Correct project name
+project(UniformMJDPayoff)       # Correct project name
 
 # Set C++ standard
 set(CMAKE_CXX_STANDARD 14)          # Correct variable name
@@ -7,25 +7,16 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # List source and header files
 set(SOURCES
-    trapezium.cpp
+    
     main.cpp
+    Stock.cpp
+    Option.cpp
 )
 
 set(HEADERS
-    trapezium.h
+    Stock.h
+    Option.h
 )
 
-# Define executable
-# add_executable(TrapeziumIntegration ${SOURCES} ${HEADERS}) # Use ${} for variables
-add_executable(Stock main.cpp Stock.cpp Stock.h)
 
-# Link math library for functions like log, pow, exp
-# find_library(MATH_LIB m)
-# if(MATH_LIB)
-#     target_link_libraries(TrapeziumIntegration PRIVATE ${MATH_LIB})
-# endif()
-
-# # Optional: Set compiler warnings
-# if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
-#     target_compile_options(TrapeziumIntegration PRIVATE -Wall -Wextra -pedantic)
-# endif()
+add_executable(Main ${SOURCES})
