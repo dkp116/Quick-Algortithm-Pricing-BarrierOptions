@@ -1,66 +1,3 @@
-// so we need to make a stock price so we can simulate the jumps 
-
-
-// #ifndef Stock.h
-// #define Stock_h
-// #include <vector> 
-
-
-// class Stock{
-
-//     protected:
-//     double sigma;
-//     double riskfree;
-//     double StartPrice;
-
-//     public:
-//     Stock(double initprice, double rf_, double sigma_) : StartPrice(initprice), riskfree(rf_), sigma(sigma_) {}
-
-// };
-
-// class JumpSize{
-    
-//     private:
-//     double JumpSigma;
-//     double JumpMu;
-//     double k;
-
-//     public:
-//     JumpSize(double mu_ , double sigma_ ) : JumpSigma(sigma_), JumpMu(mu_)   { SetK();}
-//     void SetK();
-//     double GetK(){return k;}
-//     double JumpDynamics(); 
- 
-    
-
-// };
-
-// class MJD : public Stock{
-//     private:
-//     double lambda; 
-//     double c;
-//     double k; //why do we have a k here?
-//     JumpSize jump;
-//     public:
-//     MJD(double initprice, double riskfree, double sigma_,double lambda_, double Jumpmu, double JumpSig) : Stock(initprice, riskfree,sigma_), lambda(lambda_) , jump(Jumpmu, JumpSig) { SetC(); k = jump.GetK();}
-//     std::vector<double> JumpTimes();  
-//     double GetLogS0(){return std::log(StartPrice);}
-//     void ScaledJumpTimes(std::vector<double>& JT, double K); 
-//     double GetJumpDynamics(){return jump.JumpDynamics();}
-   
-//     double ContinuousDynamics(double StartValue, double t1, double t2); //this gives the end of the cont?
-//     void SetC();
-//     double GetC(){return c;}
-//     double GetSigma(){return sigma;}
-//     double GetRF(){return riskfree;}
-//     std::vector<double> StockPrices(std::vector<double>times); //this just gets removed 
-    
-    
-
-// };
-
-
-// #endif
 
 
 
@@ -70,6 +7,7 @@
 
 #include <vector>
 #include <cmath>
+
 
 class Stock {
 protected:
@@ -105,10 +43,11 @@ private:
     double ExpectedValueJump; // Jump size constant
     JumpSize jump;
 
+
 public:
     MJD(double initprice, double riskfree, double sigma_,
         double lambda_, double Jumpmu, double JumpSig)
-        : Stock(initprice, riskfree, sigma_), lambda(lambda_), jump(Jumpmu, JumpSig) { SetC(); ExpectedValueJump = jump.GetExpectedValueJump(); }
+        : Stock(initprice, riskfree, sigma_), lambda(lambda_), jump(Jumpmu, JumpSig) { ExpectedValueJump = jump.GetExpectedValueJump(); SetC();  }
     
     std::vector<double> JumpTimes();
     double GetLogS0() { return std::log(StartPrice); }

@@ -16,6 +16,7 @@ set(SOURCES
 set(HEADERS
     Stock.h
     Option.h
+    Random_Generator.h
 )
 
 
