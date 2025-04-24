@@ -1,0 +1,3 @@
+/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/build/CMakeFiles/Main.dir
+/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/build/CMakeFiles/edit_cache.dir
+/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/build/CMakeFiles/rebuild_cache.dir

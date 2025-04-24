@@ -117,24 +117,48 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named Stock
+# Target rules for targets named Main
 
 # Build rule for target.
-Stock: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Stock
-.PHONY : Stock
+Main: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Main
+.PHONY : Main
 
 # fast build rule for target.
-Stock/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Stock.dir/build.make CMakeFiles/Stock.dir/build
-.PHONY : Stock/fast
+Main/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/build
+.PHONY : Main/fast
+
+Option.o: Option.cpp.o
+.PHONY : Option.o
+
+# target to build an object file
+Option.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/Option.cpp.o
+.PHONY : Option.cpp.o
+
+Option.i: Option.cpp.i
+.PHONY : Option.i
+
+# target to preprocess a source file
+Option.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/Option.cpp.i
+.PHONY : Option.cpp.i
+
+Option.s: Option.cpp.s
+.PHONY : Option.s
+
+# target to generate assembly for a file
+Option.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/Option.cpp.s
+.PHONY : Option.cpp.s
 
 Stock.o: Stock.cpp.o
 .PHONY : Stock.o
 
 # target to build an object file
 Stock.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Stock.dir/build.make CMakeFiles/Stock.dir/Stock.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/Stock.cpp.o
 .PHONY : Stock.cpp.o
 
 Stock.i: Stock.cpp.i
@@ -142,7 +166,7 @@ Stock.i: Stock.cpp.i
 
 # target to preprocess a source file
 Stock.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Stock.dir/build.make CMakeFiles/Stock.dir/Stock.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/Stock.cpp.i
 .PHONY : Stock.cpp.i
 
 Stock.s: Stock.cpp.s
@@ -150,7 +174,7 @@ Stock.s: Stock.cpp.s
 
 # target to generate assembly for a file
 Stock.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Stock.dir/build.make CMakeFiles/Stock.dir/Stock.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/Stock.cpp.s
 .PHONY : Stock.cpp.s
 
 main.o: main.cpp.o
@@ -158,7 +182,7 @@ main.o: main.cpp.o
 
 # target to build an object file
 main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Stock.dir/build.make CMakeFiles/Stock.dir/main.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/main.cpp.o
 .PHONY : main.cpp.o
 
 main.i: main.cpp.i
@@ -166,7 +190,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Stock.dir/build.make CMakeFiles/Stock.dir/main.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -174,7 +198,7 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Stock.dir/build.make CMakeFiles/Stock.dir/main.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/main.cpp.s
 .PHONY : main.cpp.s
 
 # Help Target
@@ -185,7 +209,10 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... Stock"
+	@echo "... Main"
+	@echo "... Option.o"
+	@echo "... Option.i"
+	@echo "... Option.s"
 	@echo "... Stock.o"
 	@echo "... Stock.i"
 	@echo "... Stock.s"
