@@ -129,6 +129,30 @@ Main/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/build
 .PHONY : Main/fast
 
+EstimateGI.o: EstimateGI.cpp.o
+.PHONY : EstimateGI.o
+
+# target to build an object file
+EstimateGI.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/EstimateGI.cpp.o
+.PHONY : EstimateGI.cpp.o
+
+EstimateGI.i: EstimateGI.cpp.i
+.PHONY : EstimateGI.i
+
+# target to preprocess a source file
+EstimateGI.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/EstimateGI.cpp.i
+.PHONY : EstimateGI.cpp.i
+
+EstimateGI.s: EstimateGI.cpp.s
+.PHONY : EstimateGI.s
+
+# target to generate assembly for a file
+EstimateGI.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/EstimateGI.cpp.s
+.PHONY : EstimateGI.cpp.s
+
 Option.o: Option.cpp.o
 .PHONY : Option.o
 
@@ -210,6 +234,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... Main"
+	@echo "... EstimateGI.o"
+	@echo "... EstimateGI.i"
+	@echo "... EstimateGI.s"
 	@echo "... Option.o"
 	@echo "... Option.i"
 	@echo "... Option.s"

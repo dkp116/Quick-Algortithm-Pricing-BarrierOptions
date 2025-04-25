@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/Main.dir/EstimateGI.cpp.o"
+  "CMakeFiles/Main.dir/EstimateGI.cpp.o.d"
   "CMakeFiles/Main.dir/Option.cpp.o"
   "CMakeFiles/Main.dir/Option.cpp.o.d"
   "CMakeFiles/Main.dir/Stock.cpp.o"
