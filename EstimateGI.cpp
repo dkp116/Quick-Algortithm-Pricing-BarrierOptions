@@ -53,12 +53,10 @@
 
 
 
-#include "EstimateGI.h"
-
+#include "EstimateGI.h"         //Taylor expnansion estimation of the intergral disounted density of gi 
 double normal_cdf(double x) {
     return 0.5 * (1.0 + std::erf(x / std::sqrt(2.0)));
 }
-
 
 long double A1(const ModelParams& p) {
     return (2 * p.r / p.sigma) * p.time() * (p.X1 - p.X2) *
