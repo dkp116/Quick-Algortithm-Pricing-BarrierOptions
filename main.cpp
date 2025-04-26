@@ -3,6 +3,7 @@
 #include <iostream>
 #include "Stock.h"
 #include "Option.h"
+#include "EstimateGI.h"
 #include <iostream>
 
 /*
@@ -25,10 +26,10 @@ int main(){
                                                     //DownAndOut(double H_, double K_, double R_) : Barrier(H_,  K_, R_) {}
 
     double total = 0 ;
-    for( int q =0 ; q<1000; q++){
+    for( int q =0 ; q<10000; q++){
 
     std::cout << "----------" << std::endl;
-    double OneCycle = Derivative.PriceByMJD_Uniform(stock);
+    double OneCycle = Derivative.PriceByMJD_Taylor(stock);
 
     total = total + OneCycle;
 
@@ -37,7 +38,15 @@ int main(){
         //so the error we are facing is that the payoff is negative  and not sure why this is the case as the formulas i have checked semmed to be correct as well as the workflow need to spend alot more time on this 
     }    
 
-    std::cout << total /1000.0 << std::endl;
+    std::cout << total /10000.0 << std::endl;
+
+    // ModelParams P = {0.05,0.0303502,0.463895, 3.88868,3.79282,3.50666248977,0.3};      // r, T1, T2, X1, X2, LogBarrier, sigma
+
+    // double long estimation;
+
+    // estimation = EstimateGI(P);
+
+    // std::cout << estimation << std::endl;
 
     
 

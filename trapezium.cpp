@@ -66,3 +66,9 @@ double GI::gamma(double T1, double T2) {
                      / (2 * sigma * sigma * (T2 - T1)));
 }
 
+//so i have a formula and i want to check that this is equal to an intergral 
+//so i need a way to approximate that intergral
+//so i have written out gi formula already so then i just need a function to estimate gi 
+
+
+

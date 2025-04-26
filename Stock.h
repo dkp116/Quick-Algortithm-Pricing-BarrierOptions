@@ -18,7 +18,7 @@ protected:
 public:
     Stock(double initprice, double rf_, double sigma_)
         : StartPrice(initprice), riskfree(rf_), sigma(sigma_) {}
-    virtual ~Stock() {}  // Virtual destructor for base class
+    virtual ~Stock() {}  
 };
 
 class JumpSize {
@@ -38,7 +38,7 @@ public:
 
 class MJD : public Stock {
 private:
-    double lambda;
+    double lambda;  //Frequency of jump 
     double c;
     double ExpectedValueJump; // Jump size constant
     JumpSize jump;
@@ -47,13 +47,11 @@ private:
 public:
     MJD(double initprice, double riskfree, double sigma_,
         double lambda_, double Jumpmu, double JumpSig)
-        : Stock(initprice, riskfree, sigma_), lambda(lambda_), jump(Jumpmu, JumpSig) { ExpectedValueJump = jump.GetExpectedValueJump(); SetC();  }
-    
-    std::vector<double> JumpTimes();
+        : Stock(initprice, riskfree, sigma_), lambda(lambda_), jump(Jumpmu, JumpSig) { ExpectedValueJump = jump.GetExpectedValueJump(); SetC();  }  
+     std::vector<double> JumpTimes();
     double GetLogS0() { return std::log(StartPrice); }
-    void ScaledJumpTimes(std::vector<double>& JT, double K);
     double GetJumpDynamics() { return jump.JumpDynamics(); }
-    double ContinuousDynamics(double Start, double t1, double t2);
+    double ContinuousDynamics(double Start, double t1, double t2);  //  Returns  the endpoint of the continuous process
     void SetC();
     double GetC() { return c; }
     double GetSigma() { return sigma; }
@@ -63,3 +61,5 @@ public:
 
 #endif // STOCK_H
 
+
+    // void ScaledJumpTimes(std::vector<double>& JT, double K);

@@ -9,7 +9,7 @@
 #include "random_generator.h"
 
 
-std::vector<double> MJD::JumpTimes() {
+std::vector<double> MJD::JumpTimes() {      //returns the Jump times that are exponentially distributed between [0,1]
     std::vector<double> Times;
 
     std::exponential_distribution<> exp_dis(lambda);
@@ -26,8 +26,10 @@ std::vector<double> MJD::JumpTimes() {
     return Times;
 }
 
+
+
 void MJD::SetC(){
-    c = riskfree - sigma * sigma * 0.5 - lambda * ExpectedValueJump; //need to calcualte this k value properly 
+    c = riskfree - sigma * sigma * 0.5 - lambda * ExpectedValueJump; 
 }
 
 
@@ -38,7 +40,7 @@ void JumpSize::SetExpectedValueJump() {
 }
 
 
-double MJD::ContinuousDynamics(double Start , double t1, double t2){
+double MJD::ContinuousDynamics(double Start , double t1, double t2){        
     
     assert(t2 >t1 && "times are incorrect");
     double time = t2 - t1;
@@ -49,14 +51,10 @@ double MJD::ContinuousDynamics(double Start , double t1, double t2){
     return generate;      
 }
 
-double JumpSize::JumpDynamics(){
-    
-
-    std::normal_distribution <> d(JumpMu,JumpSigma);        //the jumps are log normally distribu
-    
-    return  d(RandomGenerator::getGenerator());
-}   //so we have a size of the jump. now we need to make a function that generates each tree step by step.
-
+double JumpSize::JumpDynamics(){        //returns the Jump Size using normal distribution
+    std::normal_distribution <> d(JumpMu,JumpSigma);       
+     return  d(RandomGenerator::getGenerator());
+}   
 
 
 

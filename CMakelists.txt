@@ -11,12 +11,14 @@ set(SOURCES
     main.cpp
     Stock.cpp
     Option.cpp
+    EstimateGI.cpp
 )
 
 set(HEADERS
     Stock.h
     Option.h
     Random_Generator.h
+    EstimateGI.cpp
 )
 
 

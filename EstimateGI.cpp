@@ -53,17 +53,12 @@
 
 
 
-#include <cmath>
+#include "EstimateGI.h"
 
 double normal_cdf(double x) {
     return 0.5 * (1.0 + std::erf(x / std::sqrt(2.0)));
 }
 
-// Encapsulate all shared parameters
-struct ModelParams {
-    double r, T1, T2, X1, X2, LogBarrier, sigma;
-    double time() const { return T2 - T1; }
-};
 
 long double A1(const ModelParams& p) {
     return (2 * p.r / p.sigma) * p.time() * (p.X1 - p.X2) *

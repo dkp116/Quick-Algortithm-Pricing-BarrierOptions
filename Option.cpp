@@ -58,7 +58,7 @@ long double DownAndOut::NoCrossingDensity(MJD stock, double A,double B, double t
   if (B > std::log(H)) {
         double ExpTerm = (2 * (std::log(H) - A) * (std::log(H) - B)) / (tau * sigma * sigma);
         // std::cout << "Start is equal to: " << A << std::endl;
-        std::cout << "The barrier is " << std::log(H) << std::endl;
+        // std::cout << "The barrier is " << std::log(H) << std::endl;
         // std::cout << "End is " << B << std::endl;
        // std::cout << 1.0 - std::exp(-ExpTerm) << std::endl;
 
@@ -89,12 +89,7 @@ double Barrier::PriceByMJD_Uniform(MJD stock){      //CHANGE FORMULA TO USE LOGA
     std::vector<double> Times;
     Times = stock.JumpTimes();
     //stock.ScaledJumpTimes(Times,k);
-    //std::cout << "The amount of  jumps are : " << Times.size() << std::endl;    //
-
-    // for(double &time : Times){
-    //     time = time * 10;
-    // }
-
+  
     
 
     double StockPriceAfterJump = stock.GetLogS0();
@@ -104,14 +99,16 @@ double Barrier::PriceByMJD_Uniform(MJD stock){      //CHANGE FORMULA TO USE LOGA
     bool Checker = 1;
     double StockPriceBeforeJump = 0.0;
     while(i+1 < Times.size()){
+        std::cout << Times[i] << std::endl;
+        std::cout << Times[i+1] << std::endl;
       StockPriceBeforeJump = stock.ContinuousDynamics(StockPriceAfterJump,Times[i],Times[i+1]);
       std::cout << "The  Log Stock Price Before the Jump is : " << StockPriceBeforeJump << std::endl;    //
       double SizeOfJump = stock.GetJumpDynamics();
       long double P_i = NoCrossingDensity(stock , StockPriceAfterJump, StockPriceBeforeJump,Times[i],Times[i+1] );
-      std::cout<< "Size of Jump is : " << SizeOfJump << std::endl;
+    //   std::cout<< "Size of Jump is : " << SizeOfJump << std::endl;
        
       
-      std::cout << "Pi: " << std::setprecision(21) << P_i << std::endl; //
+    //   std::cout << "Pi: " << std::setprecision(21) << P_i << std::endl; //
       double ExtentionOfInterval = (Times[i+1]- Times[i]) / (1.0-P_i);
      
 
@@ -165,3 +162,73 @@ double Barrier::PriceByMJD_Uniform(MJD stock){      //CHANGE FORMULA TO USE LOGA
 
 }
 
+
+
+ double Barrier::PriceByMJD_Taylor(MJD stock){
+    //ok so what is involved in this method:: Generate the stock again
+     std::vector<double> Times;
+    Times = stock.JumpTimes();
+    double Pay = 0;
+    //stock.ScaledJumpTimes(Times,k);
+    ModelParams p;
+    p.r = stock.GetRF();
+    p.sigma = stock.GetSigma();
+    p.LogBarrier = std::log(H);
+    
+    
+
+    double StockPriceAfterJump = stock.GetLogS0();
+    std::cout << " START ::" << StockPriceAfterJump << std::endl;
+    //this should use the logarithm them 
+    int i = 0;
+    bool Checker = 1;
+    double StockPriceBeforeJump = 0.0;
+    double multiplyPi = 1;
+    while(i+1 < Times.size()){
+        std::cout << Times[i] << std::endl;
+        std::cout << Times[i+1] << std::endl;
+      StockPriceBeforeJump = stock.ContinuousDynamics(StockPriceAfterJump,Times[i],Times[i+1]);
+      std::cout << "The  Log Stock Price Before the Jump is : " << StockPriceBeforeJump << std::endl;    //
+      double SizeOfJump = stock.GetJumpDynamics();
+      long double P_i = NoCrossingDensity(stock , StockPriceAfterJump, StockPriceBeforeJump,Times[i],Times[i+1] );
+     
+      
+      
+
+
+      p.T1 = Times[i];
+      p.T2 = Times[i+1];
+      p.X1 = StockPriceAfterJump;
+      p.X2 = StockPriceBeforeJump;
+
+     double J =  EstimateGI(p);
+
+     Pay = Pay + Rebate * J * multiplyPi;
+     StockPriceAfterJump = StockPriceBeforeJump + SizeOfJump;
+
+     multiplyPi = multiplyPi * P_i;
+     if(StockPriceBeforeJump <= std::log(H)){
+        Checker = 0;
+        return Pay;
+     }
+
+     else if(StockPriceAfterJump <= std::log(H)){
+        Checker = 0;
+        Pay = Pay + Rebate * std::exp(-stock.GetRF() * Times[i+1]) *multiplyPi;
+     }
+
+
+      
+        i++;
+
+
+    }
+
+    if( Checker){
+         double TerminalValue = std::exp(StockPriceBeforeJump);
+        return  Pay + multiplyPi * Payoff(TerminalValue) * std::exp(-stock.GetRF());
+    }
+
+
+
+ }
