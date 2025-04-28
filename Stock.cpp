@@ -59,28 +59,28 @@ double JumpSize::JumpDynamics(){        //returns the Jump Size using normal dis
 
 
 
-std::vector<double> MJD::StockPrices(std::vector<double>times){     //this function is not needed
-    std::vector<double> Prices;
-   double  Price = StartPrice;
-    int i =0;
-    for(int i =0 ; i < times.size() - 1 ; i++){
-        // continuous dynamics 
-        Price = ContinuousDynamics(Price,times[i],times[i+1]);
-        Prices.push_back(Price);
-        Price = Price + jump.JumpDynamics();
-        Prices.push_back(Price);
+// std::vector<double> MJD::StockPrices(std::vector<double>times){     //this function is not needed
+//     std::vector<double> Prices;
+//    double  Price = StartPrice;
+//     int i =0;
+//     for(int i =0 ; i < times.size() - 1 ; i++){
+//         // continuous dynamics 
+//         Price = ContinuousDynamics(Price,times[i],times[i+1]);
+//         Prices.push_back(Price);
+//         Price = Price + jump.JumpDynamics();
+//         Prices.push_back(Price);
     
-    }
+//     }
     
    
-    return Prices;
-}
+//     return Prices;
+// }
 
- void MJD::ScaledJumpTimes(std::vector<double>& JT, double K){
-    for( double& time : JT){
-        time = time * K;
-    }
- }
+//  void MJD::ScaledJumpTimes(std::vector<double>& JT, double K){
+//     for( double& time : JT){
+//         time = time * K;
+//     }
+//  }
 
 
 

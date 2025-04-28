@@ -25,20 +25,26 @@ int main(){
     DownAndOut Derivative(45,55,1.0);
                                                     //DownAndOut(double H_, double K_, double R_) : Barrier(H_,  K_, R_) {}
 
-    double total = 0 ;
-    for( int q =0 ; q<10000; q++){
+    double totalUniform = 0 ;
+    double totalTaylor = 0;
+    for( int q =0 ; q<100000; q++){
 
     std::cout << "----------" << std::endl;
     double OneCycle = Derivative.PriceByMJD_Taylor(stock);
+    double two  = Derivative.PriceByMJD_Taylor(stock);
 
-    total = total + OneCycle;
+    totalUniform = totalUniform + OneCycle;
+    totalTaylor = totalTaylor + two;
 
   
         // std::cout << OneCycle << std::endl;
         //so the error we are facing is that the payoff is negative  and not sure why this is the case as the formulas i have checked semmed to be correct as well as the workflow need to spend alot more time on this 
     }    
 
-    std::cout << total /10000.0 << std::endl;
+    std::cout << "Price using uniform : " << totalUniform /100000.0 << std::endl;
+    std::cout << "Price using Taylor : " << totalTaylor/100000.0 << std::endl;
+
+    
 
     // ModelParams P = {0.05,0.0303502,0.463895, 3.88868,3.79282,3.50666248977,0.3};      // r, T1, T2, X1, X2, LogBarrier, sigma
 

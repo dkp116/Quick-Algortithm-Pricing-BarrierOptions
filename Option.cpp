@@ -38,7 +38,7 @@ double DownAndOut::gamma(MJD stock, double a, double b, double T1, double T2) {
 
 
 
-long double DownAndOut::NoCrossingDensity(MJD stock, double A,double B, double t1, double t2){  //Density of No Crossing during Brownian Bridge
+long double DownAndOut::NoCrossingDensity(MJD stock, double A,double B, double t1, double t2){  //Probability of stock not crossing in the brownian bridge
   
     double sigma = stock.GetSigma();
     double tau = t2 - t1;
@@ -97,7 +97,7 @@ double Barrier::PriceByMJD_Uniform(MJD stock){
         
        }
      StockPriceAfterJump = StockPriceBeforeJump + SizeOfJump ; 
-    std::cout << "The  Log Stock Price After the Jump is : " << StockPriceAfterJump << std::endl; 
+    // std::cout << "The  Log Stock Price After the Jump is : " << StockPriceAfterJump << std::endl; 
       if(StockPriceAfterJump <= std::log(H))
        {
          
@@ -136,7 +136,7 @@ double Barrier::PriceByMJD_Uniform(MJD stock){
     p.sigma = stock.GetSigma();
     p.LogBarrier = std::log(H);
     double StockPriceAfterJump = stock.GetLogS0();
-    std::cout << " START ::" << StockPriceAfterJump << std::endl;
+    // std::cout << " START ::" << StockPriceAfterJump << std::endl;
     int i = 0;
     bool Checker = 1;
     double StockPriceBeforeJump = 0.0;
@@ -144,7 +144,7 @@ double Barrier::PriceByMJD_Uniform(MJD stock){
     while(i+1 < Times.size()){
         
       StockPriceBeforeJump = stock.ContinuousDynamics(StockPriceAfterJump,Times[i],Times[i+1]);
-      std::cout << "The  Log Stock Price Before the Jump is : " << StockPriceBeforeJump << std::endl;    //
+      
       double SizeOfJump = stock.GetJumpDynamics();
       long double P_i = NoCrossingDensity(stock , StockPriceAfterJump, StockPriceBeforeJump,Times[i],Times[i+1] );
       p.T1 = Times[i];
