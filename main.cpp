@@ -19,10 +19,10 @@ int main(){
 
 
 
-    MJD stock(50,0.05,0.3,8.0,0.0,0.05);                //MJD(double initprice, double riskfree, double sigma_,
+    MJD stock(100,0.05,0.25,2.0,0.0,0.1);                //MJD(double initprice, double riskfree, double sigma_,
                                                         //double lambda_, double Jumpmu, double JumpSig)
                                                         //: Stock(initprice, riskfree, sigma_), lambda(lambda_), jump(Jumpmu, JumpSig) { SetC(); k = jump.GetK(); }
-    DownAndOut Derivative(45,55,1.0);
+    DownAndOut Derivative(85,110,1.0);
                                                     //DownAndOut(double H_, double K_, double R_) : Barrier(H_,  K_, R_) {}
 
     double totalUniform = 0 ;

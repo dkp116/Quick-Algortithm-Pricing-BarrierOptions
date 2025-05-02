@@ -29,18 +29,18 @@ std::vector<double> MJD::JumpTimes() {      //returns the Jump times that are ex
 
 
 void MJD::SetC(){
-    c = riskfree - sigma * sigma * 0.5 - lambda * ExpectedValueJump; 
+    c = riskfree - (sigma * sigma * 0.5) - (lambda * ExpectedValueJump);    
 }
 
 
 
 void JumpSize::SetExpectedValueJump() {
 
-    ExpectedValueJump = std::exp(JumpMu + (JumpSigma * JumpSigma) * 0.5) -1.0;
+    ExpectedValueJump = std::exp(JumpMu + (JumpSigma * JumpSigma) * 0.5) - 1.0;     
 }
 
 
-double MJD::ContinuousDynamics(double Start , double t1, double t2){        
+double MJD::ContinuousDynamics(double Start , double t1, double t2){            
     
     assert(t2 >t1 && "times are incorrect");
     double time = t2 - t1;

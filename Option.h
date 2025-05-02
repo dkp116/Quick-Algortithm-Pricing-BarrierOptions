@@ -36,7 +36,7 @@ class DownAndOut : public Barrier{
         double Payoff(double FinalVal) override;
         double evaluate_gi(MJD stock, double a, double b, double t, double T1, double T2) override;
         double gamma(MJD stock,double a, double b, double T1, double T2) override;
-
+       static double CheckGI(MJD stock, double a, double b, double t, double T1, double T2);
 
        long double NoCrossingDensity(MJD stock,double A,double B, double t1, double t2) override;  
 
