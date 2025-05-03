@@ -5,6 +5,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/Main.dir/Option.cpp.o.d"
   "CMakeFiles/Main.dir/Stock.cpp.o"
   "CMakeFiles/Main.dir/Stock.cpp.o.d"
+  "CMakeFiles/Main.dir/Trapezium.cpp.o"
+  "CMakeFiles/Main.dir/Trapezium.cpp.o.d"
   "CMakeFiles/Main.dir/main.cpp.o"
   "CMakeFiles/Main.dir/main.cpp.o.d"
   "Main"

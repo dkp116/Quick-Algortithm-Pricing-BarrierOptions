@@ -201,6 +201,30 @@ Stock.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/Stock.cpp.s
 .PHONY : Stock.cpp.s
 
+Trapezium.o: Trapezium.cpp.o
+.PHONY : Trapezium.o
+
+# target to build an object file
+Trapezium.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/Trapezium.cpp.o
+.PHONY : Trapezium.cpp.o
+
+Trapezium.i: Trapezium.cpp.i
+.PHONY : Trapezium.i
+
+# target to preprocess a source file
+Trapezium.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/Trapezium.cpp.i
+.PHONY : Trapezium.cpp.i
+
+Trapezium.s: Trapezium.cpp.s
+.PHONY : Trapezium.s
+
+# target to generate assembly for a file
+Trapezium.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/Trapezium.cpp.s
+.PHONY : Trapezium.cpp.s
+
 main.o: main.cpp.o
 .PHONY : main.o
 
@@ -243,6 +267,9 @@ help:
 	@echo "... Stock.o"
 	@echo "... Stock.i"
 	@echo "... Stock.s"
+	@echo "... Trapezium.o"
+	@echo "... Trapezium.i"
+	@echo "... Trapezium.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
