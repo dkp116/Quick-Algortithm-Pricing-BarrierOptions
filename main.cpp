@@ -27,13 +27,13 @@ int main(){
 
     double totalUniform = 0 ;
     double totalTaylor = 0;
-    for( int q =0 ; q<100000; q++){
+    for( int q =0 ; q<100; q++){
 
     std::cout << "----------" << std::endl;
-    double OneCycle = Derivative.PriceByMJD_Taylor(stock);
+    // double OneCycle = Derivative.PriceByMJD_Uniform(stock);
     double two  = Derivative.PriceByMJD_Taylor(stock);
 
-    totalUniform = totalUniform + OneCycle;
+    // totalUniform = totalUniform + OneCycle;
     totalTaylor = totalTaylor + two;
 
   
@@ -41,8 +41,8 @@ int main(){
         //so the error we are facing is that the payoff is negative  and not sure why this is the case as the formulas i have checked semmed to be correct as well as the workflow need to spend alot more time on this 
     }    
 
-    std::cout << "Price using uniform : " << totalUniform /100000.0 << std::endl;
-    std::cout << "Price using Taylor : " << totalTaylor/100000.0 << std::endl;
+    // std::cout << "Price using uniform : " << totalUniform /100000.0 << std::endl;
+    std::cout << "Price using Taylor : " << totalTaylor/100.0 << std::endl;
 
     
 

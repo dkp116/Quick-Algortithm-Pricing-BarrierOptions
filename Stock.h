@@ -55,7 +55,7 @@ public:
     void SetC();
     double GetC() { return c; }
     double GetSigma() { return sigma; }
-    double GetRF() { return riskfree; }
+    double GetRF() const { return riskfree; }
     std::vector<double> StockPrices(std::vector<double> times);
 };
 

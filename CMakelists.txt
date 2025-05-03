@@ -12,14 +12,15 @@ set(SOURCES
     Stock.cpp
     Option.cpp
     EstimateGI.cpp
+    Trapezium.cpp
 )
 
-set(HEADERS
-    Stock.h
-    Option.h
-    Random_Generator.h
-    EstimateGI.cpp
-)
+# set(HEADERS
+#     Stock.h
+#     Option.h
+#     Random_Generator.h
+#     EstimateGI.cpp
+# )
 
 
 add_executable(Main ${SOURCES})

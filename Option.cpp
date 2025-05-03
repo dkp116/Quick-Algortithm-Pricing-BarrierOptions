@@ -35,11 +35,16 @@ double DownAndOut::gamma(MJD stock, double a, double b, double T1, double T2) {
                      / (2 * sigma * sigma * (T2 - T1)));
 }
 
+double DownAndOut::Test(){return 1.0;}
 
-double DownAndOut::CheckGI(MJD stock, double a, double b, double t, double T1, double T2){
+long double DownAndOut::Call_trapezium(MJD stock, double a, double b, double T1, double T2) {
+    auto function = [this, stock, a, b, T1, T2](double t) {
         double r = stock.GetRF();
-            return evaluate_gi(stock, a,  b, t,  T1,  T2 ) * std::exp(-r * t);
-    } 
+        return this->evaluate_gi(stock, a, b, t, T1, T2) *  std::exp(- r * t); 
+    };
+    return trapezium_rule(T1, T2, function, 100);
+}
+
 
 
 long double DownAndOut::NoCrossingDensity(MJD stock, double A,double B, double t1, double t2){  //Probability of stock not crossing in the brownian bridge
@@ -144,10 +149,10 @@ double Barrier::PriceByMJD_Uniform(MJD stock){
         p.X1 = StockPriceAfterJump;
         p.X2 = StockPriceBeforeJump;
         double J =  EstimateGI(p);
-        // double CheckGI(stock, StockPriceAfterJump ,StockPriceBeforeJump,0.0,Times[i],Times[i+1])
-        //trapezium_rule(double Time1, double Time2,  double (*f)(MJD, double, double, double, double, double), MJD stock, double a, double b, double T1, double T2,int n) {
-        double x = trapezium_rule(Times[i], Times[i+1], DownAndOut::CheckGI(stock,StockPriceAfterJump,StockPriceBeforeJump,0.0,Times[i],Times[i+1]),stock,StockPriceAfterJump,StockPriceBeforeJump,Times[i],Times[i+1], 1000);
-        //want to add the function here to find the answer 
+      //here we are going to check this:
+        long double Intergral_Check = Call_trapezium(stock, StockPriceAfterJump, StockPriceBeforeJump, Times[i], Times[i+1]);
+
+        std::cout << "Here is the difference: " << std::abs(J-Intergral_Check) << std::endl;
         Pay = Pay + Rebate * J * multiplyPi;
      if(i + 2 < Times.size()){
         StockPriceAfterJump = StockPriceBeforeJump + SizeOfJump ; 

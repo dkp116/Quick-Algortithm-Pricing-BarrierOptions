@@ -6,7 +6,7 @@
 #include <string>
 #include <vector>
 #include <cassert>
-#include "random_generator.h"
+#include "Random_Generator.h"
 
 
 std::vector<double> MJD::JumpTimes() {      //returns the Jump times that are exponentially distributed between [0,1]

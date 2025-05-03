@@ -14,24 +14,28 @@
 
 #include <iostream>
 #include <cmath>
-#include "Option.h"
+
+#include <functional>
 using namespace std;
 
 // Define the function to integrate
 
 
-// Trapezium Rule function
-double trapezium_rule(double Time1, double Time2,  double (*f)(MJD, double, double, double, double, double), MJD stock, double a, double b, double T1, double T2,int n) {
-    double h = (Time2 - Time1) / n;
-    double sum = 0.5 * (f(stock ,a,  b, Time2 , T1, T2) + f(stock ,a,  b, Time1 , T1, T2));  
+// Trapezium Rule function  so this function is correct thne is just what i need to pass through this 
 
-    for (int i = 1; i < n; ++i) {
-        double x = a + i * h;
-        sum += f(stock ,a,  b, x , T1, T2);
+  long double trapezium_rule(double Time1, double Time2, const std::function<double(double)>& f, int n) {
+    double h = (Time2 - Time1) / n;
+    long double sum = 0.0;
+
+    for (int i = 1; i < n; ++i) {  // Exclude endpoints
+        double t = Time1 + i * h;
+        sum += f(t);
     }
 
     return sum * h;
 }
+
+
 
 // int main() {
 //     double a = 0.0;       // Lower limit

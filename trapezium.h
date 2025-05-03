@@ -3,8 +3,9 @@
 
 #define _USE_MATH_DEFINES
 #include <cmath>
+#include <functional> 
+#include <iostream>
 
-
-double trapezium_rule(double Time1, double Time2,  double (*f)(MJD, double, double, double, double, double), MJD stock, double a, double b, double T1, double T2,int n);
+long double trapezium_rule(double Time1, double Time2,  const std::function<double(double)>& f,int n);
 
 #endif

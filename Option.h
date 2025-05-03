@@ -25,6 +25,9 @@ class Barrier : public Option {
    virtual double evaluate_gi(MJD stock, double a, double b, double t, double T1, double T2) =0;    
    virtual double gamma(MJD stock,double a, double b, double T1, double T2) =0; 
    virtual double Payoff(double FinalVal) =0;
+   virtual  long double Call_trapezium(MJD stock, double a, double b, double T1, double T2)=0;
+   virtual double Test()=0;
+   //we can add trapezium rule here but this will not have any use 
    
 
 };
@@ -37,8 +40,12 @@ class DownAndOut : public Barrier{
         double evaluate_gi(MJD stock, double a, double b, double t, double T1, double T2) override;
         double gamma(MJD stock,double a, double b, double T1, double T2) override;
        static double CheckGI(MJD stock, double a, double b, double t, double T1, double T2);
+        // header
+        long double Call_trapezium(MJD stock, double a, double b, double T1, double T2) override;
+
 
        long double NoCrossingDensity(MJD stock,double A,double B, double t1, double t2) override;  
+       double Test()override; 
 
      
 
