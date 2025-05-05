@@ -35,7 +35,7 @@ double DownAndOut::gamma(MJD stock, double a, double b, double T1, double T2) {
                      / (2 * sigma * sigma * (T2 - T1)));
 }
 
-double DownAndOut::Test(){return 1.0;}
+
 
 long double DownAndOut::Call_trapezium(MJD stock, double a, double b, double T1, double T2) {
     auto function = [this, stock, a, b, T1, T2](double t) {
@@ -150,9 +150,9 @@ double Barrier::PriceByMJD_Uniform(MJD stock){
         p.X2 = StockPriceBeforeJump;
         double J =  EstimateGI(p);
       //here we are going to check this:
-        long double Intergral_Check = Call_trapezium(stock, StockPriceAfterJump, StockPriceBeforeJump, Times[i], Times[i+1]);
+        // long double Intergral_Check = Call_trapezium(stock, StockPriceAfterJump, StockPriceBeforeJump, Times[i], Times[i+1]);
 
-        std::cout << "Here is the difference: " << std::abs(J-Intergral_Check) << std::endl;
+        // std::cout << "Here is the difference: " << std::abs(J-Intergral_Check) << std::endl;
         Pay = Pay + Rebate * J * multiplyPi;
      if(i + 2 < Times.size()){
         StockPriceAfterJump = StockPriceBeforeJump + SizeOfJump ; 
