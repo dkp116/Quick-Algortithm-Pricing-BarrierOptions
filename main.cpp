@@ -27,9 +27,10 @@ int main(){
 
     // double totalUniform = 0 ;
     double totalTaylor = 0;
-    for( int q =0 ; q<100; q++){
+    double Cycles = 10000;
+    for( int q =0 ; q<Cycles; q++){
 
-    std::cout << "----------" << std::endl;
+    // std::cout << "----------" << std::endl;
     // double OneCycle = Derivative.PriceByMJD_Uniform(stock);
     double two  = Derivative.PriceByMJD_Taylor(stock);
 
@@ -38,10 +39,10 @@ int main(){
 
   
     // std::cout << OneCycle << std::endl;
-      
+    }
 
     // std::cout << "Price using uniform : " << totalUniform /1000000.0 << std::endl;
-    std::cout << "Average Error: " << totalTaylor/100.0 << std::endl;
+    std::cout << "Average Error: " << totalTaylor/Cycles<< std::endl;
 
     
 
@@ -49,4 +50,5 @@ int main(){
     
 
  
-   }
+   
+}

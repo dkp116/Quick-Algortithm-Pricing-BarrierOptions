@@ -154,7 +154,7 @@ double Barrier::PriceByMJD_Uniform(MJD stock){
 
         AverageError = AverageError +  abs(J - Intergral_Check);
 
-        std::cout << "Here is the difference: " << std::abs(J-Intergral_Check) << std::endl;
+        // std::cout << "Here is the difference: " << std::abs(J-Intergral_Check) << std::endl;
         Pay = Pay + Rebate * J * multiplyPi;
      if(i + 2 < Times.size()){
         StockPriceAfterJump = StockPriceBeforeJump + SizeOfJump ; 
