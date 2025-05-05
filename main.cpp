@@ -21,38 +21,30 @@ int main(){
 
     MJD stock(100,0.05,0.25,2.0,0.0,0.1);                //MJD(double initprice, double riskfree, double sigma_,
                                                         //double lambda_, double Jumpmu, double JumpSig)
-                                                        //: Stock(initprice, riskfree, sigma_), lambda(lambda_), jump(Jumpmu, JumpSig) { SetC(); k = jump.GetK(); }
+                                                        // Stock(initprice, riskfree, sigma_), lambda(lambda_), jump(Jumpmu, JumpSig) { SetC(); k = jump.GetK(); }
     DownAndOut Derivative(85,110,1.0);
                                                     //DownAndOut(double H_, double K_, double R_) : Barrier(H_,  K_, R_) {}
 
-    double totalUniform = 0 ;
+    // double totalUniform = 0 ;
     double totalTaylor = 0;
-    for( int q =0 ; q<1000000; q++){
+    for( int q =0 ; q<100; q++){
 
     std::cout << "----------" << std::endl;
-    double OneCycle = Derivative.PriceByMJD_Uniform(stock);
+    // double OneCycle = Derivative.PriceByMJD_Uniform(stock);
     double two  = Derivative.PriceByMJD_Taylor(stock);
 
-    totalUniform = totalUniform + OneCycle;
+    // totalUniform = totalUniform + OneCycle;
     totalTaylor = totalTaylor + two;
 
   
-        // std::cout << OneCycle << std::endl;
-        //so the error we are facing is that the payoff is negative  and not sure why this is the case as the formulas i have checked semmed to be correct as well as the workflow need to spend alot more time on this 
-    }    
+    // std::cout << OneCycle << std::endl;
+      
 
-    std::cout << "Price using uniform : " << totalUniform /1000000.0 << std::endl;
-    std::cout << "Price using Taylor : " << totalTaylor/1000000.0 << std::endl;
+    // std::cout << "Price using uniform : " << totalUniform /1000000.0 << std::endl;
+    std::cout << "Average Error: " << totalTaylor/100.0 << std::endl;
 
     
 
-    // ModelParams P = {0.05,0.0303502,0.463895, 3.88868,3.79282,3.50666248977,0.3};      // r, T1, T2, X1, X2, LogBarrier, sigma
-
-    // double long estimation;
-
-    // estimation = EstimateGI(P);
-
-    // std::cout << estimation << std::endl;
 
     
 

@@ -35,14 +35,13 @@ double DownAndOut::gamma(MJD stock, double a, double b, double T1, double T2) {
                      / (2 * sigma * sigma * (T2 - T1)));
 }
 
-double DownAndOut::Test(){return 1.0;}
 
 long double DownAndOut::Call_trapezium(MJD stock, double a, double b, double T1, double T2) {
     auto function = [this, stock, a, b, T1, T2](double t) {
         double r = stock.GetRF();
         return this->evaluate_gi(stock, a, b, t, T1, T2) *  std::exp(- r * t); 
     };
-    return trapezium_rule(T1, T2, function, 100);
+    return trapezium_rule(T1, T2, function, 10000);
 }
 
 
@@ -140,6 +139,7 @@ double Barrier::PriceByMJD_Uniform(MJD stock){
     bool Checker = 1;
     double StockPriceBeforeJump = 0.0;
     double multiplyPi = 1;
+    long double AverageError = 0;
     while(i+1 < Times.size()){
         StockPriceBeforeJump = stock.ContinuousDynamics(StockPriceAfterJump,Times[i],Times[i+1]);   //returns stock value at the end of the continous interval 
         double SizeOfJump = stock.GetJumpDynamics();    
@@ -152,6 +152,8 @@ double Barrier::PriceByMJD_Uniform(MJD stock){
       //here we are going to check this:
         long double Intergral_Check = Call_trapezium(stock, StockPriceAfterJump, StockPriceBeforeJump, Times[i], Times[i+1]);
 
+        AverageError = AverageError +  abs(J - Intergral_Check);
+
         std::cout << "Here is the difference: " << std::abs(J-Intergral_Check) << std::endl;
         Pay = Pay + Rebate * J * multiplyPi;
      if(i + 2 < Times.size()){
@@ -160,7 +162,8 @@ double Barrier::PriceByMJD_Uniform(MJD stock){
      multiplyPi = multiplyPi * P_i;
      if(StockPriceBeforeJump <= std::log(H)){       //if there is a crossing during the bridge
         Checker = 0;
-        return Pay;
+        //return Pay;
+        return AverageError / (i+1);
      }
      else if(StockPriceAfterJump <= std::log(H)){   //if there is a crossing during the jump
         Checker = 0;
@@ -171,7 +174,8 @@ double Barrier::PriceByMJD_Uniform(MJD stock){
     }
     if( Checker){       //if there is no crossing for the entire lifespan of the option
          double TerminalValue = std::exp(StockPriceBeforeJump);
-        return  Pay + multiplyPi * Payoff(TerminalValue) * std::exp(-stock.GetRF());
+       // return  Pay + multiplyPi * Payoff(TerminalValue) * std::exp(-stock.GetRF());
+       return AverageError / (i+1);
     }
 
  }
