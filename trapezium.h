@@ -6,6 +6,6 @@
 #include <functional> 
 #include <iostream>
 
-long double trapezium_rule(double Time1, double Time2,  const std::function<double(double)>& f,int n);
+long double trapezium_rule(double Time1, double Time2,  const std::function<double(double)>& f,int n); 
 
 #endif
