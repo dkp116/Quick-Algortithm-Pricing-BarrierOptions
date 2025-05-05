@@ -6,13 +6,7 @@
 #include "EstimateGI.h"
 #include <iostream>
 
-/*
-    Tasks:
-        1) Finish and clean up proof
-        2) Draw diagrams and insert them in
-        3) Take screenshots of the method and insert them into the document(optional)
-        4) Get started on final pricing formula 
-*/
+
 
 int main(){
 
