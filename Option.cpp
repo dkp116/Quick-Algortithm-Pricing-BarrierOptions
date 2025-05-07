@@ -175,3 +175,38 @@ double Barrier::PriceByMJD_Uniform(MJD stock){
     }
 
  }
+
+
+ double Barrier::PriceByBSM(Stock stock){
+    //okay so here we shall go through the potential payoffs:
+    //how many until we will stop this?
+    
+    double T = 1;
+    double M = 1000;
+    double dt = T/M;
+    bool Checker = 1;
+    double ValueOfStock = stock.GetS0();
+    double i = T/M;
+    // std::cout << "Value of stock issss: " << ValueOfStock << std::endl;
+    while(i <= T){
+       
+        ValueOfStock = stock.Dynamics(ValueOfStock,dt);
+        // std::cout << "Value of stock is:::: " << ValueOfStock << std::endl;
+        if(ValueOfStock < H){
+            //logic for payoff for when the barrier is crossed
+            Checker = 0;
+            std::cout << Rebate  * std::exp(-i * stock.GetRF()) << std::endl;
+            return Rebate  * std::exp(-i * stock.GetRF()); // feel like we need to multiply by a probability but not sure what this is 
+
+
+        }
+
+        i = i + dt;
+    }
+
+    if(Checker){
+        //logic for final payoff (normal call)
+        std::cout <<  std::exp(-stock.GetRF()) * Payoff(ValueOfStock) << std::endl;
+        return std::exp(-stock.GetRF()) * Payoff(ValueOfStock);
+    }
+ }

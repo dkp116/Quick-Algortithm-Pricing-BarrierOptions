@@ -26,6 +26,7 @@ class Barrier : public Option {
    virtual double gamma(MJD stock,double a, double b, double T1, double T2) =0; 
    virtual double Payoff(double FinalVal) =0;
    virtual  long double Call_trapezium(MJD stock, double a, double b, double T1, double T2)=0;
+   double PriceByBSM(Stock stock);
 };
 
 

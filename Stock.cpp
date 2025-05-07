@@ -57,6 +57,18 @@ double JumpSize::JumpDynamics(){        //returns the Jump Size using normal dis
 }   
 
 
+double Stock::Dynamics(double Value, double Increment){
+     std::normal_distribution<> d{0.0, 1.0};
+    double generate = d(RandomGenerator::getGenerator());
+  
+
+    
+  return Value * std::exp((riskfree - 0.5 * sigma * sigma )*(Increment) + sigma * std::sqrt(Increment) * generate );
+
+
+}
+
+
 
 
 // std::vector<double> MJD::StockPrices(std::vector<double>times){     //this function is not needed

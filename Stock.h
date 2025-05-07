@@ -9,7 +9,7 @@
 #include <cmath>
 
 
-class Stock {
+class Stock {       //so for the same stock we can price with black scholes.
 protected:
     double sigma;
     double riskfree;
@@ -19,7 +19,18 @@ public:
     Stock(double initprice, double rf_, double sigma_)
         : StartPrice(initprice), riskfree(rf_), sigma(sigma_) {}
     virtual ~Stock() {}  
+   double Dynamics(double Value, double Increment);
+    double GetS0(){return StartPrice;}
+        double GetSigma() { return sigma; }
+    double GetRF() const { return riskfree; }
 };
+
+// class BlackScholes : public Stock{
+//     public:
+//     BlackScholes(double S0 , double riskfree_ , double sigma_) : Stock(S0,riskfree_,sigma) {}
+//    //so this is the dynamics of the stock where we will incremenetally calculte the price of the stock and see if it violates the barrier.
+
+// };
 
 class JumpSize {
 private:
@@ -49,6 +60,7 @@ public:
         double lambda_, double Jumpmu, double JumpSig)
         : Stock(initprice, riskfree, sigma_), lambda(lambda_), jump(Jumpmu, JumpSig) { ExpectedValueJump = jump.GetExpectedValueJump(); SetC();  }  
      std::vector<double> JumpTimes();
+   
     double GetLogS0() { return std::log(StartPrice); }
     double GetJumpDynamics() { return jump.JumpDynamics(); }
     double ContinuousDynamics(double Start, double t1, double t2);  //  Returns  the endpoint of the continuous process
