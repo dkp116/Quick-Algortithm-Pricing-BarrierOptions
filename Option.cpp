@@ -99,6 +99,7 @@ double Barrier::PriceByMJD_Uniform(MJD stock){
         double Payoff = evaluate_gi(stock,StockPriceAfterJump,StockPriceBeforeJump, Sample,Times[i],Times[i+1] ) 
                             * std::exp(-stock.GetRF() * Sample) * Rebate * ExtentionOfInterval; 
         Checker = 0;
+        std::cout << "MJD:(1) " << Payoff << std::endl;
         return Payoff;
        }
 
@@ -110,6 +111,7 @@ double Barrier::PriceByMJD_Uniform(MJD stock){
        { 
         double Payoff = std::exp( - stock.GetRF() * Times[i+1]) * Rebate;
         Checker = 0;
+         std::cout << "MJD:(2) " << Payoff << std::endl;
         return Payoff; 
        }
         
@@ -118,6 +120,7 @@ double Barrier::PriceByMJD_Uniform(MJD stock){
     }
     if(Checker){    //if there is no crossing for the entire lifespan of the option
         double TerminalValue = std::exp(StockPriceBeforeJump);
+        std::cout << "MJD: " << Rebate * std::exp(- stock.GetRF() ) * Payoff(TerminalValue) << std::endl;
        return Rebate * std::exp(- stock.GetRF() ) * Payoff(TerminalValue) ; 
     }   
 
@@ -161,16 +164,20 @@ double Barrier::PriceByMJD_Uniform(MJD stock){
      if(StockPriceBeforeJump <= std::log(H)){       //if there is a crossing during the bridge
         Checker = 0;
         return Pay;
+        //there should be a return here surely?
      }
      else if(StockPriceAfterJump <= std::log(H)){   //if there is a crossing during the jump
         Checker = 0;
+        std::cout << "the Taylor : " << Pay << std::endl;
         Pay = Pay + Rebate * std::exp(-stock.GetRF() * Times[i+1]) *multiplyPi;
      }
         i++;
 
     }
+
     if( Checker){       //if there is no crossing for the entire lifespan of the option
          double TerminalValue = std::exp(StockPriceBeforeJump);
+           std::cout << "the Taylor : " << Pay + multiplyPi * Payoff(TerminalValue) * std::exp(-stock.GetRF())<< std::endl;
         return  Pay + multiplyPi * Payoff(TerminalValue) * std::exp(-stock.GetRF());
     }
 
@@ -195,7 +202,7 @@ double Barrier::PriceByMJD_Uniform(MJD stock){
         if(ValueOfStock < H){
             //logic for payoff for when the barrier is crossed
             Checker = 0;
-            std::cout << Rebate  * std::exp(-i * stock.GetRF()) << std::endl;
+            std::cout << "the BSM: " << Rebate  * std::exp(-i * stock.GetRF()) << std::endl;
             return Rebate  * std::exp(-i * stock.GetRF()); // feel like we need to multiply by a probability but not sure what this is 
 
 
@@ -206,7 +213,7 @@ double Barrier::PriceByMJD_Uniform(MJD stock){
 
     if(Checker){
         //logic for final payoff (normal call)
-        std::cout <<  std::exp(-stock.GetRF()) * Payoff(ValueOfStock) << std::endl;
+        std::cout << "The BSM: " <<  std::exp(-stock.GetRF()) * Payoff(ValueOfStock) << std::endl;
         return std::exp(-stock.GetRF()) * Payoff(ValueOfStock);
     }
  }

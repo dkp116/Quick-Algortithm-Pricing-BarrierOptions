@@ -63,7 +63,7 @@ double Stock::Dynamics(double Value, double Increment){
   
 
     
-  return Value * std::exp((riskfree - 0.5 * sigma * sigma )*(Increment) + sigma * std::sqrt(Increment) * generate );
+  return Value * std::exp((riskfree + (-0.5) * sigma * sigma )*(Increment) + sigma * std::sqrt(Increment) * generate );
 
 
 }

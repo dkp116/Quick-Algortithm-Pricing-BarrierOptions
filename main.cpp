@@ -22,25 +22,25 @@ int main(){
     double totalUniform = 0 ;
     double totalTaylor = 0;
     double totalBSM = 0;
-    for( int q =0 ; q<10000; q++){
+    for( int q =0 ; q<100000; q++){
 
     std::cout << "----------" << std::endl;
     double OneCycle = Derivative.PriceByMJD_Uniform(stock);
-    // double two  = Derivative.PriceByMJD_Taylor(stock);
-    double three = Derivative.PriceByBSM(stock);
+    double two  = Derivative.PriceByMJD_Taylor(stock);
+    // double three = Derivative.PriceByBSM(stock);
 
     totalUniform = totalUniform + OneCycle;
-    // totalTaylor = totalTaylor + two;
-    totalBSM = totalBSM + three;
+    totalTaylor = totalTaylor + two;
+    // totalBSM = totalBSM + three;
   
         // std::cout << OneCycle << std::endl;
         
     }    
     //so now we want to price this option without jumps?
 
-    std::cout << "Price using uniform : " << totalUniform /10000.0 << std::endl;
-    // std::cout << "Price using Taylor : " << totalTaylor/10000.0 << std::endl;
-    std::cout << "Price using BSM : " << totalBSM/10000.0 << std::endl;
+    std::cout << "Price using uniform : " << totalUniform /100000.0 << std::endl;
+    std::cout << "Price using Taylor : " << totalTaylor/100000.0 << std::endl;
+    // std::cout << "Price using BSM : " << totalBSM/10000.0 << std::endl;
 
 
     
