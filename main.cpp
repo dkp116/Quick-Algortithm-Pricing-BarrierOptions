@@ -5,6 +5,8 @@
 #include "Option.h"
 #include "EstimateGI.h"
 #include <iostream>
+#include <fstream>
+#include <iomanip>
 
 
 
@@ -16,40 +18,41 @@ int main(){
     MJD stock(100,0.05,0.25,2.0,0.0,0.0);                //MJD(double initprice, double riskfree, double sigma_,
                                                         //double lambda_, double Jumpmu, double JumpSig)
                                                         //: Stock(initprice, riskfree, sigma_), lambda(lambda_), jump(Jumpmu, JumpSig) { SetC(); k = jump.GetK(); }
-    DownAndOut Derivative(85,110,1.0);
-                                                    //DownAndOut(double H_, double K_, double R_) : Barrier(H_,  K_, R_) {}
+   //so we want to put this in a csv
+   std::ofstream csvFile("output.csv");
+    csvFile << "Time (Years),Stock Price\n";
+    csvFile << std::fixed << std::setprecision(6);
 
-    Call callopt(110,stock);
+    double currentPrice = stock.GetS0();
+    double currentTime = 0.0;
 
-    double varReduction = callopt.ClosedPrice();
+    // Write initial value at time 0
+    csvFile << currentTime << "," << currentPrice << "\n";
 
-    // std::cout << callopt.ClosedPrice() << std::endl;
+    // Simulate and write each step
 
-    double totalUniform = 0 ;
-    double totalTaylor = 0;
-    double totalBSM = 0.0;
-    double BSMVar = 0.0;
-    for( int q =0 ; q<10000; q++){
+    double T = 1.0/1000;
+    while(currentTime < 100 * T) {
+        currentPrice = stock.Dynamics(currentPrice, T);
+        currentTime += T;
+        csvFile << currentTime << "," << currentPrice << "\n";
+    }
 
-    std::cout << "----------" << std::endl;
-    double OneCycle = Derivative.PriceByMJD_Uniform(stock);
-    double two  = Derivative.PriceByMJD_Taylor(stock);
-    double three = Derivative.PriceByBSM(stock);
-    double four = varReduction + (Derivative.PriceByBSM(stock) - varReduction);
+    currentPrice = currentPrice + 20;
 
-    totalUniform = totalUniform + OneCycle;
-    totalTaylor = totalTaylor + two;
-    totalBSM = totalBSM + three ;
-    BSMVar = BSMVar + four;
-        // std::cout << three << std::endl;
-        
-    }    
-    // so now we want to price this option without jumps?
+    while(currentTime < 1) {
+        currentPrice = stock.Dynamics(currentPrice, T);
+        currentTime += T;
+        csvFile << currentTime << "," << currentPrice << "\n";
+    }
 
-    std::cout << "Price using uniform : " << totalUniform /10000.0 << std::endl;
-    std::cout << "Price using Taylor : " << totalTaylor/10000.0 << std::endl;
-    std::cout << "Price using BSM : " << totalBSM/10000.0 << std::endl;
-    std::cout << "Price using Var reduction BSM : " << BSMVar/10000.0 << std::endl;
+
+
+    csvFile.close();
+    std::cout << "CSV generated: stock_prices.csv" << std::endl;
+    return 0;
+
+
 
 
 
