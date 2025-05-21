@@ -99,7 +99,7 @@ double Barrier::PriceByMJD_Uniform(MJD stock){
         double Payoff = evaluate_gi(stock,StockPriceAfterJump,StockPriceBeforeJump, Sample,Times[i],Times[i+1] ) 
                             * std::exp(-stock.GetRF() * Sample) * Rebate * ExtentionOfInterval; 
         Checker = 0;
-        std::cout << "MJD:(1) " << Payoff << std::endl;
+   
         return Payoff;
        }
 
@@ -111,7 +111,7 @@ double Barrier::PriceByMJD_Uniform(MJD stock){
        { 
         double Payoff = std::exp( - stock.GetRF() * Times[i+1]) * Rebate;
         Checker = 0;
-         std::cout << "MJD:(2) " << Payoff << std::endl;
+         
         return Payoff; 
        }
         
@@ -120,7 +120,7 @@ double Barrier::PriceByMJD_Uniform(MJD stock){
     }
     if(Checker){    //if there is no crossing for the entire lifespan of the option
         double TerminalValue = std::exp(StockPriceBeforeJump);
-        std::cout << "MJD: " << Rebate * std::exp(- stock.GetRF() ) * Payoff(TerminalValue) << std::endl;
+       
        return Rebate * std::exp(- stock.GetRF() ) * Payoff(TerminalValue) ; 
     }   
 
@@ -168,7 +168,7 @@ double Barrier::PriceByMJD_Uniform(MJD stock){
      }
      else if(StockPriceAfterJump <= std::log(H)){   //if there is a crossing during the jump
         Checker = 0;
-        std::cout << "the Taylor : " << Pay << std::endl;
+        
         Pay = Pay + Rebate * std::exp(-stock.GetRF() * Times[i+1]) *multiplyPi;
      }
         i++;
@@ -177,7 +177,7 @@ double Barrier::PriceByMJD_Uniform(MJD stock){
 
     if( Checker){       //if there is no crossing for the entire lifespan of the option
          double TerminalValue = std::exp(StockPriceBeforeJump);
-           std::cout << "the Taylor : " << Pay + multiplyPi * Payoff(TerminalValue) * std::exp(-stock.GetRF())<< std::endl;
+    
         return  Pay + multiplyPi * Payoff(TerminalValue) * std::exp(-stock.GetRF());
     }
 
@@ -185,25 +185,21 @@ double Barrier::PriceByMJD_Uniform(MJD stock){
 
 
  double Barrier::PriceByBSM(Stock stock){
-    //okay so here we shall go through the potential payoffs:
-    //how many until we will stop this?
-    
-    double T = 1;
-    double M = 1000;
+    double T = 1.0;
+    double M = 10000.0;
     double dt = T/M;
-    bool Checker = 1;
+    bool Checker = true;
     double ValueOfStock = stock.GetS0();
-    double i = T/M;
+    double i = 0;
     // std::cout << "Value of stock issss: " << ValueOfStock << std::endl;
-    while(i <= T){
+    while(i < T){
        
         ValueOfStock = stock.Dynamics(ValueOfStock,dt);
         // std::cout << "Value of stock is:::: " << ValueOfStock << std::endl;
-        if(ValueOfStock < H){
+        if(ValueOfStock <= H){
             //logic for payoff for when the barrier is crossed
-            Checker = 0;
-            std::cout << "the BSM: " << Rebate  * std::exp(-i * stock.GetRF()) << std::endl;
-            return Rebate  * std::exp(-i * stock.GetRF()); // feel like we need to multiply by a probability but not sure what this is 
+            Checker = false;
+            return Rebate  * std::exp(- (i * stock.GetRF())); // feel like we need to multiply by a probability but not sure what this is 
 
 
         }
@@ -213,7 +209,49 @@ double Barrier::PriceByMJD_Uniform(MJD stock){
 
     if(Checker){
         //logic for final payoff (normal call)
-        std::cout << "The BSM: " <<  std::exp(-stock.GetRF()) * Payoff(ValueOfStock) << std::endl;
-        return std::exp(-stock.GetRF()) * Payoff(ValueOfStock);
+        ValueOfStock = stock.Dynamics(ValueOfStock,dt);
+        return  Payoff(ValueOfStock) * std::exp(-stock.GetRF());
     }
  }
+
+
+
+
+void Call::Setd1() {
+    double S0 = stock.GetS0();
+    double K = Strike;
+    double r = stock.GetRF();
+    double sigma = stock.GetSigma();
+    
+    d1 = (log(S0 / K) + (r + (sigma * sigma * 0.5)) * T) 
+            / (sigma * sqrt(T));
+}
+
+
+
+void Call::Setd2() {
+    double sigma = stock.GetSigma();
+    d2 = d1 - sigma * sqrt(T);
+}
+
+double N(double x) {
+    return 0.5 * (1 + std::erf(x / std::sqrt(2.0)));
+}
+
+double Call::ClosedPrice() {
+    double S0 = stock.GetS0();
+    double K = Strike;
+    double r = stock.GetRF();
+    std::normal_distribution <> d(0.0,1.0);
+    
+    return N(d1) * S0 - N(d2) * K * exp(-r * T);
+}
+
+
+
+//  double DownAndOut::VarReductionBSM(Stock stock, Call call){
+//     return PriceByBSM(stock)
+
+//  }
+
+

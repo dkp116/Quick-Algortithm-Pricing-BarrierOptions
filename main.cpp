@@ -13,34 +13,46 @@ int main(){
 
 
 
-    MJD stock(100,0.05,0.25,2.0,0.0,0.1);                //MJD(double initprice, double riskfree, double sigma_,
+    MJD stock(100,0.05,0.25,2.0,0.0,0.0);                //MJD(double initprice, double riskfree, double sigma_,
                                                         //double lambda_, double Jumpmu, double JumpSig)
                                                         //: Stock(initprice, riskfree, sigma_), lambda(lambda_), jump(Jumpmu, JumpSig) { SetC(); k = jump.GetK(); }
     DownAndOut Derivative(85,110,1.0);
                                                     //DownAndOut(double H_, double K_, double R_) : Barrier(H_,  K_, R_) {}
 
+    Call callopt(110,stock);
+
+    double varReduction = callopt.ClosedPrice();
+
+    // std::cout << callopt.ClosedPrice() << std::endl;
+
     double totalUniform = 0 ;
     double totalTaylor = 0;
-    double totalBSM = 0;
-    for( int q =0 ; q<100000; q++){
+    double totalBSM = 0.0;
+    double BSMVar = 0.0;
+    for( int q =0 ; q<10000; q++){
 
     std::cout << "----------" << std::endl;
     double OneCycle = Derivative.PriceByMJD_Uniform(stock);
     double two  = Derivative.PriceByMJD_Taylor(stock);
-    // double three = Derivative.PriceByBSM(stock);
+    double three = Derivative.PriceByBSM(stock);
+    double four = varReduction + (Derivative.PriceByBSM(stock) - varReduction);
 
     totalUniform = totalUniform + OneCycle;
     totalTaylor = totalTaylor + two;
-    // totalBSM = totalBSM + three;
-  
-        // std::cout << OneCycle << std::endl;
+    totalBSM = totalBSM + three ;
+    BSMVar = BSMVar + four;
+        // std::cout << three << std::endl;
         
     }    
-    //so now we want to price this option without jumps?
+    // so now we want to price this option without jumps?
 
-    std::cout << "Price using uniform : " << totalUniform /100000.0 << std::endl;
-    std::cout << "Price using Taylor : " << totalTaylor/100000.0 << std::endl;
-    // std::cout << "Price using BSM : " << totalBSM/10000.0 << std::endl;
+    std::cout << "Price using uniform : " << totalUniform /10000.0 << std::endl;
+    std::cout << "Price using Taylor : " << totalTaylor/10000.0 << std::endl;
+    std::cout << "Price using BSM : " << totalBSM/10000.0 << std::endl;
+    std::cout << "Price using Var reduction BSM : " << BSMVar/10000.0 << std::endl;
+
+
+
 
 
     

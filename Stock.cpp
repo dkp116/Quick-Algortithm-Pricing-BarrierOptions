@@ -9,6 +9,7 @@
 #include "Random_Generator.h"
 
 
+
 std::vector<double> MJD::JumpTimes() {      //returns the Jump times that are exponentially distributed between [0,1]
     std::vector<double> Times;
 
@@ -57,16 +58,21 @@ double JumpSize::JumpDynamics(){        //returns the Jump Size using normal dis
 }   
 
 
-double Stock::Dynamics(double Value, double Increment){
-     std::normal_distribution<> d{0.0, 1.0};
+// double Stock::Dynamics(double Value, double Increment){
+//      std::normal_distribution<> d{0.0, 1.0};
+//     double generate = d(RandomGenerator::getGenerator());
+      
+//   return Value * std::exp((riskfree + (-0.5) * sigma * sigma) * Increment + (sigma * std::sqrt(Increment) * generate ));
+//}
+
+double Stock::Dynamics(double Value, double Increment) {
+    std::normal_distribution<> d{0.0, 1.0};
     double generate = d(RandomGenerator::getGenerator());
-  
 
-    
-  return Value * std::exp((riskfree + (-0.5) * sigma * sigma )*(Increment) + sigma * std::sqrt(Increment) * generate );
-
-
+    return Value * std::exp((riskfree - 0.5 * sigma * sigma) * Increment +
+                            sigma * std::sqrt(Increment) * generate);
 }
+
 
 
 

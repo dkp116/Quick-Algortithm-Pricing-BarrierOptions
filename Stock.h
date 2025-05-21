@@ -69,6 +69,7 @@ public:
     double GetSigma() { return sigma; }
     double GetRF() const { return riskfree; }
     std::vector<double> StockPrices(std::vector<double> times);
+    void VisulizeStock();
 };
 
 #endif // STOCK_H
