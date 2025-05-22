@@ -38,9 +38,17 @@ int main(){
         csvFile << currentTime << "," << currentPrice << "\n";
     }
 
-    currentPrice = currentPrice + 20;
+    currentPrice = currentPrice + 5;
 
-    while(currentTime < 1) {
+    while(currentTime < 600*T) {
+        currentPrice = stock.Dynamics(currentPrice, T);
+        currentTime += T;
+        csvFile << currentTime << "," << currentPrice << "\n";
+    }
+
+    currentPrice = currentPrice + 10;
+
+     while(currentTime < 1) {
         currentPrice = stock.Dynamics(currentPrice, T);
         currentTime += T;
         csvFile << currentTime << "," << currentPrice << "\n";
