@@ -186,8 +186,9 @@ double Barrier::PriceByMJD_Uniform(MJD stock){
 
  double Barrier::PriceByBSM(Stock stock){
     double T = 1.0;
-    double M = 10000.0;
-    double dt = T/M;
+    double M = 100.0;
+    // double dt = T/M;
+    double dt = 0.005;
     bool Checker = true;
     double ValueOfStock = stock.GetS0();
     double i = 0;
