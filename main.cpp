@@ -9,18 +9,110 @@
 
 //with var reduciton what is the formula for this
 
+
+
+
+double norm_cdf(double x) {
+    return 0.5 * std::erfc(-x / std::sqrt(2));
+}
+
+// Black-Scholes formula for a European call option
+double black_scholes_call(double S, double K, double T, double r, double sigma) {
+    double d1 = (std::log(S / K) + (r + 0.5 * sigma * sigma) * T) / 
+                (sigma * std::sqrt(T));
+    double d2 = d1 - sigma * std::sqrt(T);
+    
+    return S * norm_cdf(d1) - K * std::exp(-r * T) * norm_cdf(d2);
+}
+
+double down_and_out_call(double S, double K, double H, double T, double r, double sigma) {
+    if (S <= H) return 0.0; // Option knocked out already
+
+    double lambdas = (r + 0.5 * sigma * sigma) / (sigma * sigma);
+    double x1 = std::log(S / H) / (sigma * std::sqrt(T)) + lambdas * sigma * std::sqrt(T);
+    double x2 = std::log(H * H / (S * K)) / (sigma * std::sqrt(T)) + lambdas * sigma * std::sqrt(T);
+
+    double vanilla = black_scholes_call(S, K, T, r, sigma);
+    double mirror = std::pow(H / S, 2.0 * lambdas) * black_scholes_call(H * H / S, K, T, r, sigma);
+
+    return vanilla - mirror;
+
+    
+}
+
+
+// double down_and_out_call_with_rebate(double S, double K, double H, double R, double T, double r, double sigma) {
+//     if (S <= H) return R; // Knocked out immediately, rebate paid
+
+//     double lambdaTilde = (r + 0.5 * sigma * sigma) / (sigma * sigma);
+//     double eta = (std::log(H * H / (S * K)) + (r + 0.5 * sigma * sigma) * T) / (sigma * std::sqrt(T));
+    
+//     double C_DOC = down_and_out_call(S, K, H, T, r, sigma);
+//     double rebate_term = R * std::exp(-r) * std::pow(H / S, 2.0 * lambdaTilde) * norm_cdf(-eta);
+
+//     return C_DOC + rebate_term;
+// }
+
+
+double down_and_out_call_with_rebate(double S, double K, double H, double R, double T, double r, double sigma) {
+    if (S <= H) return R * std::exp(-r * T); // Knocked out immediately, rebate paid
+
+    // Compute down-and-out call price without rebate
+    double C_DOC = down_and_out_call(S, K, H, T, r, sigma);
+
+    // Rebate term
+    double lambda = (r + 0.5 * sigma * sigma) / (sigma * sigma);
+    double zeta = std::log(H / S) / (sigma * std::sqrt(T)) + lambda * sigma * std::sqrt(T);
+    double rebate_term = R * std::exp(-r * T) * std::pow(H / S, 2.0 * lambda) * norm_cdf(zeta);
+
+    return C_DOC + rebate_term;
+}
+
+
+
+
+
+double merton_jump_call(
+    double S, double K, double T,
+    double r, double sigma,
+    double lambda, double muJ, double sigmaJ,
+    int N = 50
+) {
+    double price = 0.0;
+    double lambdaT = lambda * T;
+    double e_muJ = std::exp(muJ + 0.5 * sigmaJ * sigmaJ);
+    double r_adj = r - lambda * (e_muJ - 1);
+
+    for (int n = 0; n <= N; ++n) {
+        double poisson_prob = std::exp(-lambdaT) * std::pow(lambdaT, n) / std::tgamma(n + 1);
+        double sigma_n = std::sqrt(sigma * sigma + n * sigmaJ * sigmaJ / T);
+        double r_n = r_adj + n * std::log(1 + muJ) / T; // Optional term, sometimes dropped
+        price += poisson_prob * black_scholes_call(S, K, T, r_adj, sigma_n);
+    }
+
+    return price;
+}
+
+
+
 int main(){
 
 
 
 
-    MJD stock(100,0.05,0.25,2.0,0.0,0.1);                //MJD(double initprice, double riskfree, double sigma_,
+    MJD stock(100,0.05,0.25,0.0,0.0,0.1);                //MJD(double initprice, double riskfree, double sigma_,
                                                         //double lambda_, double Jumpmu, double JumpSig)
                                                         //: Stock(initprice, riskfree, sigma_), lambda(lambda_), jump(Jumpmu, JumpSig) { SetC(); k = jump.GetK(); }
-    DownAndOut Derivative(85,110,1.0);
+    DownAndOut Derivative(90,110,1.0);
                                                     //DownAndOut(double H_, double K_, double R_) : Barrier(H_,  K_, R_) {}
 
     Call callopt(110,stock);
+
+    double test = down_and_out_call_with_rebate(100, 110, 90,1.0,1.0,0.05,0.25);      //own_and_out_call_with_rebate(double S, double K, double H, double R, double r, double sigma, double T) 
+
+    // double test2 = down_and_out_call(100,110,80,1.0 , 0.02,0.2); //so this is correct 
+
+    std::cout << test << std::endl;        
 
     double varReduction = callopt.ClosedPrice();
 

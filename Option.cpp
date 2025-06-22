@@ -261,52 +261,6 @@ double DownAndOut::StandardMonteCarlo(MJD stock){
     bool Checker = 1;
     double TimeStep = 100;
 
-//     for (int i = 0; i + 1 < Times.size(); ++i) {
-//         double TimeIncrement = Times[i + 1] - Times[i];
-//         double dt = TimeIncrement / TimeStep;
-
-//         for (int z = 0; z < TimeStep; ++z) {
-//             StockPrice = stock.Dynamics(StockPrice, dt);
-//             double t = Times[i] + z * dt;
-//             if (StockPrice < H) {
-//                 return Rebate * std::exp(-stock.GetRF() * t);
-//             }
-//         }
-
-//     if(i+1 < Times.size()-1){
-//     std::cout << "Before jump" << StockPrice << std::endl;
-
-    
-//     double Jumpsize = stock.GetJumpDynamics();
-//             StockPrice *= std::exp(Jumpsize);
-//     std::cout << "After jump" << StockPrice << std::endl;
-//     }
-
-//    if(StockPrice < H){
-
-//             return Rebate * std::exp(- stock.GetRF() * Times[i+1]);
-
-//         }
-
-       
-
-//         i++;
-//     }
-    
-//     double LastTime = Times[i];
-//     double RemainingTime = 1 - LastTime;
-//     double dt = RemainingTime / TimeStep;
-//     for (int z = 0; z < TimeStep; ++z) {
-//         StockPrice = stock.Dynamics(StockPrice, dt);
-//         double t = LastTime + z * dt;
-//         if (StockPrice < H) {
-//             return Rebate * std::exp(-stock.GetRF() * t);
-//         }
-//     }
-
-//     return Payoff(StockPrice) * std::exp(-stock.GetRF() );
-
-
   for (int i = 0; i + 1 < Times.size(); ++i) {
         double TimeIncrement = Times[i + 1] - Times[i];
         double dt = TimeIncrement / TimeStep;
@@ -331,11 +285,69 @@ double DownAndOut::StandardMonteCarlo(MJD stock){
         }
     }
 
-    return Payoff(StockPrice) * std::exp(-stock.GetRF());
+    return Payoff(StockPrice) * std::exp(-stock.GetRF()) * Rebate;
 }
 
 
 
+// double DownAndOut::StandardMonteCarlo(MJD stock) {
+//     // Assume T = 1.0.
+//     // Immediate knock-out check at t = 0:
+//     double StockPrice = stock.GetS0();
+//     if (StockPrice <= H) {
+//         // Barrier breached immediately; rebate paid at t=0 (no discount).
+//         return Rebate;
+//     }
 
+//     // Retrieve jump times vector. We assume JumpTimes() returns times in (0,1),
+//     // and that if there are no jumps it effectively gives [0,1] or that you handle 0/1 externally.
+//     std::vector<double> Times = stock.JumpTimes();
+//     // If JumpTimes does not include 0 or 1, and you need to ensure [0,1], you could:
+//     //     Times.push_back(0.0);
+//     //     Times.push_back(1.0);
+//     //     std::sort(Times.begin(), Times.end());
+//     // But per your comment, we assume Times already covers [0,1] when there are no jumps.
 
+//     const int TimeStep = 100;       // subdivisions per interval
+//     double r = stock.GetRF();
+
+//     // Loop over each interval [Times[i], Times[i+1]]
+//     for (int i = 0; i + 1 < static_cast<int>(Times.size()); ++i) {
+//         double t_start = Times[i];
+//         double t_end   = Times[i + 1];
+//         double interval = t_end - t_start;
+//         if (interval <= 0.0) {
+//             continue;
+//         }
+//         double dt = interval / TimeStep;
+
+//         // Discrete diffusion steps
+//         for (int z = 0; z < TimeStep; ++z) {
+//             // Simulate one small step of size dt:
+//             StockPrice = stock.Dynamics(StockPrice, dt);
+//             // Time at end of this sub-step:
+//             double t = t_start + (z + 1) * dt;
+//             if (StockPrice < H) {
+//                 // Knocked out at this discrete time t:
+//                 return Rebate * std::exp(-r * t);
+//             }
+//         }
+
+//         // After diffusion sub-steps, we are at time t_end (before jump).
+//         // If this t_end < 1.0, assume a jump occurs here:
+//         if (t_end < 1.0) {
+//             double jumpSize = stock.GetJumpDynamics();
+//             StockPrice *= std::exp(jumpSize);
+//             if (StockPrice < H) {
+//                 // Knocked out exactly at jump time t_end:
+//                 return Rebate * std::exp(-r * t_end);
+//             }
+//         }
+//         // If t_end == 1.0, it is maturity; we exit loop and handle payoff below.
+//     }
+
+//     // If we finish all intervals without knock-out, pay the (discounted) payoff at T=1:
+//     double payoff = Payoff(StockPrice); // e.g. max(StockPrice - K, 0)
+//     return payoff * std::exp(-r * 1.0);
+//}
 
