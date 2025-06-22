@@ -19,7 +19,7 @@ public:
     Stock(double initprice, double rf_, double sigma_)
         : StartPrice(initprice), riskfree(rf_), sigma(sigma_) {}
     virtual ~Stock() {}  
-   double Dynamics(double Value, double Increment);
+   
     double GetS0(){return StartPrice;}
         double GetSigma() { return sigma; }
     double GetRF() const { return riskfree; }
@@ -60,7 +60,7 @@ public:
         double lambda_, double Jumpmu, double JumpSig)
         : Stock(initprice, riskfree, sigma_), lambda(lambda_), jump(Jumpmu, JumpSig) { ExpectedValueJump = jump.GetExpectedValueJump(); SetC();  }  
      std::vector<double> JumpTimes();
-   
+    double Dynamics(double Value, double Increment);
     double GetLogS0() { return std::log(StartPrice); }
     double GetJumpDynamics() { return jump.JumpDynamics(); }
     double ContinuousDynamics(double Start, double t1, double t2);  //  Returns  the endpoint of the continuous process

@@ -65,11 +65,11 @@ double JumpSize::JumpDynamics(){        //returns the Jump Size using normal dis
 //   return Value * std::exp((riskfree + (-0.5) * sigma * sigma) * Increment + (sigma * std::sqrt(Increment) * generate ));
 //}
 
-double Stock::Dynamics(double Value, double Increment) {
+double  MJD::Dynamics(double Value, double Increment) {
     std::normal_distribution<> d{0.0, 1.0};
     double generate = d(RandomGenerator::getGenerator());
 
-    return Value * std::exp((riskfree - 0.5 * sigma * sigma) * Increment +
+    return Value * std::exp((c ) * Increment +
                             sigma * std::sqrt(Increment) * generate);
 }
 
@@ -77,28 +77,8 @@ double Stock::Dynamics(double Value, double Increment) {
 
 
 
-// std::vector<double> MJD::StockPrices(std::vector<double>times){     //this function is not needed
-//     std::vector<double> Prices;
-//    double  Price = StartPrice;
-//     int i =0;
-//     for(int i =0 ; i < times.size() - 1 ; i++){
-//         // continuous dynamics 
-//         Price = ContinuousDynamics(Price,times[i],times[i+1]);
-//         Prices.push_back(Price);
-//         Price = Price + jump.JumpDynamics();
-//         Prices.push_back(Price);
-    
-//     }
-    
-   
-//     return Prices;
-// }
 
-//  void MJD::ScaledJumpTimes(std::vector<double>& JT, double K){
-//     for( double& time : JT){
-//         time = time * K;
-//     }
-//  }
+
 
 
 

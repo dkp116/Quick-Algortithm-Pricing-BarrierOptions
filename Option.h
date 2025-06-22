@@ -27,7 +27,7 @@ class Barrier : public Option {
    virtual double gamma(MJD stock,double a, double b, double T1, double T2) =0; 
    virtual double Payoff(double FinalVal) =0; // what happens to this then
    virtual  long double Call_trapezium(MJD stock, double a, double b, double T1, double T2)=0;
-   double PriceByBSM(Stock stock);
+//    double PriceByBSM(Stock stock);
 };
 
 
@@ -61,6 +61,7 @@ class DownAndOut : public Barrier{
        static double CheckGI(MJD stock, double a, double b, double t, double T1, double T2);
         long double Call_trapezium(MJD stock, double a, double b, double T1, double T2) override;
        long double NoCrossingDensity(MJD stock,double A,double B, double t1, double t2) override;  
+       double StandardMonteCarlo(MJD stock);
         //double VarReductionBSM(Call call);
 
      

@@ -24,25 +24,29 @@ int main(){
 
     double varReduction = callopt.ClosedPrice();
 
-    // std::cout << callopt.ClosedPrice() << std::endl;
+   
 
     double simulation = 10000;
     double totalUniform = 0;
     double totalTaylor =0;
+    double totalMonte = 0;
 
     for(int i =0 ; i < simulation ; i++){
 
         double uniform = Derivative.PriceByMJD_Uniform(stock);
         double taylor = Derivative.PriceByMJD_Taylor(stock);
+        double STDMonte = Derivative.StandardMonteCarlo(stock);
 
         totalUniform += uniform;
         totalTaylor += taylor;
+        totalMonte += STDMonte;
     }
 
+     std::cout << totalMonte / simulation << std::endl;
     std::cout << totalUniform / simulation << std::endl;
     std::cout << totalTaylor/ simulation << std::endl;
 
     
-
+//lets start off by measuring the varience
  
    }

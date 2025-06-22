@@ -184,36 +184,36 @@ double Barrier::PriceByMJD_Uniform(MJD stock){
  }
 
 
- double Barrier::PriceByBSM(Stock stock){
-    double T = 1.0;
-    double M = 100.0;
-    // double dt = T/M;
-    double dt = 0.005;
-    bool Checker = true;
-    double ValueOfStock = stock.GetS0();
-    double i = 0;
-    // std::cout << "Value of stock issss: " << ValueOfStock << std::endl;
-    while(i < T){
+//  double Barrier::PriceByBSM(Stock stock){
+//     double T = 1.0;
+//     double M = 100.0;
+//     // double dt = T/M;
+//     double dt = 0.005;
+//     bool Checker = true;
+//     double ValueOfStock = stock.GetS0();
+//     double i = 0;
+//     // std::cout << "Value of stock issss: " << ValueOfStock << std::endl;
+//     while(i < T){
        
-        ValueOfStock = stock.Dynamics(ValueOfStock,dt);
-        // std::cout << "Value of stock is:::: " << ValueOfStock << std::endl;
-        if(ValueOfStock <= H){
-            //logic for payoff for when the barrier is crossed
-            Checker = false;
-            return Rebate  * std::exp(- (i * stock.GetRF())); // feel like we need to multiply by a probability but not sure what this is 
+//         ValueOfStock = stock.Dynamics(ValueOfStock,dt);
+//         // std::cout << "Value of stock is:::: " << ValueOfStock << std::endl;
+//         if(ValueOfStock <= H){
+//             //logic for payoff for when the barrier is crossed
+//             Checker = false;
+//             return Rebate  * std::exp(- (i * stock.GetRF())); // feel like we need to multiply by a probability but not sure what this is 
 
 
-        }
+//         }
 
-        i = i + dt;
-    }
+//         i = i + dt;
+//     }
 
-    if(Checker){
-        //logic for final payoff (normal call)
-        ValueOfStock = stock.Dynamics(ValueOfStock,dt);
-        return  Payoff(ValueOfStock) * std::exp(-stock.GetRF());
-    }
- }
+//     if(Checker){
+//         //logic for final payoff (normal call)
+//         ValueOfStock = stock.Dynamics(ValueOfStock,dt);
+//         return  Payoff(ValueOfStock) * std::exp(-stock.GetRF());
+//     }
+//  }
 
 
 
@@ -250,9 +250,92 @@ double Call::ClosedPrice() {
 
 
 
-//  double DownAndOut::VarReductionBSM(Stock stock, Call call){
-//     return PriceByBSM(stock)
+double DownAndOut::StandardMonteCarlo(MJD stock){
 
-//  }
+    //okay so we need to simulate the stock price and the jumps and just add in if statements
+
+     std::vector<double> Times;
+    Times = stock.JumpTimes();      //generates exponenially distributed jump times
+    double StockPrice= stock.GetS0();
+    int i = 0;
+    bool Checker = 1;
+    double TimeStep = 100;
+
+//     for (int i = 0; i + 1 < Times.size(); ++i) {
+//         double TimeIncrement = Times[i + 1] - Times[i];
+//         double dt = TimeIncrement / TimeStep;
+
+//         for (int z = 0; z < TimeStep; ++z) {
+//             StockPrice = stock.Dynamics(StockPrice, dt);
+//             double t = Times[i] + z * dt;
+//             if (StockPrice < H) {
+//                 return Rebate * std::exp(-stock.GetRF() * t);
+//             }
+//         }
+
+//     if(i+1 < Times.size()-1){
+//     std::cout << "Before jump" << StockPrice << std::endl;
+
+    
+//     double Jumpsize = stock.GetJumpDynamics();
+//             StockPrice *= std::exp(Jumpsize);
+//     std::cout << "After jump" << StockPrice << std::endl;
+//     }
+
+//    if(StockPrice < H){
+
+//             return Rebate * std::exp(- stock.GetRF() * Times[i+1]);
+
+//         }
+
+       
+
+//         i++;
+//     }
+    
+//     double LastTime = Times[i];
+//     double RemainingTime = 1 - LastTime;
+//     double dt = RemainingTime / TimeStep;
+//     for (int z = 0; z < TimeStep; ++z) {
+//         StockPrice = stock.Dynamics(StockPrice, dt);
+//         double t = LastTime + z * dt;
+//         if (StockPrice < H) {
+//             return Rebate * std::exp(-stock.GetRF() * t);
+//         }
+//     }
+
+//     return Payoff(StockPrice) * std::exp(-stock.GetRF() );
+
+
+  for (int i = 0; i + 1 < Times.size(); ++i) {
+        double TimeIncrement = Times[i + 1] - Times[i];
+        double dt = TimeIncrement / TimeStep;
+
+        for (int z = 0; z < TimeStep; ++z) {
+            StockPrice = stock.Dynamics(StockPrice, dt);
+            double t = Times[i] + z * dt;
+            if (StockPrice < H) {
+                return Rebate * std::exp(-stock.GetRF() * t);
+            }
+        }
+
+        // Only apply jump if this is not the last step to maturity
+        if (i + 1 < Times.size() - 1) {
+           
+            double Jumpsize = stock.GetJumpDynamics();
+            StockPrice *= std::exp(Jumpsize);
+           
+            if (StockPrice < H) {
+                return Rebate * std::exp(-stock.GetRF() * Times[i + 1]);
+            }
+        }
+    }
+
+    return Payoff(StockPrice) * std::exp(-stock.GetRF());
+}
+
+
+
+
 
 
