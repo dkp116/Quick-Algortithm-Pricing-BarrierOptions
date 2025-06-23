@@ -133,7 +133,7 @@ int main(){
 
 
 
-    MJD stock(100,0.05,0.25,0.0,0.0,0.1);                //MJD(double initprice, double riskfree, double sigma_,
+    MJD stock(100,0.05,0.25,2.0,0.0,0.1);                //MJD(double initprice, double riskfree, double sigma_,
                                                         //double lambda_, double Jumpmu, double JumpSig)
                                                         //: Stock(initprice, riskfree, sigma_), lambda(lambda_), jump(Jumpmu, JumpSig) { SetC(); k = jump.GetK(); }
     DownAndOut Derivative(20,110,1.0);
@@ -152,7 +152,7 @@ int main(){
 
    
 
-    double simulation = 1000;
+    double simulation = 100000;
     double totalUniform = 0;
     double totalTaylor =0;
     double totalMonte = 0;
