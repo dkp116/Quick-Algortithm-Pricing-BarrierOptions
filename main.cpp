@@ -128,51 +128,90 @@ double PriceMJD(MJD stock, int N, double Strike) {
 
 
 
+
+
+
+
 int main(){
 
 
 
 
-    MJD stock(100,0.05,0.25,2.0,0.0,0.1);                //MJD(double initprice, double riskfree, double sigma_,
+    MJD stock(50,0.05,0.3,0.0,0.0,0.05);                //MJD(double initprice, double riskfree, double sigma_,
                                                         //double lambda_, double Jumpmu, double JumpSig)
                                                         //: Stock(initprice, riskfree, sigma_), lambda(lambda_), jump(Jumpmu, JumpSig) { SetC(); k = jump.GetK(); }
-    DownAndOut Derivative(20,110,1.0);
+    DownAndOut Derivative(45,55,1.0);
                                                     //DownAndOut(double H_, double K_, double R_) : Barrier(H_,  K_, R_) {}
 
-    Call callopt(110,stock);
+    // Call callopt(110,stock);
 
-    double test = down_and_out_call_with_rebate(100, 110, 90,1.0,1.0,0.05,0.25);     //down_and_out_call_with_rebate(double S, double K, double H, double R, double T, double r, double sigma)
+    // double test = down_and_out_call_with_rebate(100, 110, 90,1.0,1.0,0.05,0.25);     //down_and_out_call_with_rebate(double S, double K, double H, double R, double T, double r, double sigma)
 
-    double test2 = PriceMJD(stock,10,110);  //bs_jd_call_price(const double S, const double K, const double r, const double sigma, const double T, const int N, const double m, const double lambda, const double nu) {
+    // double test2 = PriceMJD(stock,10,110);  //bs_jd_call_price(const double S, const double K, const double r, const double sigma, const double T, const int N, const double m, const double lambda, const double nu) {
 
-    std::cout << test << std::endl;        
-    std::cout << test2 << std::endl;        
+    // std::cout << test << std::endl;        
+    // std::cout << test2 << std::endl;        
 
   
+   double ControlDeri =  PriceMJD(stock,100,55);
 
-   
+   std::vector<double> Simulations ={1000,2000,5000,10000,20000,50000,100000};
+   for(double simulation : Simulations){
 
-    double simulation = 100000;
+    // double simulation = 100000;
     double totalUniform = 0;
     double totalTaylor =0;
     double totalMonte = 0;
+    double XX = 0;
+    double UU=0;
+    double TT =0;
+    
+    double TotalControl =0;
+    double VarControl = 0;
+    double XY= 0 ;
 
     for(int i =0 ; i < simulation ; i++){
 
-        double uniform = Derivative.PriceByMJD_Uniform(stock);
-        double taylor = Derivative.PriceByMJD_Taylor(stock);
-        double STDMonte = Derivative.StandardMonteCarlo(stock);
+        std::vector<double> uniform = Derivative.UniformVarRedCall(stock);
 
-        totalUniform += uniform;
-        totalTaylor += taylor;
-        totalMonte += STDMonte;
+         UU +=   uniform[0] *uniform[0];
+        double Control = uniform[1];
+        VarControl+= Control * Control;
+        TotalControl += Control;
+        totalUniform += uniform[0];
+        
+        XY += uniform[0] * uniform[1];
+
+      
     }
 
-     std::cout << totalMonte / simulation << std::endl;
-    std::cout << totalUniform / simulation << std::endl;
-    std::cout << totalTaylor/ simulation << std::endl;
 
+    double EUni = totalUniform / simulation;
+    double Econtrol  = TotalControl / simulation;
+    double EXY  = XY/simulation;
+    double VarY  = VarControl/simulation  - Econtrol  * Econtrol;
+    double Cov = EXY - EUni * Econtrol;
+    double Beta  = Cov / VarY;
+    double VarX = (UU/ simulation) - EUni * EUni;
+
+
+
+
+    // std::cout << "Monte Carlo " << simulation << ": " << std::sqrt( ((XX / simulation) - Monte * Monte)/simulation )<< std::endl;
+    std::cout << "Uniform " << simulation << ": " << std::sqrt( ((UU/ simulation) - EUni * EUni)/simulation )<< std::endl;
+    std::cout << "Varience: " <<std::sqrt(( VarX - 2.0 * Beta * Cov + Beta * Beta * VarY)/simulation) << std::endl;
+  
+
+    std::cout << totalUniform / simulation << std::endl;
+    std::cout << EUni - Beta * (Econtrol - ControlDeri) << std::endl;
+   
+
+
+    //there are so many variables it is hard to keep track of what is going on!!!!
+  
     
 //lets start off by measuring the varience
  
    }
+
+}

@@ -292,64 +292,62 @@ double DownAndOut::StandardMonteCarlo(MJD stock){
 
 
 
-// double DownAndOut::StandardMonteCarlo(MJD stock) {
-//     // Assume T = 1.0.
-//     // Immediate knock-out check at t = 0:
-//     double StockPrice = stock.GetS0();
-//     if (StockPrice <= H) {
-//         // Barrier breached immediately; rebate paid at t=0 (no discount).
-//         return Rebate;
-//     }
+std::vector<double>Barrier::UniformVarRedCall(MJD stock){
+    std::vector<double> Times;
+    Times = stock.JumpTimes();      //generates exponenially distributed jump times
+    double StockPriceAfterJump = stock.GetLogS0();
+    int i = 0;
+    bool Checker = 1;
+    double StockPriceBeforeJump = 0.0;
+    double BarrierPay = 0.0;
+    while(i+1 < Times.size()){
+      StockPriceBeforeJump = stock.ContinuousDynamics(StockPriceAfterJump,Times[i],Times[i+1]); //returns stock value at the end of the continous interval 
+      
+      double SizeOfJump = stock.GetJumpDynamics();
+      long double P_i = NoCrossingDensity(stock , StockPriceAfterJump, StockPriceBeforeJump,Times[i],Times[i+1] );
+      double ExtentionOfInterval = (Times[i+1]- Times[i]) / (1.0-P_i);
+      std::uniform_real_distribution <> d{Times[i], Times[i]+ExtentionOfInterval}; 
+       double Sample = d(RandomGenerator::getGenerator());
+       assert(Sample > Times[i] && "Invalid time of sample ");
+   
+       if(Sample < Times[i+1] )   //if there is a crossing during the bridge
+       {
+        if(BarrierPay == 0.0){
+         BarrierPay = evaluate_gi(stock,StockPriceAfterJump,StockPriceBeforeJump, Sample,Times[i],Times[i+1] ) 
+                            * std::exp(-stock.GetRF() * Sample) * Rebate * ExtentionOfInterval; 
+        }
+        Checker = 0;
+        
+       }
 
-//     // Retrieve jump times vector. We assume JumpTimes() returns times in (0,1),
-//     // and that if there are no jumps it effectively gives [0,1] or that you handle 0/1 externally.
-//     std::vector<double> Times = stock.JumpTimes();
-//     // If JumpTimes does not include 0 or 1, and you need to ensure [0,1], you could:
-//     //     Times.push_back(0.0);
-//     //     Times.push_back(1.0);
-//     //     std::sort(Times.begin(), Times.end());
-//     // But per your comment, we assume Times already covers [0,1] when there are no jumps.
+    if(i + 2 < Times.size()){
+         StockPriceAfterJump = StockPriceBeforeJump + SizeOfJump ; 
+    }
+    
+      if(StockPriceAfterJump <= std::log(H))    //if there is a crossing during the jump
+       { 
+        if(BarrierPay == 0.0){
 
-//     const int TimeStep = 100;       // subdivisions per interval
-//     double r = stock.GetRF();
+        BarrierPay = std::exp( - stock.GetRF() * Times[i+1]) * Rebate;
+         
+        }
+        Checker = 0;
+       }
+        
+      i++;
 
-//     // Loop over each interval [Times[i], Times[i+1]]
-//     for (int i = 0; i + 1 < static_cast<int>(Times.size()); ++i) {
-//         double t_start = Times[i];
-//         double t_end   = Times[i + 1];
-//         double interval = t_end - t_start;
-//         if (interval <= 0.0) {
-//             continue;
-//         }
-//         double dt = interval / TimeStep;
+    }
+    if(Checker){    //if there is no crossing for the entire lifespan of the option
+        double TerminalValue = std::exp(StockPriceBeforeJump);
+        BarrierPay = Rebate * std::exp(- stock.GetRF() ) * Payoff(TerminalValue);
+        double Callpay = Payoff(TerminalValue) * std::exp(-stock.GetRF());
+       
+       return {BarrierPay,Callpay} ; 
+    } 
+    else{double TerminalValue = std::exp(StockPriceBeforeJump);
+        double Callpay = Payoff(TerminalValue) * std::exp(-stock.GetRF());
+        return {BarrierPay,Callpay };}
 
-//         // Discrete diffusion steps
-//         for (int z = 0; z < TimeStep; ++z) {
-//             // Simulate one small step of size dt:
-//             StockPrice = stock.Dynamics(StockPrice, dt);
-//             // Time at end of this sub-step:
-//             double t = t_start + (z + 1) * dt;
-//             if (StockPrice < H) {
-//                 // Knocked out at this discrete time t:
-//                 return Rebate * std::exp(-r * t);
-//             }
-//         }
+}
 
-//         // After diffusion sub-steps, we are at time t_end (before jump).
-//         // If this t_end < 1.0, assume a jump occurs here:
-//         if (t_end < 1.0) {
-//             double jumpSize = stock.GetJumpDynamics();
-//             StockPrice *= std::exp(jumpSize);
-//             if (StockPrice < H) {
-//                 // Knocked out exactly at jump time t_end:
-//                 return Rebate * std::exp(-r * t_end);
-//             }
-//         }
-//         // If t_end == 1.0, it is maturity; we exit loop and handle payoff below.
-//     }
-
-//     // If we finish all intervals without knock-out, pay the (discounted) payoff at T=1:
-//     double payoff = Payoff(StockPrice); // e.g. max(StockPrice - K, 0)
-//     return payoff * std::exp(-r * 1.0);
-//}
-
+// we want to carry on the simulation even after the barrier option has finished pricing

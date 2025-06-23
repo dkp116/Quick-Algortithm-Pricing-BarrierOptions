@@ -28,6 +28,8 @@ class Barrier : public Option {
    virtual double Payoff(double FinalVal) =0; // what happens to this then
    virtual  long double Call_trapezium(MJD stock, double a, double b, double T1, double T2)=0;
 //    double PriceByBSM(Stock stock);
+    std::vector<double>UniformVarRedCall(MJD stock);
+
 };
 
 
@@ -63,7 +65,7 @@ class DownAndOut : public Barrier{
        long double NoCrossingDensity(MJD stock,double A,double B, double t1, double t2) override;  
        double StandardMonteCarlo(MJD stock);
         //double VarReductionBSM(Call call);
-
+        
      
 
 };
