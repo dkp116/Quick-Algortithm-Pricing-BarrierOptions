@@ -250,6 +250,8 @@ double Call::ClosedPrice() {
 
 
 
+
+
 double DownAndOut::StandardMonteCarlo(MJD stock){
 
     //okay so we need to simulate the stock price and the jumps and just add in if statements

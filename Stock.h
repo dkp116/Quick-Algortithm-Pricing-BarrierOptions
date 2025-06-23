@@ -34,11 +34,11 @@ public:
 
 class JumpSize {
 private:
-    double JumpSigma;
-    double JumpMu;
     double ExpectedValueJump;
 
 public:
+    double JumpSigma;
+    double JumpMu;
     JumpSize(double mu_, double sigma_)
         : JumpSigma(sigma_), JumpMu(mu_) { SetExpectedValueJump(); }
     
@@ -68,6 +68,9 @@ public:
     double GetC() { return c; }
     double GetSigma() { return sigma; }
     double GetRF() const { return riskfree; }
+    double GetJumpMu(){return jump.JumpMu;}
+    double GetJumpSig(){ return  jump.JumpSigma; }
+    double GetLamda(){return lambda;}
     std::vector<double> StockPrices(std::vector<double> times);
     void VisulizeStock();
 };
