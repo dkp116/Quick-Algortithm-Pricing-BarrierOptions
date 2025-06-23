@@ -351,3 +351,62 @@ std::vector<double>Barrier::UniformVarRedCall(MJD stock){
 }
 
 // we want to carry on the simulation even after the barrier option has finished pricing
+
+
+std::vector<double>Barrier::UniformVarRedCall(MJD stock){
+    std::vector<double> Times;
+    Times = stock.JumpTimes();      //generates exponenially distributed jump times
+    double StockPriceAfterJump = stock.GetLogS0();
+    int i = 0;
+    bool Checker = 1;
+    double StockPriceBeforeJump = 0.0;
+    double BarrierPay = 0.0;
+    while(i+1 < Times.size()){
+      StockPriceBeforeJump = stock.ContinuousDynamics(StockPriceAfterJump,Times[i],Times[i+1]); //returns stock value at the end of the continous interval 
+      
+      double SizeOfJump = stock.GetJumpDynamics();
+      long double P_i = NoCrossingDensity(stock , StockPriceAfterJump, StockPriceBeforeJump,Times[i],Times[i+1] );
+      double ExtentionOfInterval = (Times[i+1]- Times[i]) / (1.0-P_i);
+      std::uniform_real_distribution <> d{Times[i], Times[i]+ExtentionOfInterval}; 
+       double Sample = d(RandomGenerator::getGenerator());
+       assert(Sample > Times[i] && "Invalid time of sample ");
+   
+       if(Sample < Times[i+1] )   //if there is a crossing during the bridge
+       {
+        if(BarrierPay == 0.0){
+         BarrierPay = evaluate_gi(stock,StockPriceAfterJump,StockPriceBeforeJump, Sample,Times[i],Times[i+1] ) 
+                            * std::exp(-stock.GetRF() * Sample) * Rebate * ExtentionOfInterval; 
+        }
+        Checker = 0;
+        
+       }
+
+    if(i + 2 < Times.size()){
+         StockPriceAfterJump = StockPriceBeforeJump + SizeOfJump ; 
+    }
+    
+      if(StockPriceAfterJump <= std::log(H))    //if there is a crossing during the jump
+       { 
+        if(BarrierPay == 0.0){
+
+        BarrierPay = std::exp( - stock.GetRF() * Times[i+1]) * Rebate;
+         
+        }
+        Checker = 0;
+       }
+        
+      i++;
+
+    }
+    if(Checker){    //if there is no crossing for the entire lifespan of the option
+        double TerminalValue = std::exp(StockPriceBeforeJump);
+        BarrierPay = Rebate * std::exp(- stock.GetRF() ) * Payoff(TerminalValue);
+        double Callpay = Payoff(TerminalValue) * std::exp(-stock.GetRF());
+       
+       return {BarrierPay,Callpay} ; 
+    } 
+    else{double TerminalValue = std::exp(StockPriceBeforeJump);
+        double Callpay = Payoff(TerminalValue) * std::exp(-stock.GetRF());
+        return {BarrierPay,Callpay };}
+
+}
