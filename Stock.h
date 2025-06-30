@@ -25,12 +25,7 @@ public:
     double GetRF() const { return riskfree; }
 };
 
-// class BlackScholes : public Stock{
-//     public:
-//     BlackScholes(double S0 , double riskfree_ , double sigma_) : Stock(S0,riskfree_,sigma) {}
-//    //so this is the dynamics of the stock where we will incremenetally calculte the price of the stock and see if it violates the barrier.
 
-// };
 
 class JumpSize {
 private:

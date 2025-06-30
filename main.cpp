@@ -41,17 +41,6 @@ double down_and_out_call(double S, double K, double H, double T, double r, doubl
 }
 
 
-// double down_and_out_call_with_rebate(double S, double K, double H, double R, double T, double r, double sigma) {
-//     if (S <= H) return R; // Knocked out immediately, rebate paid
-
-//     double lambdaTilde = (r + 0.5 * sigma * sigma) / (sigma * sigma);
-//     double eta = (std::log(H * H / (S * K)) + (r + 0.5 * sigma * sigma) * T) / (sigma * std::sqrt(T));
-    
-//     double C_DOC = down_and_out_call(S, K, H, T, r, sigma);
-//     double rebate_term = R * std::exp(-r) * std::pow(H / S, 2.0 * lambdaTilde) * norm_cdf(-eta);
-
-//     return C_DOC + rebate_term;
-// }
 
 
 double down_and_out_call_with_rebate(double S, double K, double H, double R, double T, double r, double sigma) {
@@ -71,27 +60,6 @@ double down_and_out_call_with_rebate(double S, double K, double H, double R, dou
 
 
 
-
-// double merton_jump_call(
-//     double S, double K, double T,
-//     double r, double sigma,
-//     double lambda, double muJ, double sigmaJ,
-//     int N = 100
-// ) {
-//     double price = 0.0;
-//     double lambdaT = lambda * T;
-//     double e_muJ = std::exp(muJ + 0.5 * sigmaJ * sigmaJ);
-//     double r_adj = r - lambda * (e_muJ - 1);
-
-//     for (int n = 0; n <= N; ++n) {
-//         double poisson_prob = std::exp(-lambdaT) * std::pow(lambdaT, n) / std::tgamma(n + 1);
-//         double sigma_n = std::sqrt(sigma * sigma + n * sigmaJ * sigmaJ / T);
-//         double r_n = r_adj + n * std::log(1 + muJ) / T; // Optional term, sometimes dropped
-//         price += poisson_prob * black_scholes_call(S, K, T, r_adj, sigma_n);
-//     }
-
-//     return price;
-// }
 
 
 double PriceMJD(MJD stock, int N, double Strike) {
@@ -137,10 +105,10 @@ int main(){
 
 
 
-    MJD stock(50,0.05,0.3,0.0,0.0,0.05);                //MJD(double initprice, double riskfree, double sigma_,
+    MJD stock(100,0.05,0.25,2.0,0.0,0.1);                //MJD(double initprice, double riskfree, double sigma_,
                                                         //double lambda_, double Jumpmu, double JumpSig)
                                                         //: Stock(initprice, riskfree, sigma_), lambda(lambda_), jump(Jumpmu, JumpSig) { SetC(); k = jump.GetK(); }
-    DownAndOut Derivative(45,55,1.0);
+    DownAndOut Derivative(85,110,1.0);
                                                     //DownAndOut(double H_, double K_, double R_) : Barrier(H_,  K_, R_) {}
 
     // Call callopt(110,stock);
@@ -153,8 +121,8 @@ int main(){
     // std::cout << test2 << std::endl;        
 
   
-   double ControlDeri =  PriceMJD(stock,100,55);
-
+   double ControlDeri =  PriceMJD(stock,100,110);
+     auto start = std::chrono::high_resolution_clock::now();
    std::vector<double> Simulations ={1000,2000,5000,10000,20000,50000,100000};
    for(double simulation : Simulations){
 
@@ -162,6 +130,8 @@ int main(){
     double totalUniform = 0;
     double totalTaylor =0;
     double totalMonte = 0;
+    double MonteVar =0;
+    double TaylorVar =0;
     double XX = 0;
     double UU=0;
     double TT =0;
@@ -181,11 +151,14 @@ int main(){
         totalUniform += uniform[0];
         
         XY += uniform[0] * uniform[1];
-
+        // double Taylor = Derivative.PriceByMJD_Taylor(stock);
+        // totalTaylor += Taylor;
+        // double Monte = Derivative.StandardMonteCarlo(stock);
+        // totalMonte += Monte;
+        // MonteVar += Monte * Monte;
+        // TaylorVar += Taylor * Taylor;
       
     }
-
-
     double EUni = totalUniform / simulation;
     double Econtrol  = TotalControl / simulation;
     double EXY  = XY/simulation;
@@ -194,16 +167,25 @@ int main(){
     double Beta  = Cov / VarY;
     double VarX = (UU/ simulation) - EUni * EUni;
 
+    // double V1 = MonteVar/simulation  - (totalMonte /simulation)  * (totalMonte /simulation);
+    // double V2 = TaylorVar/simulation  - (totalTaylor /simulation)  * (totalTaylor/simulation);
+
 
 
 
     // std::cout << "Monte Carlo " << simulation << ": " << std::sqrt( ((XX / simulation) - Monte * Monte)/simulation )<< std::endl;
-    std::cout << "Uniform " << simulation << ": " << std::sqrt( ((UU/ simulation) - EUni * EUni)/simulation )<< std::endl;
-    std::cout << "Varience: " <<std::sqrt(( VarX - 2.0 * Beta * Cov + Beta * Beta * VarY)/simulation) << std::endl;
-  
+    // std::cout << "Uniform " << simulation << ": " << std::sqrt( ((UU/ simulation) - EUni * EUni)/simulation )<< std::endl;
+    std::cout << "Varience Control: " <<simulation <<" " <<  std::sqrt(( VarX - 2.0 * Beta * Cov + Beta * Beta * VarY)/simulation) << std::endl;
+    // std::cout << "Varience Monte: " <<std::sqrt(V1/simulation) << std::endl;
+    // std::cout << "Varience Taylor: " <<std::sqrt(V2/simulation) << std::endl;
 
-    std::cout << totalUniform / simulation << std::endl;
+    // std::cout << totalMonte / simulation << std::endl;
+    // std::cout << totalUniform / simulation << std::endl;
     std::cout << EUni - Beta * (Econtrol - ControlDeri) << std::endl;
+  
+    auto end = std::chrono::high_resolution_clock::now();
+    auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
+     std::cout << "Function took " << duration.count() << " milliseconds.\n";       //it would just take as long as we need to complete all paths of the stock so the speed we make up actaully goes away .. fuckkk
    
 
 
