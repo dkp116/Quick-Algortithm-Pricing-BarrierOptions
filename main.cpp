@@ -110,6 +110,8 @@ Running the program should give the pricing and standard error for each other th
 
 For the branches where we use the trapeizum intergral to check refer to the github branch  'Check-Intergral'
 
+https://github.com/dkp116/Quick-Algortithm-Pricing-BarrierOptions.git
+
 */
 
 
