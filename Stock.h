@@ -73,4 +73,4 @@ public:
 #endif // STOCK_H
 
 
-    // void ScaledJumpTimes(std::vector<double>& JT, double K);
+    

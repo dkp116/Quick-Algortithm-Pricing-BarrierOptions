@@ -164,7 +164,7 @@ double Barrier::PriceByMJD_Uniform(MJD stock){
      if(StockPriceBeforeJump <= std::log(H)){       //if there is a crossing during the bridge
         Checker = 0;
         return Pay;
-        //there should be a return here surely?
+        
      }
      else if(StockPriceAfterJump <= std::log(H)){   //if there is a crossing during the jump
         Checker = 0;
@@ -182,71 +182,6 @@ double Barrier::PriceByMJD_Uniform(MJD stock){
     }
 
  }
-
-
-//  double Barrier::PriceByBSM(Stock stock){
-//     double T = 1.0;
-//     double M = 100.0;
-//     // double dt = T/M;
-//     double dt = 0.005;
-//     bool Checker = true;
-//     double ValueOfStock = stock.GetS0();
-//     double i = 0;
-//     // std::cout << "Value of stock issss: " << ValueOfStock << std::endl;
-//     while(i < T){
-       
-//         ValueOfStock = stock.Dynamics(ValueOfStock,dt);
-//         // std::cout << "Value of stock is:::: " << ValueOfStock << std::endl;
-//         if(ValueOfStock <= H){
-//             //logic for payoff for when the barrier is crossed
-//             Checker = false;
-//             return Rebate  * std::exp(- (i * stock.GetRF())); // feel like we need to multiply by a probability but not sure what this is 
-
-
-//         }
-
-//         i = i + dt;
-//     }
-
-//     if(Checker){
-//         //logic for final payoff (normal call)
-//         ValueOfStock = stock.Dynamics(ValueOfStock,dt);
-//         return  Payoff(ValueOfStock) * std::exp(-stock.GetRF());
-//     }
-//  }
-
-
-
-
-void Call::Setd1() {
-    double S0 = stock.GetS0();
-    double K = Strike;
-    double r = stock.GetRF();
-    double sigma = stock.GetSigma();
-    
-    d1 = (log(S0 / K) + (r + (sigma * sigma * 0.5)) * T) 
-            / (sigma * sqrt(T));
-}
-
-
-
-void Call::Setd2() {
-    double sigma = stock.GetSigma();
-    d2 = d1 - sigma * sqrt(T);
-}
-
-double N(double x) {
-    return 0.5 * (1 + std::erf(x / std::sqrt(2.0)));
-}
-
-double Call::ClosedPrice() {
-    double S0 = stock.GetS0();
-    double K = Strike;
-    double r = stock.GetRF();
-    std::normal_distribution <> d(0.0,1.0);
-    
-    return N(d1) * S0 - N(d2) * K * exp(-r * T);
-}
 
 
 
@@ -293,56 +228,6 @@ double DownAndOut::StandardMonteCarlo(MJD stock){
 
 
 
-// std::vector<double> DownAndOut::StandardMonteCarloVarRed(MJD stock){       
-
-// //so we need to simulate all the paths and return and array with the call option pricing 
-
-
-//      std::vector<double> Times;
-//     Times = stock.JumpTimes();      //generates exponenially distributed jump times
-//     double StockPrice= stock.GetS0();
-//     int i = 0;
-//     bool Checker = 1;
-//     double TimeStep = 100;
-//     double Pay = 0.0;
-//   for (int i = 0; i + 1 < Times.size(); ++i) {
-//         double TimeIncrement = Times[i + 1] - Times[i];
-//         double dt = TimeIncrement / TimeStep;
-
-//         for (int z = 0; z < TimeStep; ++z) {
-//             StockPrice = stock.Dynamics(StockPrice, dt);
-//             double t = Times[i] + z * dt;
-//             if (StockPrice < H) {
-//                 if(Pay == 0.0 ){
-//                      Pay = Rebate * std::exp(-stock.GetRF() * t);
-//                 }
-               
-             
-//             }
-//         }
-
-//         // Only apply jump if this is not the last step to maturity
-//         if (i + 1 < Times.size() - 1) {
-           
-//             double Jumpsize = stock.GetJumpDynamics();
-//             StockPrice *= std::exp(Jumpsize);
-           
-//             if (StockPrice < H) {
-//                 if (Pay == 0.0 ){
-//                     Pay =  Rebate * std::exp(-stock.GetRF() * Times[i + 1]);
-//                 }
-                
-//             }
-//         }
-//     }
-
-//     if(Pay == 0.0){
-//         Pay = Payoff(StockPrice) * std::exp(-stock.GetRF()) * Rebate;
-        
-//     }
-
-//     return Payoff(StockPrice) * std::exp(-stock.GetRF()) * Rebate;
-// }
 
 
 
