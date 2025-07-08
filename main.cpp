@@ -108,6 +108,8 @@ double PriceMJD(MJD stock, int N, double Strike) {
 To build for the first time use the cmake file and make sure you are in the 'build' directory to make the program.
 Running the program should give the pricing and standard error for each other the methods, note that the timing function will be of little value as all the algorthms are running at the same time. Comment out accordingly to get accurate timings.
 
+For the branches where we use the trapeizum intergral to check refer to the github branch  'Check-Intergral'
+
 */
 
 
