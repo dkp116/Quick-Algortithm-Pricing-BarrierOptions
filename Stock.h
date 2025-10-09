@@ -7,6 +7,7 @@
 
 #include <vector>
 #include <cmath>
+#include "IDynamics.h"
 
 
 class Stock {       //so for the same stock we can price with black scholes.
