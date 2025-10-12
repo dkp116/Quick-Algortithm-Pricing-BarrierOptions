@@ -8,9 +8,12 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/BlackScholesDynamics.cpp" "CMakeFiles/Main.dir/BlackScholesDynamics.cpp.o" "gcc" "CMakeFiles/Main.dir/BlackScholesDynamics.cpp.o.d"
   "/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/EstimateGI.cpp" "CMakeFiles/Main.dir/EstimateGI.cpp.o" "gcc" "CMakeFiles/Main.dir/EstimateGI.cpp.o.d"
+  "/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/MetonJumpDynamics.cpp" "CMakeFiles/Main.dir/MetonJumpDynamics.cpp.o" "gcc" "CMakeFiles/Main.dir/MetonJumpDynamics.cpp.o.d"
   "/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/Option.cpp" "CMakeFiles/Main.dir/Option.cpp.o" "gcc" "CMakeFiles/Main.dir/Option.cpp.o.d"
   "/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/Stock.cpp" "CMakeFiles/Main.dir/Stock.cpp.o" "gcc" "CMakeFiles/Main.dir/Stock.cpp.o.d"
+  "/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/Stock_new.cpp" "CMakeFiles/Main.dir/Stock_new.cpp.o" "gcc" "CMakeFiles/Main.dir/Stock_new.cpp.o.d"
   "/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/Trapezium.cpp" "CMakeFiles/Main.dir/Trapezium.cpp.o" "gcc" "CMakeFiles/Main.dir/Trapezium.cpp.o.d"
   "/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/main.cpp" "CMakeFiles/Main.dir/main.cpp.o" "gcc" "CMakeFiles/Main.dir/main.cpp.o.d"
   )
