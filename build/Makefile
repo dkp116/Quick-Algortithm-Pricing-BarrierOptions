@@ -129,6 +129,30 @@ Main/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/build
 .PHONY : Main/fast
 
+BlackScholesDynamics.o: BlackScholesDynamics.cpp.o
+.PHONY : BlackScholesDynamics.o
+
+# target to build an object file
+BlackScholesDynamics.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/BlackScholesDynamics.cpp.o
+.PHONY : BlackScholesDynamics.cpp.o
+
+BlackScholesDynamics.i: BlackScholesDynamics.cpp.i
+.PHONY : BlackScholesDynamics.i
+
+# target to preprocess a source file
+BlackScholesDynamics.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/BlackScholesDynamics.cpp.i
+.PHONY : BlackScholesDynamics.cpp.i
+
+BlackScholesDynamics.s: BlackScholesDynamics.cpp.s
+.PHONY : BlackScholesDynamics.s
+
+# target to generate assembly for a file
+BlackScholesDynamics.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/BlackScholesDynamics.cpp.s
+.PHONY : BlackScholesDynamics.cpp.s
+
 EstimateGI.o: EstimateGI.cpp.o
 .PHONY : EstimateGI.o
 
@@ -152,6 +176,30 @@ EstimateGI.s: EstimateGI.cpp.s
 EstimateGI.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/EstimateGI.cpp.s
 .PHONY : EstimateGI.cpp.s
+
+MetonJumpDynamics.o: MetonJumpDynamics.cpp.o
+.PHONY : MetonJumpDynamics.o
+
+# target to build an object file
+MetonJumpDynamics.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/MetonJumpDynamics.cpp.o
+.PHONY : MetonJumpDynamics.cpp.o
+
+MetonJumpDynamics.i: MetonJumpDynamics.cpp.i
+.PHONY : MetonJumpDynamics.i
+
+# target to preprocess a source file
+MetonJumpDynamics.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/MetonJumpDynamics.cpp.i
+.PHONY : MetonJumpDynamics.cpp.i
+
+MetonJumpDynamics.s: MetonJumpDynamics.cpp.s
+.PHONY : MetonJumpDynamics.s
+
+# target to generate assembly for a file
+MetonJumpDynamics.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/MetonJumpDynamics.cpp.s
+.PHONY : MetonJumpDynamics.cpp.s
 
 Option.o: Option.cpp.o
 .PHONY : Option.o
@@ -200,6 +248,30 @@ Stock.s: Stock.cpp.s
 Stock.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/Stock.cpp.s
 .PHONY : Stock.cpp.s
+
+Stock_new.o: Stock_new.cpp.o
+.PHONY : Stock_new.o
+
+# target to build an object file
+Stock_new.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/Stock_new.cpp.o
+.PHONY : Stock_new.cpp.o
+
+Stock_new.i: Stock_new.cpp.i
+.PHONY : Stock_new.i
+
+# target to preprocess a source file
+Stock_new.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/Stock_new.cpp.i
+.PHONY : Stock_new.cpp.i
+
+Stock_new.s: Stock_new.cpp.s
+.PHONY : Stock_new.s
+
+# target to generate assembly for a file
+Stock_new.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/Stock_new.cpp.s
+.PHONY : Stock_new.cpp.s
 
 Trapezium.o: Trapezium.cpp.o
 .PHONY : Trapezium.o
@@ -258,15 +330,24 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... Main"
+	@echo "... BlackScholesDynamics.o"
+	@echo "... BlackScholesDynamics.i"
+	@echo "... BlackScholesDynamics.s"
 	@echo "... EstimateGI.o"
 	@echo "... EstimateGI.i"
 	@echo "... EstimateGI.s"
+	@echo "... MetonJumpDynamics.o"
+	@echo "... MetonJumpDynamics.i"
+	@echo "... MetonJumpDynamics.s"
 	@echo "... Option.o"
 	@echo "... Option.i"
 	@echo "... Option.s"
 	@echo "... Stock.o"
 	@echo "... Stock.i"
 	@echo "... Stock.s"
+	@echo "... Stock_new.o"
+	@echo "... Stock_new.i"
+	@echo "... Stock_new.s"
 	@echo "... Trapezium.o"
 	@echo "... Trapezium.i"
 	@echo "... Trapezium.s"

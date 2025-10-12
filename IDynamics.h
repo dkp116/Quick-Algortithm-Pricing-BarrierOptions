@@ -5,7 +5,7 @@
 class IDynamics{
     public:
     virtual ~IDynamics() = default;
-    virtual double evolve(Stock stock) =0 ;
+    // virtual double evolve(Stock stock) =0 ;
 };
 
 

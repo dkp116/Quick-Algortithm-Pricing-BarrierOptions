@@ -1,15 +1,14 @@
 //main.cpp
 // #include "trapezium.h"
 #include <iostream>
-#include "Stock.h"
 #include "Option.h"
 #include "EstimateGI.h"
 #include <iostream>
 #include <chrono>
-
-
-
-
+#include "Stock_new.cpp"
+#include "BlackScholesDynamics.cpp"
+#include "MetonJumpDynamics.cpp"
+#include <memory>
 
 
 
@@ -118,7 +117,10 @@ https://github.com/dkp116/Quick-Algortithm-Pricing-BarrierOptions.git
 
 int main(){
 
+    std::shared_ptr<IDynamics> dym = std::make_shared<BlackScholesDynamics>(0.1,0.2);
 
+    double start = 100.01;
+    NewStock m(start,dym);
 
 
 }

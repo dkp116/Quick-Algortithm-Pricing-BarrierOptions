@@ -13,6 +13,9 @@ set(SOURCES
     Option.cpp
     EstimateGI.cpp
     Trapezium.cpp
+    Stock_new.cpp
+    BlackScholesDynamics.cpp
+    MetonJumpDynamics.cpp
 )
 
 # set(HEADERS
