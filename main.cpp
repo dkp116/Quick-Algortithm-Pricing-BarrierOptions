@@ -121,6 +121,7 @@ int main(){
 
     double start = 100.01;
     NewStock m(start,dym);
+    std::cout << dym->evolve(2) << std::endl;
 
 
 }
