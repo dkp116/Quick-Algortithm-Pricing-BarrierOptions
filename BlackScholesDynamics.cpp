@@ -1,5 +1,4 @@
 #include "IDynamics.h"
-
 #include "Random_Generator.h"
 
 class BlackScholesDynamics : public IDynamics{

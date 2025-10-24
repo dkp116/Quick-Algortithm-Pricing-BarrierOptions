@@ -17,6 +17,7 @@ public:
 
 /*
 refactoring to do :
-
-3) add the correct functionalility to the dyanmic or stock
+1) add an evolve funtion here 
+2) make the random device a singleton
+3) rewrite option file next!
 */
