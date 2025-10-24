@@ -2,11 +2,12 @@
 #define OPTIONNEW_H
 
 enum class ExerciseType {American,European};
-enum class OptionType {call, put};
+enum class OptionType {Call, Put};
 class Option{
 
     public:
     virtual ~Option() = default;
+    virtual double payoff(double currentValue) const = 0;
 
     protected:
     Option(double strike , ExerciseType exerciseType , OptionType optionType) : 

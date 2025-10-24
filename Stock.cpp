@@ -52,7 +52,7 @@ double MJD::ContinuousDynamics(double Start , double t1, double t2){
     return generate;      
 }
 
-double JumpSize::JumpDynamics(){        //returns the Jump Size using normal distribution
+double JumpSize::JumpDynamics(){      
     std::normal_distribution <> d(JumpMu,JumpSigma);       
      return  d(RandomGenerator::getGenerator());
 }   
