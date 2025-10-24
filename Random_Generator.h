@@ -6,12 +6,12 @@
 #include <functional>
 
 class RandomGenerator{
-    private:
+    private:    //for thread safety
     static unsigned seed(){
         static std::random_device rd;
         return rd()^ static_cast<unsigned>(std::hash<std::thread::id>{}(std::this_thread::get_id()));
     }
-    public:
+    public: 
     static std::mt19937& getGenerator(){
         thread_local static std::mt19937 gen(seed());
         return gen;
