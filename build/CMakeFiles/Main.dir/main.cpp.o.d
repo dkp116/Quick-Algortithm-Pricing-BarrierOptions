@@ -791,10 +791,9 @@ CMakeFiles/Main.dir/main.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk/usr/include/c++/v1/__bsd_locale_defaults.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk/usr/include/c++/v1/cstdarg \
   /Users/dkp116/Desktop/Master\ York/Diss/code/Intergral\ Check/Option.h \
-  /Users/dkp116/Desktop/Master\ York/Diss/code/Intergral\ Check/Stock.h \
-  /Users/dkp116/Desktop/Master\ York/Diss/code/Intergral\ Check/IDynamics.h \
   /Users/dkp116/Desktop/Master\ York/Diss/code/Intergral\ Check/EstimateGI.h \
   /Users/dkp116/Desktop/Master\ York/Diss/code/Intergral\ Check/Stock_new.cpp \
+  /Users/dkp116/Desktop/Master\ York/Diss/code/Intergral\ Check/IDynamics.h \
   /Users/dkp116/Desktop/Master\ York/Diss/code/Intergral\ Check/BlackScholesDynamics.cpp \
   /Users/dkp116/Desktop/Master\ York/Diss/code/Intergral\ Check/Random_Generator.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk/usr/include/c++/v1/random \
