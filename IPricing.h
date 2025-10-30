@@ -7,47 +7,14 @@
 
 class IPricing       
 {    
-private:
-
+    protected:
+    double iterations_;
+    NewStock stock_;
 public:
+    IPricing(double iterations , NewStock stock) : iterations_(iterations) , stock_(stock) {}
+    virtual double  Price() = 0;
 
 };                  
 
-class BrownianBridge : public IPricing{
-    private:
-    double iterations_;
-    NewStock stock_;
-    public:
-    BrownianBridge(double iterations , NewStock stock) : iterations_(iterations) , stock_(stock) {}
-
-};
-
-class StandardMonteCarlo : public IPricing{
-    private:
-    double iterations_;
-    NewStock stock_;
-    public:
-    StandardMonteCarlo(double iterations , NewStock stock) : iterations_(iterations) , stock_(stock){}
-    
-
-};
-
-class TaylorApproximation : public IPricing{
-    private:
-    double iterations_;
-    NewStock stock_;
-    public:
-    TaylorApproximation(double iterations , NewStock stock) : iterations_(iterations) , stock_(stock) {}
-
-};
-
-class VarienceReductionMonteCarlo : public IPricing{
-    private:
-    double iterations_;
-    NewStock stock_;
-    public:
-    VarienceReductionMonteCarlo(double iterations , NewStock stock) : iterations_(iterations) , stock_(stock) {}
-
-};
 
 #endif
