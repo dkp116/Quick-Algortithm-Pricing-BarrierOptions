@@ -1,5 +1,5 @@
-#ifndef OPTIONNEW_H
-#define OPTIONNEW_H
+#ifndef OPTION_H
+#define OPTION_H
 
 enum class ExerciseType {American,European};
 enum class OptionType {Call, Put};
@@ -18,8 +18,6 @@ class Option{
     OptionType optionType_;
 
 };
-
-
 
 
 #endif

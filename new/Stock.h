@@ -1,13 +1,15 @@
+#ifndef STOCK_H
+#define STOCK_H
 #include "IDynamics.h"
 #include <memory>
 
-class NewStock {
+class Stock {
 private:
     double StartPrice;
     std::shared_ptr<IDynamics> dynamics;
 
 public:
-    NewStock(double S0, std::shared_ptr<IDynamics> dyn)
+    Stock(double S0, std::shared_ptr<IDynamics> dyn)
         : StartPrice(S0), dynamics(std::move(dyn))  {};
 
     void setDynamics(std::shared_ptr<IDynamics> dyn){
@@ -15,8 +17,4 @@ public:
     }
 };
 
-/*
-refactoring to do :
-
-3) rewrite option file next!
-*/
+#endif

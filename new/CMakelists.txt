@@ -1,0 +1,15 @@
+cmake_minimum_required(VERSION 3.10)
+project(Refactor_Build_Test)
+
+set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+set(SOURCES
+    main.cpp
+    Barrier.cpp
+    BlackScholesDynamics.cpp
+    MetonJumpDynamics.cpp
+)
+
+add_executable(Main ${SOURCES})
+target_include_directories(Main PRIVATE ${CMAKE_SOURCE_DIR})
