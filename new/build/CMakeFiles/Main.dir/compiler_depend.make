@@ -1526,10 +1526,11 @@ CMakeFiles/Main.dir/BlackScholesDynamics.cpp.o: /Users/dkp116/Desktop/Master\ Yo
   /Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/stdarg.h \
   /Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/stddef.h \
   /Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/stdint.h \
+  /Users/dkp116/Desktop/Master\ York/Diss/code/Intergral\ Check/new/BlackScholesDynamics.h \
   /Users/dkp116/Desktop/Master\ York/Diss/code/Intergral\ Check/new/IDynamics.h \
   /Users/dkp116/Desktop/Master\ York/Diss/code/Intergral\ Check/new/Random_Generator.h
 
-CMakeFiles/Main.dir/MetonJumpDynamics.cpp.o: /Users/dkp116/Desktop/Master\ York/Diss/code/Intergral\ Check/new/MetonJumpDynamics.cpp \
+CMakeFiles/Main.dir/MertonJumpDynamics.cpp.o: /Users/dkp116/Desktop/Master\ York/Diss/code/Intergral\ Check/new/MertonJumpDynamics.cpp \
   /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk/usr/include/Availability.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk/usr/include/AvailabilityInternal.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk/usr/include/AvailabilityInternalLegacy.h \
@@ -2319,6 +2320,7 @@ CMakeFiles/Main.dir/MetonJumpDynamics.cpp.o: /Users/dkp116/Desktop/Master\ York/
   /Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/stddef.h \
   /Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/stdint.h \
   /Users/dkp116/Desktop/Master\ York/Diss/code/Intergral\ Check/new/IDynamics.h \
+  /Users/dkp116/Desktop/Master\ York/Diss/code/Intergral\ Check/new/MertonJumpDynamics.h \
   /Users/dkp116/Desktop/Master\ York/Diss/code/Intergral\ Check/new/Random_Generator.h
 
 CMakeFiles/Main.dir/main.cpp.o: /Users/dkp116/Desktop/Master\ York/Diss/code/Intergral\ Check/new/main.cpp \
@@ -3110,11 +3112,11 @@ CMakeFiles/Main.dir/main.cpp.o: /Users/dkp116/Desktop/Master\ York/Diss/code/Int
   /Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/stdarg.h \
   /Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/stddef.h \
   /Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/stdint.h \
-  /Users/dkp116/Desktop/Master\ York/Diss/code/Intergral\ Check/new/Barrier.cpp \
   /Users/dkp116/Desktop/Master\ York/Diss/code/Intergral\ Check/new/Barrier.h \
-  /Users/dkp116/Desktop/Master\ York/Diss/code/Intergral\ Check/new/BlackScholesDynamics.cpp \
+  /Users/dkp116/Desktop/Master\ York/Diss/code/Intergral\ Check/new/BlackScholesDynamics.h \
   /Users/dkp116/Desktop/Master\ York/Diss/code/Intergral\ Check/new/IDynamics.h \
   /Users/dkp116/Desktop/Master\ York/Diss/code/Intergral\ Check/new/IPricing.h \
+  /Users/dkp116/Desktop/Master\ York/Diss/code/Intergral\ Check/new/MertonJumpDynamics.h \
   /Users/dkp116/Desktop/Master\ York/Diss/code/Intergral\ Check/new/Option.h \
   /Users/dkp116/Desktop/Master\ York/Diss/code/Intergral\ Check/new/Random_Generator.h \
   /Users/dkp116/Desktop/Master\ York/Diss/code/Intergral\ Check/new/StandardMonteCarlo.h \
@@ -3125,9 +3127,15 @@ CMakeFiles/Main.dir/main.cpp.o: /Users/dkp116/Desktop/Master\ York/Diss/code/Int
 
 /Users/dkp116/Desktop/Master\ York/Diss/code/Intergral\ Check/new/StandardMonteCarlo.h:
 
+/Users/dkp116/Desktop/Master\ York/Diss/code/Intergral\ Check/new/IPricing.h:
+
+/Users/dkp116/Desktop/Master\ York/Diss/code/Intergral\ Check/new/MertonJumpDynamics.cpp:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk/usr/include/c++/v1/__memory/addressof.h:
 
 /Users/dkp116/Desktop/Master\ York/Diss/code/Intergral\ Check/new/IDynamics.h:
+
+/Users/dkp116/Desktop/Master\ York/Diss/code/Intergral\ Check/new/BlackScholesDynamics.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk/usr/include/c++/v1/thread:
 
@@ -3391,8 +3399,6 @@ CMakeFiles/Main.dir/main.cpp.o: /Users/dkp116/Desktop/Master\ York/Diss/code/Int
 
 /Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/__stddef_max_align_t.h:
 
-/Users/dkp116/Desktop/Master\ York/Diss/code/Intergral\ Check/new/MetonJumpDynamics.cpp:
-
 /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk/usr/include/c++/v1/ctype.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk/usr/include/c++/v1/__algorithm/copy.h:
@@ -3480,10 +3486,6 @@ CMakeFiles/Main.dir/main.cpp.o: /Users/dkp116/Desktop/Master\ York/Diss/code/Int
 /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk/usr/include/c++/v1/__utility/as_const.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk/usr/include/c++/v1/__undef_macros:
-
-/Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk/usr/include/sys/_types/_intptr_t.h:
-
-/Users/dkp116/Desktop/Master\ York/Diss/code/Intergral\ Check/new/main.cpp:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk/usr/include/c++/v1/__type_traits/void_t.h:
 
@@ -4081,6 +4083,10 @@ CMakeFiles/Main.dir/main.cpp.o: /Users/dkp116/Desktop/Master\ York/Diss/code/Int
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk/usr/include/c++/v1/__chrono/weekday.h:
 
+/Users/dkp116/Desktop/Master\ York/Diss/code/Intergral\ Check/new/main.cpp:
+
+/Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk/usr/include/sys/_types/_intptr_t.h:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk/usr/include/c++/v1/__compare/three_way_comparable.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk/usr/include/c++/v1/__algorithm/ranges_adjacent_find.h:
@@ -4495,6 +4501,8 @@ CMakeFiles/Main.dir/main.cpp.o: /Users/dkp116/Desktop/Master\ York/Diss/code/Int
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk/usr/include/c++/v1/__algorithm/ranges_fill_n.h:
 
+/Users/dkp116/Desktop/Master\ York/Diss/code/Intergral\ Check/new/MertonJumpDynamics.h:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk/usr/include/c++/v1/__algorithm/ranges_fill.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk/usr/include/c++/v1/__bit/has_single_bit.h:
@@ -4624,8 +4632,6 @@ CMakeFiles/Main.dir/main.cpp.o: /Users/dkp116/Desktop/Master\ York/Diss/code/Int
 /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk/usr/include/c++/v1/__algorithm/fill.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk/usr/include/c++/v1/__algorithm/stable_sort.h:
-
-/Users/dkp116/Desktop/Master\ York/Diss/code/Intergral\ Check/new/IPricing.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk/usr/include/c++/v1/__algorithm/equal.h:
 

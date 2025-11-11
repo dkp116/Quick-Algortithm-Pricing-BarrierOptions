@@ -114,26 +114,26 @@ CMakeFiles/Main.dir/BlackScholesDynamics.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Main.dir/BlackScholesDynamics.cpp.s"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/BlackScholesDynamics.cpp" -o CMakeFiles/Main.dir/BlackScholesDynamics.cpp.s
 
-CMakeFiles/Main.dir/MetonJumpDynamics.cpp.o: CMakeFiles/Main.dir/flags.make
-CMakeFiles/Main.dir/MetonJumpDynamics.cpp.o: /Users/dkp116/Desktop/Master\ York/Diss/code/Intergral\ Check/new/MetonJumpDynamics.cpp
-CMakeFiles/Main.dir/MetonJumpDynamics.cpp.o: CMakeFiles/Main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Main.dir/MetonJumpDynamics.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Main.dir/MetonJumpDynamics.cpp.o -MF CMakeFiles/Main.dir/MetonJumpDynamics.cpp.o.d -o CMakeFiles/Main.dir/MetonJumpDynamics.cpp.o -c "/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/MetonJumpDynamics.cpp"
+CMakeFiles/Main.dir/MertonJumpDynamics.cpp.o: CMakeFiles/Main.dir/flags.make
+CMakeFiles/Main.dir/MertonJumpDynamics.cpp.o: /Users/dkp116/Desktop/Master\ York/Diss/code/Intergral\ Check/new/MertonJumpDynamics.cpp
+CMakeFiles/Main.dir/MertonJumpDynamics.cpp.o: CMakeFiles/Main.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Main.dir/MertonJumpDynamics.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Main.dir/MertonJumpDynamics.cpp.o -MF CMakeFiles/Main.dir/MertonJumpDynamics.cpp.o.d -o CMakeFiles/Main.dir/MertonJumpDynamics.cpp.o -c "/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/MertonJumpDynamics.cpp"
 
-CMakeFiles/Main.dir/MetonJumpDynamics.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Main.dir/MetonJumpDynamics.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/MetonJumpDynamics.cpp" > CMakeFiles/Main.dir/MetonJumpDynamics.cpp.i
+CMakeFiles/Main.dir/MertonJumpDynamics.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Main.dir/MertonJumpDynamics.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/MertonJumpDynamics.cpp" > CMakeFiles/Main.dir/MertonJumpDynamics.cpp.i
 
-CMakeFiles/Main.dir/MetonJumpDynamics.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Main.dir/MetonJumpDynamics.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/MetonJumpDynamics.cpp" -o CMakeFiles/Main.dir/MetonJumpDynamics.cpp.s
+CMakeFiles/Main.dir/MertonJumpDynamics.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Main.dir/MertonJumpDynamics.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/MertonJumpDynamics.cpp" -o CMakeFiles/Main.dir/MertonJumpDynamics.cpp.s
 
 # Object files for target Main
 Main_OBJECTS = \
 "CMakeFiles/Main.dir/main.cpp.o" \
 "CMakeFiles/Main.dir/Barrier.cpp.o" \
 "CMakeFiles/Main.dir/BlackScholesDynamics.cpp.o" \
-"CMakeFiles/Main.dir/MetonJumpDynamics.cpp.o"
+"CMakeFiles/Main.dir/MertonJumpDynamics.cpp.o"
 
 # External object files for target Main
 Main_EXTERNAL_OBJECTS =
@@ -141,7 +141,7 @@ Main_EXTERNAL_OBJECTS =
 Main: CMakeFiles/Main.dir/main.cpp.o
 Main: CMakeFiles/Main.dir/Barrier.cpp.o
 Main: CMakeFiles/Main.dir/BlackScholesDynamics.cpp.o
-Main: CMakeFiles/Main.dir/MetonJumpDynamics.cpp.o
+Main: CMakeFiles/Main.dir/MertonJumpDynamics.cpp.o
 Main: CMakeFiles/Main.dir/build.make
 Main: CMakeFiles/Main.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable Main"

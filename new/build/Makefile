@@ -177,29 +177,29 @@ BlackScholesDynamics.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/BlackScholesDynamics.cpp.s
 .PHONY : BlackScholesDynamics.cpp.s
 
-MetonJumpDynamics.o: MetonJumpDynamics.cpp.o
-.PHONY : MetonJumpDynamics.o
+MertonJumpDynamics.o: MertonJumpDynamics.cpp.o
+.PHONY : MertonJumpDynamics.o
 
 # target to build an object file
-MetonJumpDynamics.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/MetonJumpDynamics.cpp.o
-.PHONY : MetonJumpDynamics.cpp.o
+MertonJumpDynamics.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/MertonJumpDynamics.cpp.o
+.PHONY : MertonJumpDynamics.cpp.o
 
-MetonJumpDynamics.i: MetonJumpDynamics.cpp.i
-.PHONY : MetonJumpDynamics.i
+MertonJumpDynamics.i: MertonJumpDynamics.cpp.i
+.PHONY : MertonJumpDynamics.i
 
 # target to preprocess a source file
-MetonJumpDynamics.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/MetonJumpDynamics.cpp.i
-.PHONY : MetonJumpDynamics.cpp.i
+MertonJumpDynamics.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/MertonJumpDynamics.cpp.i
+.PHONY : MertonJumpDynamics.cpp.i
 
-MetonJumpDynamics.s: MetonJumpDynamics.cpp.s
-.PHONY : MetonJumpDynamics.s
+MertonJumpDynamics.s: MertonJumpDynamics.cpp.s
+.PHONY : MertonJumpDynamics.s
 
 # target to generate assembly for a file
-MetonJumpDynamics.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/MetonJumpDynamics.cpp.s
-.PHONY : MetonJumpDynamics.cpp.s
+MertonJumpDynamics.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/MertonJumpDynamics.cpp.s
+.PHONY : MertonJumpDynamics.cpp.s
 
 main.o: main.cpp.o
 .PHONY : main.o
@@ -240,9 +240,9 @@ help:
 	@echo "... BlackScholesDynamics.o"
 	@echo "... BlackScholesDynamics.i"
 	@echo "... BlackScholesDynamics.s"
-	@echo "... MetonJumpDynamics.o"
-	@echo "... MetonJumpDynamics.i"
-	@echo "... MetonJumpDynamics.s"
+	@echo "... MertonJumpDynamics.o"
+	@echo "... MertonJumpDynamics.i"
+	@echo "... MertonJumpDynamics.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

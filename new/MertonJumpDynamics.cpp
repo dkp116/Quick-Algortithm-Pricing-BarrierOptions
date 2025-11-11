@@ -1,24 +1,6 @@
-#include "IDynamics.h"
-#include "Random_Generator.h"
 
-
-class MertonJumpDynamics : public IDynamics{
-    private:
-    double lambda_;  //Frequency of jump 
-    double c;
-    double expectedValueJump; // Jump size constant
-    double sigma_;
-    double riskfree_;
-    double drift;
-    public:
-    void SetDrift(){
-    c = riskfree_ - (sigma_ * sigma_ * 0.5) - (lambda_ * expectedValueJump);    
-    }
-    MertonJumpDynamics(double riskfree, double sigma,
-        double lambda, double Jumpmu, double JumpSig) :  
-        riskfree_(riskfree), lambda_(lambda), sigma_(sigma) {};
-    
-    double evolve(double TimeIncrement) override{
+#include "MertonJumpDynamics.h"
+double MertonJumpDynamics::evolve(double TimeIncrement){
     std::normal_distribution<> d{0.0, 1.0};
     double generate = d(RandomGenerator::getGenerator());
 
@@ -26,12 +8,13 @@ class MertonJumpDynamics : public IDynamics{
                             sigma_ * std::sqrt(TimeIncrement) * generate);   
     }
 
-    double Jumpsize(double JumpMu , double JumpSigma){      
+
+ double MertonJumpDynamics::Jumpsize(double JumpMu , double JumpSigma){      
     std::normal_distribution <> d(JumpMu,JumpSigma);       
      return  d(RandomGenerator::getGenerator());
     }  
 
-    std::vector<double> createJumpTimes() {      
+std::vector<double> MertonJumpDynamics::createJumpTimes() {      
     std::vector<double> Times;
     std::exponential_distribution<> exp_dis(lambda_);
     double count = 0.0;
@@ -45,7 +28,3 @@ class MertonJumpDynamics : public IDynamics{
     Times.push_back(1.0);
     return Times;
 }
-
-
-    
-};

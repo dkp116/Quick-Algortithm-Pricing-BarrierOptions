@@ -1,5 +1,6 @@
-CMakeFiles/Main.dir/MetonJumpDynamics.cpp.o: \
-  /Users/dkp116/Desktop/Master\ York/Diss/code/Intergral\ Check/new/MetonJumpDynamics.cpp \
+CMakeFiles/Main.dir/MertonJumpDynamics.cpp.o: \
+  /Users/dkp116/Desktop/Master\ York/Diss/code/Intergral\ Check/new/MertonJumpDynamics.cpp \
+  /Users/dkp116/Desktop/Master\ York/Diss/code/Intergral\ Check/new/MertonJumpDynamics.h \
   /Users/dkp116/Desktop/Master\ York/Diss/code/Intergral\ Check/new/IDynamics.h \
   /Users/dkp116/Desktop/Master\ York/Diss/code/Intergral\ Check/new/Random_Generator.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk/usr/include/c++/v1/random \

@@ -1528,11 +1528,12 @@ CMakeFiles/Main.dir/BlackScholesDynamics.cpp.o
  /Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/stdarg.h
  /Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/stddef.h
  /Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/stdint.h
+ /Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/BlackScholesDynamics.h
  /Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/IDynamics.h
  /Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/Random_Generator.h
 
-CMakeFiles/Main.dir/MetonJumpDynamics.cpp.o
- /Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/MetonJumpDynamics.cpp
+CMakeFiles/Main.dir/MertonJumpDynamics.cpp.o
+ /Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/MertonJumpDynamics.cpp
  /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk/usr/include/Availability.h
  /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk/usr/include/AvailabilityInternal.h
  /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk/usr/include/AvailabilityInternalLegacy.h
@@ -2322,6 +2323,7 @@ CMakeFiles/Main.dir/MetonJumpDynamics.cpp.o
  /Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/stddef.h
  /Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/stdint.h
  /Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/IDynamics.h
+ /Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/MertonJumpDynamics.h
  /Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/Random_Generator.h
 
 CMakeFiles/Main.dir/main.cpp.o
@@ -3114,11 +3116,11 @@ CMakeFiles/Main.dir/main.cpp.o
  /Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/stdarg.h
  /Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/stddef.h
  /Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/stdint.h
- /Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/Barrier.cpp
  /Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/Barrier.h
- /Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/BlackScholesDynamics.cpp
+ /Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/BlackScholesDynamics.h
  /Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/IDynamics.h
  /Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/IPricing.h
+ /Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/MertonJumpDynamics.h
  /Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/Option.h
  /Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/Random_Generator.h
  /Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/StandardMonteCarlo.h
