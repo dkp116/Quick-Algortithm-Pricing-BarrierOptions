@@ -3,7 +3,7 @@
 #include <random>
 #include <iostream>
 
-double BrownianBridge::NoCrossingDensity(std::shared_ptr<MertonJumpDynamics> mertonDynamics , std::shared_ptr<Option> option, double A,double B, double t1, double t2)
+double UniformSample::NoCrossingDensity(std::shared_ptr<MertonJumpDynamics> mertonDynamics , std::shared_ptr<Option> option, double A,double B, double t1, double t2)
 {  //Probability of stock not crossing in the brownian bridge
   
     double sigma = mertonDynamics->GetSigma();
@@ -19,7 +19,7 @@ double BrownianBridge::NoCrossingDensity(std::shared_ptr<MertonJumpDynamics> mer
     }
 }
 
-double BrownianBridge::gamma(std::shared_ptr<MertonJumpDynamics> mertonDynamics, double a, double b, double T1, double T2) {
+double UniformSample::gamma(std::shared_ptr<MertonJumpDynamics> mertonDynamics, double a, double b, double T1, double T2) {
     double c = mertonDynamics->GetC();
     double sigma = mertonDynamics->GetSigma();
     return (1.0 / (std::sqrt(2 * M_PI * (T2 - T1))* sigma)) 
@@ -27,7 +27,7 @@ double BrownianBridge::gamma(std::shared_ptr<MertonJumpDynamics> mertonDynamics,
                      / (2 * sigma * sigma * (T2 - T1)));
 }
 
-double BrownianBridge::evaluate_gi(  std::shared_ptr<MertonJumpDynamics> mertonDynamics , std::shared_ptr<Option> option,  double a, double b, double t, double T1, double T2) {     //Density of Crossing for the first time during the Brownian Bridge
+double UniformSample::evaluate_gi(  std::shared_ptr<MertonJumpDynamics> mertonDynamics , std::shared_ptr<Option> option,  double a, double b, double t, double T1, double T2) {     //Density of Crossing for the first time during the Brownian Bridge
     double c = mertonDynamics->GetC();    
     double sigma = mertonDynamics->GetSigma();
     double gamma_val = gamma(mertonDynamics,a,b,T1, T2);
@@ -46,7 +46,7 @@ double BrownianBridge::evaluate_gi(  std::shared_ptr<MertonJumpDynamics> mertonD
 
 
 
-double BrownianBridge::OneCycle() {
+double UniformSample::OneCycle() {
     std::vector<double> Times;
     Times = mertonDynamics_->createJumpTimes();      //generates exponenially distributed jump times
     double StockPriceAfterJump = stock_->GetLogStartPrice();
@@ -96,7 +96,7 @@ double BrownianBridge::OneCycle() {
 
 }
 
-double BrownianBridge::Price() {
+double UniformSample::Price() {
     double price = 0;
 
     for( int i = 0 ; i < iteration_ ; i++){

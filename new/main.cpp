@@ -25,7 +25,7 @@ int main() {
         
 
     // Create Brownian Bridge pricing engine
-    BrownianBridge pricing(s, b, 10000);
+    UniformSample pricing(s, b, 10000);
 
     // Compute the price
     double price = pricing.Price();

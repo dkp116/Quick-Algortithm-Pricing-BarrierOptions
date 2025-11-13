@@ -7,7 +7,7 @@
 #include "MertonJumpDynamics.h"
 #include "Barrier.h"
 
-class BrownianBridge : public IPricing {
+class UniformSample : public IPricing {
 private:
     double iteration_;
     std::shared_ptr<IDynamics> stockDynamics_;
@@ -15,7 +15,7 @@ private:
     std::shared_ptr<DownAndOut> downAndOut_;
 
 public:
-    BrownianBridge(std::shared_ptr<Stock> stock,
+    UniformSample(std::shared_ptr<Stock> stock,
                    std::shared_ptr<Option> option,
                    double iteration)
         : IPricing(stock, option),
