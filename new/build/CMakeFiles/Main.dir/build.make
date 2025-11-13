@@ -76,64 +76,79 @@ CMakeFiles/Main.dir/main.cpp.o: CMakeFiles/Main.dir/flags.make
 CMakeFiles/Main.dir/main.cpp.o: /Users/dkp116/Desktop/Master\ York/Diss/code/Intergral\ Check/new/main.cpp
 CMakeFiles/Main.dir/main.cpp.o: CMakeFiles/Main.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Main.dir/main.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Main.dir/main.cpp.o -MF CMakeFiles/Main.dir/main.cpp.o.d -o CMakeFiles/Main.dir/main.cpp.o -c "/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/main.cpp"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Main.dir/main.cpp.o -MF CMakeFiles/Main.dir/main.cpp.o.d -o CMakeFiles/Main.dir/main.cpp.o -c "/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/main.cpp"
 
 CMakeFiles/Main.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Main.dir/main.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/main.cpp" > CMakeFiles/Main.dir/main.cpp.i
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/main.cpp" > CMakeFiles/Main.dir/main.cpp.i
 
 CMakeFiles/Main.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Main.dir/main.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/main.cpp" -o CMakeFiles/Main.dir/main.cpp.s
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/main.cpp" -o CMakeFiles/Main.dir/main.cpp.s
 
 CMakeFiles/Main.dir/Barrier.cpp.o: CMakeFiles/Main.dir/flags.make
 CMakeFiles/Main.dir/Barrier.cpp.o: /Users/dkp116/Desktop/Master\ York/Diss/code/Intergral\ Check/new/Barrier.cpp
 CMakeFiles/Main.dir/Barrier.cpp.o: CMakeFiles/Main.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Main.dir/Barrier.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Main.dir/Barrier.cpp.o -MF CMakeFiles/Main.dir/Barrier.cpp.o.d -o CMakeFiles/Main.dir/Barrier.cpp.o -c "/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/Barrier.cpp"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Main.dir/Barrier.cpp.o -MF CMakeFiles/Main.dir/Barrier.cpp.o.d -o CMakeFiles/Main.dir/Barrier.cpp.o -c "/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/Barrier.cpp"
 
 CMakeFiles/Main.dir/Barrier.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Main.dir/Barrier.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/Barrier.cpp" > CMakeFiles/Main.dir/Barrier.cpp.i
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/Barrier.cpp" > CMakeFiles/Main.dir/Barrier.cpp.i
 
 CMakeFiles/Main.dir/Barrier.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Main.dir/Barrier.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/Barrier.cpp" -o CMakeFiles/Main.dir/Barrier.cpp.s
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/Barrier.cpp" -o CMakeFiles/Main.dir/Barrier.cpp.s
 
 CMakeFiles/Main.dir/BlackScholesDynamics.cpp.o: CMakeFiles/Main.dir/flags.make
 CMakeFiles/Main.dir/BlackScholesDynamics.cpp.o: /Users/dkp116/Desktop/Master\ York/Diss/code/Intergral\ Check/new/BlackScholesDynamics.cpp
 CMakeFiles/Main.dir/BlackScholesDynamics.cpp.o: CMakeFiles/Main.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Main.dir/BlackScholesDynamics.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Main.dir/BlackScholesDynamics.cpp.o -MF CMakeFiles/Main.dir/BlackScholesDynamics.cpp.o.d -o CMakeFiles/Main.dir/BlackScholesDynamics.cpp.o -c "/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/BlackScholesDynamics.cpp"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Main.dir/BlackScholesDynamics.cpp.o -MF CMakeFiles/Main.dir/BlackScholesDynamics.cpp.o.d -o CMakeFiles/Main.dir/BlackScholesDynamics.cpp.o -c "/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/BlackScholesDynamics.cpp"
 
 CMakeFiles/Main.dir/BlackScholesDynamics.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Main.dir/BlackScholesDynamics.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/BlackScholesDynamics.cpp" > CMakeFiles/Main.dir/BlackScholesDynamics.cpp.i
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/BlackScholesDynamics.cpp" > CMakeFiles/Main.dir/BlackScholesDynamics.cpp.i
 
 CMakeFiles/Main.dir/BlackScholesDynamics.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Main.dir/BlackScholesDynamics.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/BlackScholesDynamics.cpp" -o CMakeFiles/Main.dir/BlackScholesDynamics.cpp.s
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/BlackScholesDynamics.cpp" -o CMakeFiles/Main.dir/BlackScholesDynamics.cpp.s
 
 CMakeFiles/Main.dir/MertonJumpDynamics.cpp.o: CMakeFiles/Main.dir/flags.make
 CMakeFiles/Main.dir/MertonJumpDynamics.cpp.o: /Users/dkp116/Desktop/Master\ York/Diss/code/Intergral\ Check/new/MertonJumpDynamics.cpp
 CMakeFiles/Main.dir/MertonJumpDynamics.cpp.o: CMakeFiles/Main.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Main.dir/MertonJumpDynamics.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Main.dir/MertonJumpDynamics.cpp.o -MF CMakeFiles/Main.dir/MertonJumpDynamics.cpp.o.d -o CMakeFiles/Main.dir/MertonJumpDynamics.cpp.o -c "/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/MertonJumpDynamics.cpp"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Main.dir/MertonJumpDynamics.cpp.o -MF CMakeFiles/Main.dir/MertonJumpDynamics.cpp.o.d -o CMakeFiles/Main.dir/MertonJumpDynamics.cpp.o -c "/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/MertonJumpDynamics.cpp"
 
 CMakeFiles/Main.dir/MertonJumpDynamics.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Main.dir/MertonJumpDynamics.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/MertonJumpDynamics.cpp" > CMakeFiles/Main.dir/MertonJumpDynamics.cpp.i
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/MertonJumpDynamics.cpp" > CMakeFiles/Main.dir/MertonJumpDynamics.cpp.i
 
 CMakeFiles/Main.dir/MertonJumpDynamics.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Main.dir/MertonJumpDynamics.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/MertonJumpDynamics.cpp" -o CMakeFiles/Main.dir/MertonJumpDynamics.cpp.s
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/MertonJumpDynamics.cpp" -o CMakeFiles/Main.dir/MertonJumpDynamics.cpp.s
+
+CMakeFiles/Main.dir/UniformSampleEstimate.cpp.o: CMakeFiles/Main.dir/flags.make
+CMakeFiles/Main.dir/UniformSampleEstimate.cpp.o: /Users/dkp116/Desktop/Master\ York/Diss/code/Intergral\ Check/new/UniformSampleEstimate.cpp
+CMakeFiles/Main.dir/UniformSampleEstimate.cpp.o: CMakeFiles/Main.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/Main.dir/UniformSampleEstimate.cpp.o"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Main.dir/UniformSampleEstimate.cpp.o -MF CMakeFiles/Main.dir/UniformSampleEstimate.cpp.o.d -o CMakeFiles/Main.dir/UniformSampleEstimate.cpp.o -c "/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/UniformSampleEstimate.cpp"
+
+CMakeFiles/Main.dir/UniformSampleEstimate.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Main.dir/UniformSampleEstimate.cpp.i"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/UniformSampleEstimate.cpp" > CMakeFiles/Main.dir/UniformSampleEstimate.cpp.i
+
+CMakeFiles/Main.dir/UniformSampleEstimate.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Main.dir/UniformSampleEstimate.cpp.s"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/UniformSampleEstimate.cpp" -o CMakeFiles/Main.dir/UniformSampleEstimate.cpp.s
 
 # Object files for target Main
 Main_OBJECTS = \
 "CMakeFiles/Main.dir/main.cpp.o" \
 "CMakeFiles/Main.dir/Barrier.cpp.o" \
 "CMakeFiles/Main.dir/BlackScholesDynamics.cpp.o" \
-"CMakeFiles/Main.dir/MertonJumpDynamics.cpp.o"
+"CMakeFiles/Main.dir/MertonJumpDynamics.cpp.o" \
+"CMakeFiles/Main.dir/UniformSampleEstimate.cpp.o"
 
 # External object files for target Main
 Main_EXTERNAL_OBJECTS =
@@ -142,9 +157,10 @@ Main: CMakeFiles/Main.dir/main.cpp.o
 Main: CMakeFiles/Main.dir/Barrier.cpp.o
 Main: CMakeFiles/Main.dir/BlackScholesDynamics.cpp.o
 Main: CMakeFiles/Main.dir/MertonJumpDynamics.cpp.o
+Main: CMakeFiles/Main.dir/UniformSampleEstimate.cpp.o
 Main: CMakeFiles/Main.dir/build.make
 Main: CMakeFiles/Main.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable Main"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable Main"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Main.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

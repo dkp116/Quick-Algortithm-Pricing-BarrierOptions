@@ -1,5 +1,6 @@
 
 #include "MertonJumpDynamics.h"
+
 double MertonJumpDynamics::evolve(double TimeIncrement){
     std::normal_distribution<> d{0.0, 1.0};
     double generate = d(RandomGenerator::getGenerator());
@@ -9,8 +10,8 @@ double MertonJumpDynamics::evolve(double TimeIncrement){
     }
 
 
- double MertonJumpDynamics::Jumpsize(double JumpMu , double JumpSigma){      
-    std::normal_distribution <> d(JumpMu,JumpSigma);       
+ double MertonJumpDynamics::Jumpsize(){      
+    std::normal_distribution <> d(jumpMu_, jumpSigma_);       
      return  d(RandomGenerator::getGenerator());
     }  
 
@@ -27,4 +28,15 @@ std::vector<double> MertonJumpDynamics::createJumpTimes() {
     }
     Times.push_back(1.0);
     return Times;
+}
+
+
+double MertonJumpDynamics::ContinuousDynamics(double Start , double t1, double t2){            
+    
+    double time = t2 - t1;
+    double mean = Start + c_ * time;
+    double stddev = sigma_ * std::sqrt(time);
+    std::normal_distribution<> d{mean, stddev};
+    double generate = d(RandomGenerator::getGenerator());
+    return generate;      
 }

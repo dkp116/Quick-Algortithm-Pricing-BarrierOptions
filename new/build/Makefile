@@ -201,6 +201,30 @@ MertonJumpDynamics.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/MertonJumpDynamics.cpp.s
 .PHONY : MertonJumpDynamics.cpp.s
 
+UniformSampleEstimate.o: UniformSampleEstimate.cpp.o
+.PHONY : UniformSampleEstimate.o
+
+# target to build an object file
+UniformSampleEstimate.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/UniformSampleEstimate.cpp.o
+.PHONY : UniformSampleEstimate.cpp.o
+
+UniformSampleEstimate.i: UniformSampleEstimate.cpp.i
+.PHONY : UniformSampleEstimate.i
+
+# target to preprocess a source file
+UniformSampleEstimate.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/UniformSampleEstimate.cpp.i
+.PHONY : UniformSampleEstimate.cpp.i
+
+UniformSampleEstimate.s: UniformSampleEstimate.cpp.s
+.PHONY : UniformSampleEstimate.s
+
+# target to generate assembly for a file
+UniformSampleEstimate.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/UniformSampleEstimate.cpp.s
+.PHONY : UniformSampleEstimate.cpp.s
+
 main.o: main.cpp.o
 .PHONY : main.o
 
@@ -243,6 +267,9 @@ help:
 	@echo "... MertonJumpDynamics.o"
 	@echo "... MertonJumpDynamics.i"
 	@echo "... MertonJumpDynamics.s"
+	@echo "... UniformSampleEstimate.o"
+	@echo "... UniformSampleEstimate.i"
+	@echo "... UniformSampleEstimate.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

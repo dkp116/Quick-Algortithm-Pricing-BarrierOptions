@@ -5,6 +5,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/Main.dir/BlackScholesDynamics.cpp.o.d"
   "CMakeFiles/Main.dir/MertonJumpDynamics.cpp.o"
   "CMakeFiles/Main.dir/MertonJumpDynamics.cpp.o.d"
+  "CMakeFiles/Main.dir/UniformSampleEstimate.cpp.o"
+  "CMakeFiles/Main.dir/UniformSampleEstimate.cpp.o.d"
   "CMakeFiles/Main.dir/main.cpp.o"
   "CMakeFiles/Main.dir/main.cpp.o.d"
   "Main"

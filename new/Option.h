@@ -7,16 +7,18 @@ class Option{
 
     public:
     virtual ~Option() = default;
-    virtual double payoff(double currentValue) const = 0;
+    virtual double Payoff(double currentValue) const = 0;
+    double GetRebate(){return rebate_;}
+    double GetStrike(){return strike_;}
 
     protected:
-    Option(double strike , ExerciseType exerciseType , OptionType optionType) : 
-        strike_(strike) , exerciseType_(exerciseType) , optionType_(optionType) {}
+    Option(ExerciseType exerciseType , OptionType optionType, double strike , double rebate) : 
+        strike_(strike) , exerciseType_(exerciseType) , optionType_(optionType), rebate_(rebate) {}
         
     double strike_;
     ExerciseType exerciseType_;
     OptionType optionType_;
-
+    double rebate_;
 };
 
 

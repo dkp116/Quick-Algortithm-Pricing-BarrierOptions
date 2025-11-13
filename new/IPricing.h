@@ -13,6 +13,7 @@ class IPricing
     std::shared_ptr<Option> option_;
     public:
     IPricing(std::shared_ptr<Stock> stock , std::shared_ptr<Option> option ) : stock_(stock), option_(option) {}
+    virtual double  OneCycle() = 0;
     virtual double  Price() = 0;
 
 };                  
