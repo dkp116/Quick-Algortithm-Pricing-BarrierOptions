@@ -142,13 +142,43 @@ CMakeFiles/Main.dir/UniformSampleEstimate.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Main.dir/UniformSampleEstimate.cpp.s"
 	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/UniformSampleEstimate.cpp" -o CMakeFiles/Main.dir/UniformSampleEstimate.cpp.s
 
+CMakeFiles/Main.dir/TaylorApproximation.cpp.o: CMakeFiles/Main.dir/flags.make
+CMakeFiles/Main.dir/TaylorApproximation.cpp.o: /Users/dkp116/Desktop/Master\ York/Diss/code/Intergral\ Check/new/TaylorApproximation.cpp
+CMakeFiles/Main.dir/TaylorApproximation.cpp.o: CMakeFiles/Main.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/Main.dir/TaylorApproximation.cpp.o"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Main.dir/TaylorApproximation.cpp.o -MF CMakeFiles/Main.dir/TaylorApproximation.cpp.o.d -o CMakeFiles/Main.dir/TaylorApproximation.cpp.o -c "/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/TaylorApproximation.cpp"
+
+CMakeFiles/Main.dir/TaylorApproximation.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Main.dir/TaylorApproximation.cpp.i"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/TaylorApproximation.cpp" > CMakeFiles/Main.dir/TaylorApproximation.cpp.i
+
+CMakeFiles/Main.dir/TaylorApproximation.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Main.dir/TaylorApproximation.cpp.s"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/TaylorApproximation.cpp" -o CMakeFiles/Main.dir/TaylorApproximation.cpp.s
+
+CMakeFiles/Main.dir/EstimateGI.cpp.o: CMakeFiles/Main.dir/flags.make
+CMakeFiles/Main.dir/EstimateGI.cpp.o: /Users/dkp116/Desktop/Master\ York/Diss/code/Intergral\ Check/new/EstimateGI.cpp
+CMakeFiles/Main.dir/EstimateGI.cpp.o: CMakeFiles/Main.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/Main.dir/EstimateGI.cpp.o"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Main.dir/EstimateGI.cpp.o -MF CMakeFiles/Main.dir/EstimateGI.cpp.o.d -o CMakeFiles/Main.dir/EstimateGI.cpp.o -c "/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/EstimateGI.cpp"
+
+CMakeFiles/Main.dir/EstimateGI.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Main.dir/EstimateGI.cpp.i"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/EstimateGI.cpp" > CMakeFiles/Main.dir/EstimateGI.cpp.i
+
+CMakeFiles/Main.dir/EstimateGI.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Main.dir/EstimateGI.cpp.s"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/EstimateGI.cpp" -o CMakeFiles/Main.dir/EstimateGI.cpp.s
+
 # Object files for target Main
 Main_OBJECTS = \
 "CMakeFiles/Main.dir/main.cpp.o" \
 "CMakeFiles/Main.dir/Barrier.cpp.o" \
 "CMakeFiles/Main.dir/BlackScholesDynamics.cpp.o" \
 "CMakeFiles/Main.dir/MertonJumpDynamics.cpp.o" \
-"CMakeFiles/Main.dir/UniformSampleEstimate.cpp.o"
+"CMakeFiles/Main.dir/UniformSampleEstimate.cpp.o" \
+"CMakeFiles/Main.dir/TaylorApproximation.cpp.o" \
+"CMakeFiles/Main.dir/EstimateGI.cpp.o"
 
 # External object files for target Main
 Main_EXTERNAL_OBJECTS =
@@ -158,9 +188,11 @@ Main: CMakeFiles/Main.dir/Barrier.cpp.o
 Main: CMakeFiles/Main.dir/BlackScholesDynamics.cpp.o
 Main: CMakeFiles/Main.dir/MertonJumpDynamics.cpp.o
 Main: CMakeFiles/Main.dir/UniformSampleEstimate.cpp.o
+Main: CMakeFiles/Main.dir/TaylorApproximation.cpp.o
+Main: CMakeFiles/Main.dir/EstimateGI.cpp.o
 Main: CMakeFiles/Main.dir/build.make
 Main: CMakeFiles/Main.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable Main"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable Main"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Main.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

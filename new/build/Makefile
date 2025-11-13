@@ -177,6 +177,30 @@ BlackScholesDynamics.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/BlackScholesDynamics.cpp.s
 .PHONY : BlackScholesDynamics.cpp.s
 
+EstimateGI.o: EstimateGI.cpp.o
+.PHONY : EstimateGI.o
+
+# target to build an object file
+EstimateGI.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/EstimateGI.cpp.o
+.PHONY : EstimateGI.cpp.o
+
+EstimateGI.i: EstimateGI.cpp.i
+.PHONY : EstimateGI.i
+
+# target to preprocess a source file
+EstimateGI.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/EstimateGI.cpp.i
+.PHONY : EstimateGI.cpp.i
+
+EstimateGI.s: EstimateGI.cpp.s
+.PHONY : EstimateGI.s
+
+# target to generate assembly for a file
+EstimateGI.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/EstimateGI.cpp.s
+.PHONY : EstimateGI.cpp.s
+
 MertonJumpDynamics.o: MertonJumpDynamics.cpp.o
 .PHONY : MertonJumpDynamics.o
 
@@ -200,6 +224,30 @@ MertonJumpDynamics.s: MertonJumpDynamics.cpp.s
 MertonJumpDynamics.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/MertonJumpDynamics.cpp.s
 .PHONY : MertonJumpDynamics.cpp.s
+
+TaylorApproximation.o: TaylorApproximation.cpp.o
+.PHONY : TaylorApproximation.o
+
+# target to build an object file
+TaylorApproximation.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/TaylorApproximation.cpp.o
+.PHONY : TaylorApproximation.cpp.o
+
+TaylorApproximation.i: TaylorApproximation.cpp.i
+.PHONY : TaylorApproximation.i
+
+# target to preprocess a source file
+TaylorApproximation.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/TaylorApproximation.cpp.i
+.PHONY : TaylorApproximation.cpp.i
+
+TaylorApproximation.s: TaylorApproximation.cpp.s
+.PHONY : TaylorApproximation.s
+
+# target to generate assembly for a file
+TaylorApproximation.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/TaylorApproximation.cpp.s
+.PHONY : TaylorApproximation.cpp.s
 
 UniformSampleEstimate.o: UniformSampleEstimate.cpp.o
 .PHONY : UniformSampleEstimate.o
@@ -264,9 +312,15 @@ help:
 	@echo "... BlackScholesDynamics.o"
 	@echo "... BlackScholesDynamics.i"
 	@echo "... BlackScholesDynamics.s"
+	@echo "... EstimateGI.o"
+	@echo "... EstimateGI.i"
+	@echo "... EstimateGI.s"
 	@echo "... MertonJumpDynamics.o"
 	@echo "... MertonJumpDynamics.i"
 	@echo "... MertonJumpDynamics.s"
+	@echo "... TaylorApproximation.o"
+	@echo "... TaylorApproximation.i"
+	@echo "... TaylorApproximation.s"
 	@echo "... UniformSampleEstimate.o"
 	@echo "... UniformSampleEstimate.i"
 	@echo "... UniformSampleEstimate.s"

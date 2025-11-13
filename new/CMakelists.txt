@@ -24,7 +24,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # --- Enable debug symbols ---
 if(NOT CMAKE_BUILD_TYPE)
-    set(CMAKE_BUILD_TYPE Debug)  # default to Debug
+    set(CMAKE_BUILD_TYPE Debug)  
 endif()
 
 # --- Use clang++ explicitly ---
@@ -38,6 +38,9 @@ set(SOURCES
     BlackScholesDynamics.cpp
     MertonJumpDynamics.cpp
     UniformSampleEstimate.cpp
+    TaylorApproximation.cpp
+    EstimateGI.cpp
+
 )
 
 # --- Executable ---

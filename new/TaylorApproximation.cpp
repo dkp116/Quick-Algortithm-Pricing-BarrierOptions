@@ -68,13 +68,13 @@ double TaylorApproximation::NoCrossingDensity(std::shared_ptr<MertonJumpDynamics
     if( Checker){       //if there is no crossing for the entire lifespan of the option
          double TerminalValue = std::exp(StockPriceBeforeJump);
     
-        return  Pay + multiplyPi * option_->Payoff(TerminalValue) * std::exp(-mertonDynamics_->GetRiskFree());
+        return  Pay + multiplyPi * downAndOut_->Payoff(TerminalValue) * std::exp(-mertonDynamics_->GetRiskFree());
     }
 
  }
 
   double TaylorApproximation::Price() {
-    
+
     double price = 0;
     for( int i = 0 ; i < iteration_ ; i++){
         price += OneCycle();

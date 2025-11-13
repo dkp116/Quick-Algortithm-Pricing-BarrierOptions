@@ -1,0 +1,44 @@
+[
+{
+  "directory": "/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/build",
+  "command": "/usr/bin/clang++  -I\"/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new\" -g -std=gnu++14 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk -mmacosx-version-min=13.5 -o CMakeFiles/Main.dir/main.cpp.o -c \"/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/main.cpp\"",
+  "file": "/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/main.cpp",
+  "output": "CMakeFiles/Main.dir/main.cpp.o"
+},
+{
+  "directory": "/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/build",
+  "command": "/usr/bin/clang++  -I\"/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new\" -g -std=gnu++14 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk -mmacosx-version-min=13.5 -o CMakeFiles/Main.dir/Barrier.cpp.o -c \"/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/Barrier.cpp\"",
+  "file": "/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/Barrier.cpp",
+  "output": "CMakeFiles/Main.dir/Barrier.cpp.o"
+},
+{
+  "directory": "/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/build",
+  "command": "/usr/bin/clang++  -I\"/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new\" -g -std=gnu++14 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk -mmacosx-version-min=13.5 -o CMakeFiles/Main.dir/BlackScholesDynamics.cpp.o -c \"/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/BlackScholesDynamics.cpp\"",
+  "file": "/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/BlackScholesDynamics.cpp",
+  "output": "CMakeFiles/Main.dir/BlackScholesDynamics.cpp.o"
+},
+{
+  "directory": "/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/build",
+  "command": "/usr/bin/clang++  -I\"/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new\" -g -std=gnu++14 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk -mmacosx-version-min=13.5 -o CMakeFiles/Main.dir/MertonJumpDynamics.cpp.o -c \"/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/MertonJumpDynamics.cpp\"",
+  "file": "/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/MertonJumpDynamics.cpp",
+  "output": "CMakeFiles/Main.dir/MertonJumpDynamics.cpp.o"
+},
+{
+  "directory": "/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/build",
+  "command": "/usr/bin/clang++  -I\"/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new\" -g -std=gnu++14 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk -mmacosx-version-min=13.5 -o CMakeFiles/Main.dir/UniformSampleEstimate.cpp.o -c \"/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/UniformSampleEstimate.cpp\"",
+  "file": "/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/UniformSampleEstimate.cpp",
+  "output": "CMakeFiles/Main.dir/UniformSampleEstimate.cpp.o"
+},
+{
+  "directory": "/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/build",
+  "command": "/usr/bin/clang++  -I\"/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new\" -g -std=gnu++14 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk -mmacosx-version-min=13.5 -o CMakeFiles/Main.dir/TaylorApproximation.cpp.o -c \"/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/TaylorApproximation.cpp\"",
+  "file": "/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/TaylorApproximation.cpp",
+  "output": "CMakeFiles/Main.dir/TaylorApproximation.cpp.o"
+},
+{
+  "directory": "/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/build",
+  "command": "/usr/bin/clang++  -I\"/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new\" -g -std=gnu++14 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk -mmacosx-version-min=13.5 -o CMakeFiles/Main.dir/EstimateGI.cpp.o -c \"/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/EstimateGI.cpp\"",
+  "file": "/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/EstimateGI.cpp",
+  "output": "CMakeFiles/Main.dir/EstimateGI.cpp.o"
+}
+]
