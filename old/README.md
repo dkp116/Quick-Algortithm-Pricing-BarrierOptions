@@ -74,10 +74,7 @@ A baseline Euler-discretised Monte Carlo simulation.
 The program computes:
 - Covariance between the uniform-sampling estimator and control variate
 - Optimal β coefficient  
-- Final variance-reduced estimator:  
-  \[
-  \hat{X}_{CV} = \hat{X} - \beta \left( \hat{Y} - E[Y] \right)
-  \]
+- Final variance-reduced estimator
 
 Where `E[Y]` is the analytic MJD call price from `PriceMJD()`.
 
