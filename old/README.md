@@ -1,4 +1,4 @@
-# Old Build — Main Program Documentation (`main.cpp`)
+# Old Build —  Documentation 
 
 This directory contains the original C++ implementation from my MSc dissertation.  
 The `main.cpp` file acts as the driver for running and comparing multiple Monte Carlo–based pricing algorithms for **down-and-out barrier options** under the **Merton Jump Diffusion (MJD)** model.
@@ -14,7 +14,7 @@ It outputs the estimated option price and standard errors for each method across
 
 ---
 
-## What `main.cpp` Does
+## What `main.cpp` contains
 
 ### 1. **Implements Helper Analytics**
 The file includes:
