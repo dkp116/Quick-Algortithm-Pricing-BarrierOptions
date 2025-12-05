@@ -8,13 +8,13 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/Barrier.cpp" "CMakeFiles/Main.dir/Barrier.cpp.o" "gcc" "CMakeFiles/Main.dir/Barrier.cpp.o.d"
-  "/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/BlackScholesDynamics.cpp" "CMakeFiles/Main.dir/BlackScholesDynamics.cpp.o" "gcc" "CMakeFiles/Main.dir/BlackScholesDynamics.cpp.o.d"
-  "/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/EstimateGI.cpp" "CMakeFiles/Main.dir/EstimateGI.cpp.o" "gcc" "CMakeFiles/Main.dir/EstimateGI.cpp.o.d"
-  "/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/MertonJumpDynamics.cpp" "CMakeFiles/Main.dir/MertonJumpDynamics.cpp.o" "gcc" "CMakeFiles/Main.dir/MertonJumpDynamics.cpp.o.d"
-  "/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/TaylorApproximation.cpp" "CMakeFiles/Main.dir/TaylorApproximation.cpp.o" "gcc" "CMakeFiles/Main.dir/TaylorApproximation.cpp.o.d"
-  "/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/UniformSampleEstimate.cpp" "CMakeFiles/Main.dir/UniformSampleEstimate.cpp.o" "gcc" "CMakeFiles/Main.dir/UniformSampleEstimate.cpp.o.d"
-  "/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/new/main.cpp" "CMakeFiles/Main.dir/main.cpp.o" "gcc" "CMakeFiles/Main.dir/main.cpp.o.d"
+  "/home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/new/Barrier.cpp" "CMakeFiles/Main.dir/Barrier.cpp.o" "gcc" "CMakeFiles/Main.dir/Barrier.cpp.o.d"
+  "/home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/new/BlackScholesDynamics.cpp" "CMakeFiles/Main.dir/BlackScholesDynamics.cpp.o" "gcc" "CMakeFiles/Main.dir/BlackScholesDynamics.cpp.o.d"
+  "/home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/new/EstimateGI.cpp" "CMakeFiles/Main.dir/EstimateGI.cpp.o" "gcc" "CMakeFiles/Main.dir/EstimateGI.cpp.o.d"
+  "/home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/new/MertonJumpDynamics.cpp" "CMakeFiles/Main.dir/MertonJumpDynamics.cpp.o" "gcc" "CMakeFiles/Main.dir/MertonJumpDynamics.cpp.o.d"
+  "/home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/new/TaylorApproximation.cpp" "CMakeFiles/Main.dir/TaylorApproximation.cpp.o" "gcc" "CMakeFiles/Main.dir/TaylorApproximation.cpp.o.d"
+  "/home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/new/UniformSampleEstimate.cpp" "CMakeFiles/Main.dir/UniformSampleEstimate.cpp.o" "gcc" "CMakeFiles/Main.dir/UniformSampleEstimate.cpp.o.d"
+  "/home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/new/main.cpp" "CMakeFiles/Main.dir/main.cpp.o" "gcc" "CMakeFiles/Main.dir/main.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

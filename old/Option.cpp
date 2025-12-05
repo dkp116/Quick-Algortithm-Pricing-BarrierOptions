@@ -7,7 +7,7 @@
 #include <cassert>
 #include <iomanip>
 #include "Random_Generator.h"
-#include "trapezium.h"
+#include "Trapezium.h"
 
 
 double DownAndOut::evaluate_gi(MJD stock, double a, double b, double t, double T1, double T2) {     //Density of Crossing for the first time during the Brownian Bridge
@@ -169,7 +169,7 @@ double Barrier::PriceByMJD_Uniform(MJD stock){
      else if(StockPriceAfterJump <= std::log(H)){   //if there is a crossing during the jump
         Checker = 0;
         
-        Pay = Pay + Rebate * std::exp(-stock.GetRF() * Times[i+1]) *multiplyPi;
+        return Pay = Pay + Rebate * std::exp(-stock.GetRF() * Times[i+1]) *multiplyPi;
      }
         i++;
 

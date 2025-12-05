@@ -39,3 +39,4 @@ int main() {
     std::cout << "Option price: " << price2 << std::endl;
     return 0;
 }
+

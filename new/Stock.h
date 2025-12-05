@@ -2,6 +2,7 @@
 #define STOCK_H
 #include "IDynamics.h"
 #include <memory>
+#include <cmath>
 
 class Stock {
 private:

@@ -8,11 +8,11 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/old/EstimateGI.cpp" "CMakeFiles/Main.dir/EstimateGI.cpp.o" "gcc" "CMakeFiles/Main.dir/EstimateGI.cpp.o.d"
-  "/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/old/Option.cpp" "CMakeFiles/Main.dir/Option.cpp.o" "gcc" "CMakeFiles/Main.dir/Option.cpp.o.d"
-  "/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/old/Stock.cpp" "CMakeFiles/Main.dir/Stock.cpp.o" "gcc" "CMakeFiles/Main.dir/Stock.cpp.o.d"
-  "/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/old/Trapezium.cpp" "CMakeFiles/Main.dir/Trapezium.cpp.o" "gcc" "CMakeFiles/Main.dir/Trapezium.cpp.o.d"
-  "/Users/dkp116/Desktop/Master York/Diss/code/Intergral Check/old/main.cpp" "CMakeFiles/Main.dir/main.cpp.o" "gcc" "CMakeFiles/Main.dir/main.cpp.o.d"
+  "/home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/old/EstimateGI.cpp" "CMakeFiles/Main.dir/EstimateGI.cpp.o" "gcc" "CMakeFiles/Main.dir/EstimateGI.cpp.o.d"
+  "/home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/old/Option.cpp" "CMakeFiles/Main.dir/Option.cpp.o" "gcc" "CMakeFiles/Main.dir/Option.cpp.o.d"
+  "/home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/old/Stock.cpp" "CMakeFiles/Main.dir/Stock.cpp.o" "gcc" "CMakeFiles/Main.dir/Stock.cpp.o.d"
+  "/home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/old/Trapezium.cpp" "CMakeFiles/Main.dir/Trapezium.cpp.o" "gcc" "CMakeFiles/Main.dir/Trapezium.cpp.o.d"
+  "/home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/old/main.cpp" "CMakeFiles/Main.dir/main.cpp.o" "gcc" "CMakeFiles/Main.dir/main.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.
