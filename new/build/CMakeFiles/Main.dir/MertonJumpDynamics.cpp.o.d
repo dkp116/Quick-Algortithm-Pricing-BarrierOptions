@@ -2,9 +2,7 @@ CMakeFiles/Main.dir/MertonJumpDynamics.cpp.o: \
  /home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/new/MertonJumpDynamics.cpp \
  /usr/include/stdc-predef.h \
  /home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/new/MertonJumpDynamics.h \
- /home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/new/IDynamics.h \
- /home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/new/Random_Generator.h \
- /usr/include/c++/13/random /usr/include/c++/13/bits/requires_hosted.h \
+ /usr/include/c++/13/cmath /usr/include/c++/13/bits/requires_hosted.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h \
  /usr/include/features.h /usr/include/features-time64.h \
@@ -15,7 +13,7 @@ CMakeFiles/Main.dir/MertonJumpDynamics.cpp.o: \
  /usr/include/x86_64-linux-gnu/gnu/stubs.h \
  /usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/cpu_defines.h \
- /usr/include/c++/13/cmath /usr/include/c++/13/bits/cpp_type_traits.h \
+ /usr/include/c++/13/bits/cpp_type_traits.h \
  /usr/include/c++/13/ext/type_traits.h /usr/include/math.h \
  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
  /usr/include/x86_64-linux-gnu/bits/types.h \
@@ -61,8 +59,10 @@ CMakeFiles/Main.dir/MertonJumpDynamics.cpp.o: \
  /usr/include/x86_64-linux-gnu/bits/struct_mutex.h \
  /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h /usr/include/alloca.h \
  /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
- /usr/include/c++/13/cstdlib /usr/include/c++/13/string \
- /usr/include/c++/13/bits/stringfwd.h \
+ /home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/new/IDynamics.h \
+ /home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/new/Random_Generator.h \
+ /usr/include/c++/13/random /usr/include/c++/13/cstdlib \
+ /usr/include/c++/13/string /usr/include/c++/13/bits/stringfwd.h \
  /usr/include/c++/13/bits/memoryfwd.h \
  /usr/include/c++/13/bits/char_traits.h \
  /usr/include/c++/13/bits/postypes.h /usr/include/c++/13/cwchar \

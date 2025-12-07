@@ -1,5 +1,6 @@
 #ifndef MertonJumpDynamics_H
 #define MertonJumpDynamics_H
+#include <cmath>
 #include "IDynamics.h"
 #include "Random_Generator.h"
 
@@ -17,7 +18,9 @@ class MertonJumpDynamics : public IDynamics{
     public:
     MertonJumpDynamics(double riskfree, double sigma,
         double lambda, double jumpMu, double jumpSigma) :  
-        riskfree_(riskfree), lambda_(lambda), sigma_(sigma), jumpSigma_(jumpSigma) , jumpMu_(jumpMu) {};
+        riskfree_(riskfree), lambda_(lambda), sigma_(sigma), jumpSigma_(jumpSigma) , jumpMu_(jumpMu)
+         {expectedValueJump_ = std::exp(jumpMu_ + (jumpSigma_ * jumpSigma_) * 0.5) - 1.0;
+        SetDrift();};
     
     void SetDrift(){ c_ = riskfree_ - (sigma_ * sigma_ * 0.5) - (lambda_ * expectedValueJump_); }
     double GetC(){return c_;}
