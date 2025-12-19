@@ -65,6 +65,16 @@ CMAKE_BINARY_DIR = /home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/new/buil
 #=============================================================================
 # Targets provided globally by CMake.
 
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Running tests..."
+	/usr/bin/ctest --force-new-ctest-process $(ARGS)
+.PHONY : test
+
+# Special rule for the target test
+test/fast: test
+.PHONY : test/fast
+
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "No interactive CMake dialog available..."
@@ -117,6 +127,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named core_lib
+
+# Build rule for target.
+core_lib: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 core_lib
+.PHONY : core_lib
+
+# fast build rule for target.
+core_lib/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core_lib.dir/build.make CMakeFiles/core_lib.dir/build
+.PHONY : core_lib/fast
+
+#=============================================================================
 # Target rules for targets named Main
 
 # Build rule for target.
@@ -129,12 +152,51 @@ Main/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/build
 .PHONY : Main/fast
 
+#=============================================================================
+# Target rules for targets named tests
+
+# Build rule for target.
+tests: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tests
+.PHONY : tests
+
+# fast build rule for target.
+tests/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/build
+.PHONY : tests/fast
+
+#=============================================================================
+# Target rules for targets named Catch2
+
+# Build rule for target.
+Catch2: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Catch2
+.PHONY : Catch2
+
+# fast build rule for target.
+Catch2/fast:
+	$(MAKE) $(MAKESILENT) -f _deps/catch2-build/src/CMakeFiles/Catch2.dir/build.make _deps/catch2-build/src/CMakeFiles/Catch2.dir/build
+.PHONY : Catch2/fast
+
+#=============================================================================
+# Target rules for targets named Catch2WithMain
+
+# Build rule for target.
+Catch2WithMain: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Catch2WithMain
+.PHONY : Catch2WithMain
+
+# fast build rule for target.
+Catch2WithMain/fast:
+	$(MAKE) $(MAKESILENT) -f _deps/catch2-build/src/CMakeFiles/Catch2WithMain.dir/build.make _deps/catch2-build/src/CMakeFiles/Catch2WithMain.dir/build
+.PHONY : Catch2WithMain/fast
+
 src/Dynamics/BlackScholesDynamics.o: src/Dynamics/BlackScholesDynamics.cpp.o
 .PHONY : src/Dynamics/BlackScholesDynamics.o
 
 # target to build an object file
 src/Dynamics/BlackScholesDynamics.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/src/Dynamics/BlackScholesDynamics.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core_lib.dir/build.make CMakeFiles/core_lib.dir/src/Dynamics/BlackScholesDynamics.cpp.o
 .PHONY : src/Dynamics/BlackScholesDynamics.cpp.o
 
 src/Dynamics/BlackScholesDynamics.i: src/Dynamics/BlackScholesDynamics.cpp.i
@@ -142,7 +204,7 @@ src/Dynamics/BlackScholesDynamics.i: src/Dynamics/BlackScholesDynamics.cpp.i
 
 # target to preprocess a source file
 src/Dynamics/BlackScholesDynamics.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/src/Dynamics/BlackScholesDynamics.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core_lib.dir/build.make CMakeFiles/core_lib.dir/src/Dynamics/BlackScholesDynamics.cpp.i
 .PHONY : src/Dynamics/BlackScholesDynamics.cpp.i
 
 src/Dynamics/BlackScholesDynamics.s: src/Dynamics/BlackScholesDynamics.cpp.s
@@ -150,7 +212,7 @@ src/Dynamics/BlackScholesDynamics.s: src/Dynamics/BlackScholesDynamics.cpp.s
 
 # target to generate assembly for a file
 src/Dynamics/BlackScholesDynamics.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/src/Dynamics/BlackScholesDynamics.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core_lib.dir/build.make CMakeFiles/core_lib.dir/src/Dynamics/BlackScholesDynamics.cpp.s
 .PHONY : src/Dynamics/BlackScholesDynamics.cpp.s
 
 src/Dynamics/MertonJumpDynamics.o: src/Dynamics/MertonJumpDynamics.cpp.o
@@ -158,7 +220,7 @@ src/Dynamics/MertonJumpDynamics.o: src/Dynamics/MertonJumpDynamics.cpp.o
 
 # target to build an object file
 src/Dynamics/MertonJumpDynamics.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/src/Dynamics/MertonJumpDynamics.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core_lib.dir/build.make CMakeFiles/core_lib.dir/src/Dynamics/MertonJumpDynamics.cpp.o
 .PHONY : src/Dynamics/MertonJumpDynamics.cpp.o
 
 src/Dynamics/MertonJumpDynamics.i: src/Dynamics/MertonJumpDynamics.cpp.i
@@ -166,7 +228,7 @@ src/Dynamics/MertonJumpDynamics.i: src/Dynamics/MertonJumpDynamics.cpp.i
 
 # target to preprocess a source file
 src/Dynamics/MertonJumpDynamics.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/src/Dynamics/MertonJumpDynamics.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core_lib.dir/build.make CMakeFiles/core_lib.dir/src/Dynamics/MertonJumpDynamics.cpp.i
 .PHONY : src/Dynamics/MertonJumpDynamics.cpp.i
 
 src/Dynamics/MertonJumpDynamics.s: src/Dynamics/MertonJumpDynamics.cpp.s
@@ -174,7 +236,7 @@ src/Dynamics/MertonJumpDynamics.s: src/Dynamics/MertonJumpDynamics.cpp.s
 
 # target to generate assembly for a file
 src/Dynamics/MertonJumpDynamics.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/src/Dynamics/MertonJumpDynamics.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core_lib.dir/build.make CMakeFiles/core_lib.dir/src/Dynamics/MertonJumpDynamics.cpp.s
 .PHONY : src/Dynamics/MertonJumpDynamics.cpp.s
 
 src/Options/Barrier.o: src/Options/Barrier.cpp.o
@@ -182,7 +244,7 @@ src/Options/Barrier.o: src/Options/Barrier.cpp.o
 
 # target to build an object file
 src/Options/Barrier.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/src/Options/Barrier.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core_lib.dir/build.make CMakeFiles/core_lib.dir/src/Options/Barrier.cpp.o
 .PHONY : src/Options/Barrier.cpp.o
 
 src/Options/Barrier.i: src/Options/Barrier.cpp.i
@@ -190,7 +252,7 @@ src/Options/Barrier.i: src/Options/Barrier.cpp.i
 
 # target to preprocess a source file
 src/Options/Barrier.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/src/Options/Barrier.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core_lib.dir/build.make CMakeFiles/core_lib.dir/src/Options/Barrier.cpp.i
 .PHONY : src/Options/Barrier.cpp.i
 
 src/Options/Barrier.s: src/Options/Barrier.cpp.s
@@ -198,7 +260,7 @@ src/Options/Barrier.s: src/Options/Barrier.cpp.s
 
 # target to generate assembly for a file
 src/Options/Barrier.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/src/Options/Barrier.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core_lib.dir/build.make CMakeFiles/core_lib.dir/src/Options/Barrier.cpp.s
 .PHONY : src/Options/Barrier.cpp.s
 
 src/PricingAlgorithm/EstimateGI.o: src/PricingAlgorithm/EstimateGI.cpp.o
@@ -206,7 +268,7 @@ src/PricingAlgorithm/EstimateGI.o: src/PricingAlgorithm/EstimateGI.cpp.o
 
 # target to build an object file
 src/PricingAlgorithm/EstimateGI.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/src/PricingAlgorithm/EstimateGI.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core_lib.dir/build.make CMakeFiles/core_lib.dir/src/PricingAlgorithm/EstimateGI.cpp.o
 .PHONY : src/PricingAlgorithm/EstimateGI.cpp.o
 
 src/PricingAlgorithm/EstimateGI.i: src/PricingAlgorithm/EstimateGI.cpp.i
@@ -214,7 +276,7 @@ src/PricingAlgorithm/EstimateGI.i: src/PricingAlgorithm/EstimateGI.cpp.i
 
 # target to preprocess a source file
 src/PricingAlgorithm/EstimateGI.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/src/PricingAlgorithm/EstimateGI.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core_lib.dir/build.make CMakeFiles/core_lib.dir/src/PricingAlgorithm/EstimateGI.cpp.i
 .PHONY : src/PricingAlgorithm/EstimateGI.cpp.i
 
 src/PricingAlgorithm/EstimateGI.s: src/PricingAlgorithm/EstimateGI.cpp.s
@@ -222,7 +284,7 @@ src/PricingAlgorithm/EstimateGI.s: src/PricingAlgorithm/EstimateGI.cpp.s
 
 # target to generate assembly for a file
 src/PricingAlgorithm/EstimateGI.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/src/PricingAlgorithm/EstimateGI.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core_lib.dir/build.make CMakeFiles/core_lib.dir/src/PricingAlgorithm/EstimateGI.cpp.s
 .PHONY : src/PricingAlgorithm/EstimateGI.cpp.s
 
 src/PricingAlgorithm/TaylorApproximation.o: src/PricingAlgorithm/TaylorApproximation.cpp.o
@@ -230,7 +292,7 @@ src/PricingAlgorithm/TaylorApproximation.o: src/PricingAlgorithm/TaylorApproxima
 
 # target to build an object file
 src/PricingAlgorithm/TaylorApproximation.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/src/PricingAlgorithm/TaylorApproximation.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core_lib.dir/build.make CMakeFiles/core_lib.dir/src/PricingAlgorithm/TaylorApproximation.cpp.o
 .PHONY : src/PricingAlgorithm/TaylorApproximation.cpp.o
 
 src/PricingAlgorithm/TaylorApproximation.i: src/PricingAlgorithm/TaylorApproximation.cpp.i
@@ -238,7 +300,7 @@ src/PricingAlgorithm/TaylorApproximation.i: src/PricingAlgorithm/TaylorApproxima
 
 # target to preprocess a source file
 src/PricingAlgorithm/TaylorApproximation.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/src/PricingAlgorithm/TaylorApproximation.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core_lib.dir/build.make CMakeFiles/core_lib.dir/src/PricingAlgorithm/TaylorApproximation.cpp.i
 .PHONY : src/PricingAlgorithm/TaylorApproximation.cpp.i
 
 src/PricingAlgorithm/TaylorApproximation.s: src/PricingAlgorithm/TaylorApproximation.cpp.s
@@ -246,7 +308,7 @@ src/PricingAlgorithm/TaylorApproximation.s: src/PricingAlgorithm/TaylorApproxima
 
 # target to generate assembly for a file
 src/PricingAlgorithm/TaylorApproximation.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/src/PricingAlgorithm/TaylorApproximation.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core_lib.dir/build.make CMakeFiles/core_lib.dir/src/PricingAlgorithm/TaylorApproximation.cpp.s
 .PHONY : src/PricingAlgorithm/TaylorApproximation.cpp.s
 
 src/PricingAlgorithm/UniformSampleEstimate.o: src/PricingAlgorithm/UniformSampleEstimate.cpp.o
@@ -254,7 +316,7 @@ src/PricingAlgorithm/UniformSampleEstimate.o: src/PricingAlgorithm/UniformSample
 
 # target to build an object file
 src/PricingAlgorithm/UniformSampleEstimate.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/src/PricingAlgorithm/UniformSampleEstimate.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core_lib.dir/build.make CMakeFiles/core_lib.dir/src/PricingAlgorithm/UniformSampleEstimate.cpp.o
 .PHONY : src/PricingAlgorithm/UniformSampleEstimate.cpp.o
 
 src/PricingAlgorithm/UniformSampleEstimate.i: src/PricingAlgorithm/UniformSampleEstimate.cpp.i
@@ -262,7 +324,7 @@ src/PricingAlgorithm/UniformSampleEstimate.i: src/PricingAlgorithm/UniformSample
 
 # target to preprocess a source file
 src/PricingAlgorithm/UniformSampleEstimate.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/src/PricingAlgorithm/UniformSampleEstimate.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core_lib.dir/build.make CMakeFiles/core_lib.dir/src/PricingAlgorithm/UniformSampleEstimate.cpp.i
 .PHONY : src/PricingAlgorithm/UniformSampleEstimate.cpp.i
 
 src/PricingAlgorithm/UniformSampleEstimate.s: src/PricingAlgorithm/UniformSampleEstimate.cpp.s
@@ -270,7 +332,7 @@ src/PricingAlgorithm/UniformSampleEstimate.s: src/PricingAlgorithm/UniformSample
 
 # target to generate assembly for a file
 src/PricingAlgorithm/UniformSampleEstimate.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/src/PricingAlgorithm/UniformSampleEstimate.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/core_lib.dir/build.make CMakeFiles/core_lib.dir/src/PricingAlgorithm/UniformSampleEstimate.cpp.s
 .PHONY : src/PricingAlgorithm/UniformSampleEstimate.cpp.s
 
 src/main.o: src/main.cpp.o
@@ -297,6 +359,30 @@ src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
+tests/test_first.o: tests/test_first.cpp.o
+.PHONY : tests/test_first.o
+
+# target to build an object file
+tests/test_first.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/tests/test_first.cpp.o
+.PHONY : tests/test_first.cpp.o
+
+tests/test_first.i: tests/test_first.cpp.i
+.PHONY : tests/test_first.i
+
+# target to preprocess a source file
+tests/test_first.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/tests/test_first.cpp.i
+.PHONY : tests/test_first.cpp.i
+
+tests/test_first.s: tests/test_first.cpp.s
+.PHONY : tests/test_first.s
+
+# target to generate assembly for a file
+tests/test_first.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/tests/test_first.cpp.s
+.PHONY : tests/test_first.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -305,7 +391,12 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... test"
+	@echo "... Catch2"
+	@echo "... Catch2WithMain"
 	@echo "... Main"
+	@echo "... core_lib"
+	@echo "... tests"
 	@echo "... src/Dynamics/BlackScholesDynamics.o"
 	@echo "... src/Dynamics/BlackScholesDynamics.i"
 	@echo "... src/Dynamics/BlackScholesDynamics.s"
@@ -327,6 +418,9 @@ help:
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... tests/test_first.o"
+	@echo "... tests/test_first.i"
+	@echo "... tests/test_first.s"
 .PHONY : help
 
 

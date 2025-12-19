@@ -1,0 +1,22 @@
+Start testing: Dec 19 20:03 GMT
+----------------------------------------------------------
+1/1 Testing: MonteCarloTests
+1/1 Test: MonteCarloTests
+Command: "/home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/new/build/tests"
+Directory: /home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/new/build
+"MonteCarloTests" start time: Dec 19 20:03 GMT
+Output:
+----------------------------------------------------------
+Randomness seeded to: 3595204694
+===============================================================================
+All tests passed (1 assertion in 1 test case)
+
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"MonteCarloTests" end time: Dec 19 20:03 GMT
+"MonteCarloTests" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Dec 19 20:03 GMT

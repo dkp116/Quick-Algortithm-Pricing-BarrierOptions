@@ -1,3 +1,14 @@
+/home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/new/build/CMakeFiles/core_lib.dir
 /home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/new/build/CMakeFiles/Main.dir
+/home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/new/build/CMakeFiles/tests.dir
+/home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/new/build/CMakeFiles/test.dir
 /home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/new/build/CMakeFiles/edit_cache.dir
 /home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/new/build/CMakeFiles/rebuild_cache.dir
+/home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/new/build/_deps/catch2-build/CMakeFiles/test.dir
+/home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/new/build/_deps/catch2-build/CMakeFiles/edit_cache.dir
+/home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/new/build/_deps/catch2-build/CMakeFiles/rebuild_cache.dir
+/home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/new/build/_deps/catch2-build/src/CMakeFiles/Catch2.dir
+/home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/new/build/_deps/catch2-build/src/CMakeFiles/Catch2WithMain.dir
+/home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/new/build/_deps/catch2-build/src/CMakeFiles/test.dir
+/home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/new/build/_deps/catch2-build/src/CMakeFiles/edit_cache.dir
+/home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/new/build/_deps/catch2-build/src/CMakeFiles/rebuild_cache.dir

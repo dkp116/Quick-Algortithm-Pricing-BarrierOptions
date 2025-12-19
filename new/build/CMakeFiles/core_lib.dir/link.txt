@@ -1,0 +1,2 @@
+/usr/bin/ar qc libcore_lib.a CMakeFiles/core_lib.dir/src/Options/Barrier.cpp.o CMakeFiles/core_lib.dir/src/Dynamics/BlackScholesDynamics.cpp.o CMakeFiles/core_lib.dir/src/Dynamics/MertonJumpDynamics.cpp.o CMakeFiles/core_lib.dir/src/PricingAlgorithm/UniformSampleEstimate.cpp.o CMakeFiles/core_lib.dir/src/PricingAlgorithm/TaylorApproximation.cpp.o CMakeFiles/core_lib.dir/src/PricingAlgorithm/EstimateGI.cpp.o
+/usr/bin/ranlib libcore_lib.a

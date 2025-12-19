@@ -1,1 +1,1 @@
-/usr/bin/c++ -g -g -O0 CMakeFiles/Main.dir/src/main.cpp.o CMakeFiles/Main.dir/src/Options/Barrier.cpp.o CMakeFiles/Main.dir/src/Dynamics/BlackScholesDynamics.cpp.o CMakeFiles/Main.dir/src/Dynamics/MertonJumpDynamics.cpp.o CMakeFiles/Main.dir/src/PricingAlgorithm/UniformSampleEstimate.cpp.o CMakeFiles/Main.dir/src/PricingAlgorithm/TaylorApproximation.cpp.o CMakeFiles/Main.dir/src/PricingAlgorithm/EstimateGI.cpp.o -o Main 
+/usr/bin/c++ -g CMakeFiles/Main.dir/src/main.cpp.o -o Main  libcore_lib.a 
