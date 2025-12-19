@@ -129,173 +129,173 @@ Main/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/build
 .PHONY : Main/fast
 
-Barrier.o: Barrier.cpp.o
-.PHONY : Barrier.o
+src/Dynamics/BlackScholesDynamics.o: src/Dynamics/BlackScholesDynamics.cpp.o
+.PHONY : src/Dynamics/BlackScholesDynamics.o
 
 # target to build an object file
-Barrier.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/Barrier.cpp.o
-.PHONY : Barrier.cpp.o
+src/Dynamics/BlackScholesDynamics.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/src/Dynamics/BlackScholesDynamics.cpp.o
+.PHONY : src/Dynamics/BlackScholesDynamics.cpp.o
 
-Barrier.i: Barrier.cpp.i
-.PHONY : Barrier.i
+src/Dynamics/BlackScholesDynamics.i: src/Dynamics/BlackScholesDynamics.cpp.i
+.PHONY : src/Dynamics/BlackScholesDynamics.i
 
 # target to preprocess a source file
-Barrier.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/Barrier.cpp.i
-.PHONY : Barrier.cpp.i
+src/Dynamics/BlackScholesDynamics.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/src/Dynamics/BlackScholesDynamics.cpp.i
+.PHONY : src/Dynamics/BlackScholesDynamics.cpp.i
 
-Barrier.s: Barrier.cpp.s
-.PHONY : Barrier.s
+src/Dynamics/BlackScholesDynamics.s: src/Dynamics/BlackScholesDynamics.cpp.s
+.PHONY : src/Dynamics/BlackScholesDynamics.s
 
 # target to generate assembly for a file
-Barrier.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/Barrier.cpp.s
-.PHONY : Barrier.cpp.s
+src/Dynamics/BlackScholesDynamics.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/src/Dynamics/BlackScholesDynamics.cpp.s
+.PHONY : src/Dynamics/BlackScholesDynamics.cpp.s
 
-BlackScholesDynamics.o: BlackScholesDynamics.cpp.o
-.PHONY : BlackScholesDynamics.o
+src/Dynamics/MertonJumpDynamics.o: src/Dynamics/MertonJumpDynamics.cpp.o
+.PHONY : src/Dynamics/MertonJumpDynamics.o
 
 # target to build an object file
-BlackScholesDynamics.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/BlackScholesDynamics.cpp.o
-.PHONY : BlackScholesDynamics.cpp.o
+src/Dynamics/MertonJumpDynamics.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/src/Dynamics/MertonJumpDynamics.cpp.o
+.PHONY : src/Dynamics/MertonJumpDynamics.cpp.o
 
-BlackScholesDynamics.i: BlackScholesDynamics.cpp.i
-.PHONY : BlackScholesDynamics.i
+src/Dynamics/MertonJumpDynamics.i: src/Dynamics/MertonJumpDynamics.cpp.i
+.PHONY : src/Dynamics/MertonJumpDynamics.i
 
 # target to preprocess a source file
-BlackScholesDynamics.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/BlackScholesDynamics.cpp.i
-.PHONY : BlackScholesDynamics.cpp.i
+src/Dynamics/MertonJumpDynamics.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/src/Dynamics/MertonJumpDynamics.cpp.i
+.PHONY : src/Dynamics/MertonJumpDynamics.cpp.i
 
-BlackScholesDynamics.s: BlackScholesDynamics.cpp.s
-.PHONY : BlackScholesDynamics.s
+src/Dynamics/MertonJumpDynamics.s: src/Dynamics/MertonJumpDynamics.cpp.s
+.PHONY : src/Dynamics/MertonJumpDynamics.s
 
 # target to generate assembly for a file
-BlackScholesDynamics.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/BlackScholesDynamics.cpp.s
-.PHONY : BlackScholesDynamics.cpp.s
+src/Dynamics/MertonJumpDynamics.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/src/Dynamics/MertonJumpDynamics.cpp.s
+.PHONY : src/Dynamics/MertonJumpDynamics.cpp.s
 
-EstimateGI.o: EstimateGI.cpp.o
-.PHONY : EstimateGI.o
+src/Options/Barrier.o: src/Options/Barrier.cpp.o
+.PHONY : src/Options/Barrier.o
 
 # target to build an object file
-EstimateGI.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/EstimateGI.cpp.o
-.PHONY : EstimateGI.cpp.o
+src/Options/Barrier.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/src/Options/Barrier.cpp.o
+.PHONY : src/Options/Barrier.cpp.o
 
-EstimateGI.i: EstimateGI.cpp.i
-.PHONY : EstimateGI.i
+src/Options/Barrier.i: src/Options/Barrier.cpp.i
+.PHONY : src/Options/Barrier.i
 
 # target to preprocess a source file
-EstimateGI.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/EstimateGI.cpp.i
-.PHONY : EstimateGI.cpp.i
+src/Options/Barrier.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/src/Options/Barrier.cpp.i
+.PHONY : src/Options/Barrier.cpp.i
 
-EstimateGI.s: EstimateGI.cpp.s
-.PHONY : EstimateGI.s
+src/Options/Barrier.s: src/Options/Barrier.cpp.s
+.PHONY : src/Options/Barrier.s
 
 # target to generate assembly for a file
-EstimateGI.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/EstimateGI.cpp.s
-.PHONY : EstimateGI.cpp.s
+src/Options/Barrier.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/src/Options/Barrier.cpp.s
+.PHONY : src/Options/Barrier.cpp.s
 
-MertonJumpDynamics.o: MertonJumpDynamics.cpp.o
-.PHONY : MertonJumpDynamics.o
+src/PricingAlgorithm/EstimateGI.o: src/PricingAlgorithm/EstimateGI.cpp.o
+.PHONY : src/PricingAlgorithm/EstimateGI.o
 
 # target to build an object file
-MertonJumpDynamics.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/MertonJumpDynamics.cpp.o
-.PHONY : MertonJumpDynamics.cpp.o
+src/PricingAlgorithm/EstimateGI.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/src/PricingAlgorithm/EstimateGI.cpp.o
+.PHONY : src/PricingAlgorithm/EstimateGI.cpp.o
 
-MertonJumpDynamics.i: MertonJumpDynamics.cpp.i
-.PHONY : MertonJumpDynamics.i
+src/PricingAlgorithm/EstimateGI.i: src/PricingAlgorithm/EstimateGI.cpp.i
+.PHONY : src/PricingAlgorithm/EstimateGI.i
 
 # target to preprocess a source file
-MertonJumpDynamics.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/MertonJumpDynamics.cpp.i
-.PHONY : MertonJumpDynamics.cpp.i
+src/PricingAlgorithm/EstimateGI.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/src/PricingAlgorithm/EstimateGI.cpp.i
+.PHONY : src/PricingAlgorithm/EstimateGI.cpp.i
 
-MertonJumpDynamics.s: MertonJumpDynamics.cpp.s
-.PHONY : MertonJumpDynamics.s
+src/PricingAlgorithm/EstimateGI.s: src/PricingAlgorithm/EstimateGI.cpp.s
+.PHONY : src/PricingAlgorithm/EstimateGI.s
 
 # target to generate assembly for a file
-MertonJumpDynamics.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/MertonJumpDynamics.cpp.s
-.PHONY : MertonJumpDynamics.cpp.s
+src/PricingAlgorithm/EstimateGI.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/src/PricingAlgorithm/EstimateGI.cpp.s
+.PHONY : src/PricingAlgorithm/EstimateGI.cpp.s
 
-TaylorApproximation.o: TaylorApproximation.cpp.o
-.PHONY : TaylorApproximation.o
+src/PricingAlgorithm/TaylorApproximation.o: src/PricingAlgorithm/TaylorApproximation.cpp.o
+.PHONY : src/PricingAlgorithm/TaylorApproximation.o
 
 # target to build an object file
-TaylorApproximation.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/TaylorApproximation.cpp.o
-.PHONY : TaylorApproximation.cpp.o
+src/PricingAlgorithm/TaylorApproximation.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/src/PricingAlgorithm/TaylorApproximation.cpp.o
+.PHONY : src/PricingAlgorithm/TaylorApproximation.cpp.o
 
-TaylorApproximation.i: TaylorApproximation.cpp.i
-.PHONY : TaylorApproximation.i
+src/PricingAlgorithm/TaylorApproximation.i: src/PricingAlgorithm/TaylorApproximation.cpp.i
+.PHONY : src/PricingAlgorithm/TaylorApproximation.i
 
 # target to preprocess a source file
-TaylorApproximation.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/TaylorApproximation.cpp.i
-.PHONY : TaylorApproximation.cpp.i
+src/PricingAlgorithm/TaylorApproximation.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/src/PricingAlgorithm/TaylorApproximation.cpp.i
+.PHONY : src/PricingAlgorithm/TaylorApproximation.cpp.i
 
-TaylorApproximation.s: TaylorApproximation.cpp.s
-.PHONY : TaylorApproximation.s
+src/PricingAlgorithm/TaylorApproximation.s: src/PricingAlgorithm/TaylorApproximation.cpp.s
+.PHONY : src/PricingAlgorithm/TaylorApproximation.s
 
 # target to generate assembly for a file
-TaylorApproximation.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/TaylorApproximation.cpp.s
-.PHONY : TaylorApproximation.cpp.s
+src/PricingAlgorithm/TaylorApproximation.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/src/PricingAlgorithm/TaylorApproximation.cpp.s
+.PHONY : src/PricingAlgorithm/TaylorApproximation.cpp.s
 
-UniformSampleEstimate.o: UniformSampleEstimate.cpp.o
-.PHONY : UniformSampleEstimate.o
+src/PricingAlgorithm/UniformSampleEstimate.o: src/PricingAlgorithm/UniformSampleEstimate.cpp.o
+.PHONY : src/PricingAlgorithm/UniformSampleEstimate.o
 
 # target to build an object file
-UniformSampleEstimate.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/UniformSampleEstimate.cpp.o
-.PHONY : UniformSampleEstimate.cpp.o
+src/PricingAlgorithm/UniformSampleEstimate.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/src/PricingAlgorithm/UniformSampleEstimate.cpp.o
+.PHONY : src/PricingAlgorithm/UniformSampleEstimate.cpp.o
 
-UniformSampleEstimate.i: UniformSampleEstimate.cpp.i
-.PHONY : UniformSampleEstimate.i
+src/PricingAlgorithm/UniformSampleEstimate.i: src/PricingAlgorithm/UniformSampleEstimate.cpp.i
+.PHONY : src/PricingAlgorithm/UniformSampleEstimate.i
 
 # target to preprocess a source file
-UniformSampleEstimate.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/UniformSampleEstimate.cpp.i
-.PHONY : UniformSampleEstimate.cpp.i
+src/PricingAlgorithm/UniformSampleEstimate.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/src/PricingAlgorithm/UniformSampleEstimate.cpp.i
+.PHONY : src/PricingAlgorithm/UniformSampleEstimate.cpp.i
 
-UniformSampleEstimate.s: UniformSampleEstimate.cpp.s
-.PHONY : UniformSampleEstimate.s
+src/PricingAlgorithm/UniformSampleEstimate.s: src/PricingAlgorithm/UniformSampleEstimate.cpp.s
+.PHONY : src/PricingAlgorithm/UniformSampleEstimate.s
 
 # target to generate assembly for a file
-UniformSampleEstimate.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/UniformSampleEstimate.cpp.s
-.PHONY : UniformSampleEstimate.cpp.s
+src/PricingAlgorithm/UniformSampleEstimate.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/src/PricingAlgorithm/UniformSampleEstimate.cpp.s
+.PHONY : src/PricingAlgorithm/UniformSampleEstimate.cpp.s
 
-main.o: main.cpp.o
-.PHONY : main.o
+src/main.o: src/main.cpp.o
+.PHONY : src/main.o
 
 # target to build an object file
-main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/main.cpp.o
-.PHONY : main.cpp.o
+src/main.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/src/main.cpp.o
+.PHONY : src/main.cpp.o
 
-main.i: main.cpp.i
-.PHONY : main.i
+src/main.i: src/main.cpp.i
+.PHONY : src/main.i
 
 # target to preprocess a source file
-main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/main.cpp.i
-.PHONY : main.cpp.i
+src/main.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/src/main.cpp.i
+.PHONY : src/main.cpp.i
 
-main.s: main.cpp.s
-.PHONY : main.s
+src/main.s: src/main.cpp.s
+.PHONY : src/main.s
 
 # target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/main.cpp.s
-.PHONY : main.cpp.s
+src/main.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Main.dir/build.make CMakeFiles/Main.dir/src/main.cpp.s
+.PHONY : src/main.cpp.s
 
 # Help Target
 help:
@@ -306,27 +306,27 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... Main"
-	@echo "... Barrier.o"
-	@echo "... Barrier.i"
-	@echo "... Barrier.s"
-	@echo "... BlackScholesDynamics.o"
-	@echo "... BlackScholesDynamics.i"
-	@echo "... BlackScholesDynamics.s"
-	@echo "... EstimateGI.o"
-	@echo "... EstimateGI.i"
-	@echo "... EstimateGI.s"
-	@echo "... MertonJumpDynamics.o"
-	@echo "... MertonJumpDynamics.i"
-	@echo "... MertonJumpDynamics.s"
-	@echo "... TaylorApproximation.o"
-	@echo "... TaylorApproximation.i"
-	@echo "... TaylorApproximation.s"
-	@echo "... UniformSampleEstimate.o"
-	@echo "... UniformSampleEstimate.i"
-	@echo "... UniformSampleEstimate.s"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
+	@echo "... src/Dynamics/BlackScholesDynamics.o"
+	@echo "... src/Dynamics/BlackScholesDynamics.i"
+	@echo "... src/Dynamics/BlackScholesDynamics.s"
+	@echo "... src/Dynamics/MertonJumpDynamics.o"
+	@echo "... src/Dynamics/MertonJumpDynamics.i"
+	@echo "... src/Dynamics/MertonJumpDynamics.s"
+	@echo "... src/Options/Barrier.o"
+	@echo "... src/Options/Barrier.i"
+	@echo "... src/Options/Barrier.s"
+	@echo "... src/PricingAlgorithm/EstimateGI.o"
+	@echo "... src/PricingAlgorithm/EstimateGI.i"
+	@echo "... src/PricingAlgorithm/EstimateGI.s"
+	@echo "... src/PricingAlgorithm/TaylorApproximation.o"
+	@echo "... src/PricingAlgorithm/TaylorApproximation.i"
+	@echo "... src/PricingAlgorithm/TaylorApproximation.s"
+	@echo "... src/PricingAlgorithm/UniformSampleEstimate.o"
+	@echo "... src/PricingAlgorithm/UniformSampleEstimate.i"
+	@echo "... src/PricingAlgorithm/UniformSampleEstimate.s"
+	@echo "... src/main.o"
+	@echo "... src/main.i"
+	@echo "... src/main.s"
 .PHONY : help
 
 

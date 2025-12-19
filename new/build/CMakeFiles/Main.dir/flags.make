@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/new
+CXX_INCLUDES = -I/home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/new/include
 
 CXX_FLAGS = -g -g -O0 -std=gnu++14 -Wall -Wextra -Wpedantic
 

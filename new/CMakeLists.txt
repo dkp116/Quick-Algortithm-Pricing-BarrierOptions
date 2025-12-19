@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.10)
 
-project(Refactor_Build_Test)
+project(Refactor_Build_Test LANGUAGES CXX)
 
 # --- C++ standard ---
 set(CMAKE_CXX_STANDARD 14)
@@ -14,22 +14,24 @@ endif()
 # --- Ensure debug symbols and no optimization for Debug ---
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -g -O0")
 
-# --- Source files ---
+# --- Source files (now under src/) ---
 set(SOURCES
-    main.cpp
-    Barrier.cpp
-    BlackScholesDynamics.cpp
-    MertonJumpDynamics.cpp
-    UniformSampleEstimate.cpp
-    TaylorApproximation.cpp
-    EstimateGI.cpp
+    src/main.cpp
+    src/Options/Barrier.cpp
+    src/Dynamics/BlackScholesDynamics.cpp
+    src/Dynamics/MertonJumpDynamics.cpp
+    src/PricingAlgorithm/UniformSampleEstimate.cpp
+    src/PricingAlgorithm/TaylorApproximation.cpp
+    src/PricingAlgorithm/EstimateGI.cpp
 )
 
 # --- Executable ---
 add_executable(Main ${SOURCES})
 
-# --- Include directories ---
-target_include_directories(Main PRIVATE ${CMAKE_SOURCE_DIR})
+# --- Include directories (point to include/) ---
+target_include_directories(Main PRIVATE
+    ${CMAKE_SOURCE_DIR}/include
+)
 
 # --- Compiler warnings ---
 if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
