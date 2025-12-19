@@ -1,0 +1,14 @@
+# CMake build folder
+/build/
+/CMakeFiles/
+/CMakeCache.txt
+Makefile
+cmake_install.cmake
+*.o
+*.obj
+*.exe
+*.out
+*.so
+*.a
+*.dll
+*.dylib

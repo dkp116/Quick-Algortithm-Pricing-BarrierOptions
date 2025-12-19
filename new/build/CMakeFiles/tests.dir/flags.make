@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/new/include -I/home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/new/build/_deps/catch2-src/src/catch2/.. -I/home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/new/build/_deps/catch2-build/generated-includes
+CXX_INCLUDES = -I/home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/new/include -I/home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/new/tests/test_utils -I/home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/new/build/_deps/catch2-src/src/catch2/.. -I/home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/new/build/_deps/catch2-build/generated-includes
 
 CXX_FLAGS = -g -std=gnu++14 -Wall -Wextra -Wpedantic
 

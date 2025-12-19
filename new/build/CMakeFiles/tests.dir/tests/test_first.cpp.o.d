@@ -197,4 +197,43 @@ CMakeFiles/tests.dir/tests/test_first.cpp.o: \
  /home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/new/build/_deps/catch2-src/src/catch2/../catch2/internal/catch_config_counter.hpp \
  /home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/new/build/_deps/catch2-src/src/catch2/../catch2/internal/catch_test_registry.hpp \
  /home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/new/build/_deps/catch2-src/src/catch2/../catch2/interfaces/catch_interfaces_test_invoker.hpp \
- /home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/new/build/_deps/catch2-src/src/catch2/../catch2/internal/catch_preprocessor_remove_parens.hpp
+ /home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/new/build/_deps/catch2-src/src/catch2/../catch2/internal/catch_preprocessor_remove_parens.hpp \
+ /home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/new/build/_deps/catch2-src/src/catch2/../catch2/catch_approx.hpp \
+ /home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/new/tests/test_utils/TestDownAndOutPricing.h \
+ /usr/include/c++/13/memory /usr/include/c++/13/bits/stl_tempbuf.h \
+ /usr/include/c++/13/bits/stl_raw_storage_iter.h \
+ /usr/include/c++/13/bits/align.h \
+ /usr/include/c++/13/bits/uses_allocator.h \
+ /usr/include/c++/13/bits/unique_ptr.h /usr/include/c++/13/tuple \
+ /usr/include/c++/13/bits/shared_ptr.h \
+ /usr/include/c++/13/bits/shared_ptr_base.h \
+ /usr/include/c++/13/bits/allocated_ptr.h \
+ /usr/include/c++/13/ext/aligned_buffer.h \
+ /usr/include/c++/13/ext/concurrence.h \
+ /usr/include/c++/13/bits/shared_ptr_atomic.h \
+ /usr/include/c++/13/bits/atomic_base.h \
+ /usr/include/c++/13/bits/atomic_lockfree_defines.h \
+ /usr/include/c++/13/backward/auto_ptr.h \
+ /home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/new/include/Stock/Stock.h \
+ /home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/new/include/Dynamics/IDynamics.h \
+ /usr/include/c++/13/cmath /usr/include/math.h \
+ /usr/include/x86_64-linux-gnu/bits/math-vector.h \
+ /usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h \
+ /usr/include/x86_64-linux-gnu/bits/flt-eval-method.h \
+ /usr/include/x86_64-linux-gnu/bits/fp-logb.h \
+ /usr/include/x86_64-linux-gnu/bits/fp-fast.h \
+ /usr/include/x86_64-linux-gnu/bits/mathcalls-helper-functions.h \
+ /usr/include/x86_64-linux-gnu/bits/mathcalls.h \
+ /usr/include/x86_64-linux-gnu/bits/mathcalls-narrow.h \
+ /usr/include/x86_64-linux-gnu/bits/iscanonical.h \
+ /home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/new/include/Options/Option.h \
+ /home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/new/include/PricingAlgorithm/UniformSampleEstimate.h \
+ /home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/new/include/PricingAlgorithm/IPricing.h \
+ /home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/new/include/Dynamics/MertonJumpDynamics.h \
+ /home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/new/include/RandomGenerator/Random_Generator.h \
+ /usr/include/c++/13/random /usr/include/c++/13/bits/random.h \
+ /usr/include/c++/13/bits/uniform_int_dist.h \
+ /usr/include/x86_64-linux-gnu/c++/13/bits/opt_random.h \
+ /usr/include/c++/13/bits/random.tcc /usr/include/c++/13/numeric \
+ /usr/include/c++/13/bits/stl_numeric.h \
+ /home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/new/include/Options/Barrier.h

@@ -65,14 +65,40 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(Catch2)
 
+# -------------------
+# Test sources
+# -------------------
 file(GLOB_RECURSE TEST_SOURCES tests/*.cpp)
 
-add_executable(tests ${TEST_SOURCES})
+# -------------------
+# Test-only helper sources
+# -------------------
+set(TEST_HELPERS tests/test_utils/TestDownAndOutPricing.cpp)
+
+# -------------------
+# Test executable
+# -------------------
+add_executable(tests
+    ${TEST_SOURCES}      # your test cpp files
+    ${LIB_SOURCES}       # main library sources
+    ${TEST_HELPERS}      # test-only helpers
+)
+
+# Include paths
+target_include_directories(tests PRIVATE
+    ${CMAKE_SOURCE_DIR}/include           # main headers
+    ${CMAKE_SOURCE_DIR}/tests/test_utils # test-only helper headers
+)
+
+# Link libraries
 target_link_libraries(tests PRIVATE core_lib Catch2::Catch2WithMain)
 
+# Compiler warnings
 if(DEFAULT_WARNING_FLAGS)
     target_compile_options(tests PRIVATE ${DEFAULT_WARNING_FLAGS})
 endif()
 
+# Enable CTest
 enable_testing()
 add_test(NAME MonteCarloTests COMMAND $<TARGET_FILE:tests>)
+

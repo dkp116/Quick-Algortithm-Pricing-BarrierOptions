@@ -83,20 +83,132 @@ CMakeFiles/tests.dir/tests/test_first.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/tests.dir/tests/test_first.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/new/tests/test_first.cpp -o CMakeFiles/tests.dir/tests/test_first.cpp.s
 
+CMakeFiles/tests.dir/tests/test_utils/TestDownAndOutPricing.cpp.o: CMakeFiles/tests.dir/flags.make
+CMakeFiles/tests.dir/tests/test_utils/TestDownAndOutPricing.cpp.o: /home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/new/tests/test_utils/TestDownAndOutPricing.cpp
+CMakeFiles/tests.dir/tests/test_utils/TestDownAndOutPricing.cpp.o: CMakeFiles/tests.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/new/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/tests.dir/tests/test_utils/TestDownAndOutPricing.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/tests.dir/tests/test_utils/TestDownAndOutPricing.cpp.o -MF CMakeFiles/tests.dir/tests/test_utils/TestDownAndOutPricing.cpp.o.d -o CMakeFiles/tests.dir/tests/test_utils/TestDownAndOutPricing.cpp.o -c /home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/new/tests/test_utils/TestDownAndOutPricing.cpp
+
+CMakeFiles/tests.dir/tests/test_utils/TestDownAndOutPricing.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/tests.dir/tests/test_utils/TestDownAndOutPricing.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/new/tests/test_utils/TestDownAndOutPricing.cpp > CMakeFiles/tests.dir/tests/test_utils/TestDownAndOutPricing.cpp.i
+
+CMakeFiles/tests.dir/tests/test_utils/TestDownAndOutPricing.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/tests.dir/tests/test_utils/TestDownAndOutPricing.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/new/tests/test_utils/TestDownAndOutPricing.cpp -o CMakeFiles/tests.dir/tests/test_utils/TestDownAndOutPricing.cpp.s
+
+CMakeFiles/tests.dir/src/Options/Barrier.cpp.o: CMakeFiles/tests.dir/flags.make
+CMakeFiles/tests.dir/src/Options/Barrier.cpp.o: /home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/new/src/Options/Barrier.cpp
+CMakeFiles/tests.dir/src/Options/Barrier.cpp.o: CMakeFiles/tests.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/new/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/tests.dir/src/Options/Barrier.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/tests.dir/src/Options/Barrier.cpp.o -MF CMakeFiles/tests.dir/src/Options/Barrier.cpp.o.d -o CMakeFiles/tests.dir/src/Options/Barrier.cpp.o -c /home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/new/src/Options/Barrier.cpp
+
+CMakeFiles/tests.dir/src/Options/Barrier.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/tests.dir/src/Options/Barrier.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/new/src/Options/Barrier.cpp > CMakeFiles/tests.dir/src/Options/Barrier.cpp.i
+
+CMakeFiles/tests.dir/src/Options/Barrier.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/tests.dir/src/Options/Barrier.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/new/src/Options/Barrier.cpp -o CMakeFiles/tests.dir/src/Options/Barrier.cpp.s
+
+CMakeFiles/tests.dir/src/Dynamics/BlackScholesDynamics.cpp.o: CMakeFiles/tests.dir/flags.make
+CMakeFiles/tests.dir/src/Dynamics/BlackScholesDynamics.cpp.o: /home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/new/src/Dynamics/BlackScholesDynamics.cpp
+CMakeFiles/tests.dir/src/Dynamics/BlackScholesDynamics.cpp.o: CMakeFiles/tests.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/new/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/tests.dir/src/Dynamics/BlackScholesDynamics.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/tests.dir/src/Dynamics/BlackScholesDynamics.cpp.o -MF CMakeFiles/tests.dir/src/Dynamics/BlackScholesDynamics.cpp.o.d -o CMakeFiles/tests.dir/src/Dynamics/BlackScholesDynamics.cpp.o -c /home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/new/src/Dynamics/BlackScholesDynamics.cpp
+
+CMakeFiles/tests.dir/src/Dynamics/BlackScholesDynamics.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/tests.dir/src/Dynamics/BlackScholesDynamics.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/new/src/Dynamics/BlackScholesDynamics.cpp > CMakeFiles/tests.dir/src/Dynamics/BlackScholesDynamics.cpp.i
+
+CMakeFiles/tests.dir/src/Dynamics/BlackScholesDynamics.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/tests.dir/src/Dynamics/BlackScholesDynamics.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/new/src/Dynamics/BlackScholesDynamics.cpp -o CMakeFiles/tests.dir/src/Dynamics/BlackScholesDynamics.cpp.s
+
+CMakeFiles/tests.dir/src/Dynamics/MertonJumpDynamics.cpp.o: CMakeFiles/tests.dir/flags.make
+CMakeFiles/tests.dir/src/Dynamics/MertonJumpDynamics.cpp.o: /home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/new/src/Dynamics/MertonJumpDynamics.cpp
+CMakeFiles/tests.dir/src/Dynamics/MertonJumpDynamics.cpp.o: CMakeFiles/tests.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/new/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/tests.dir/src/Dynamics/MertonJumpDynamics.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/tests.dir/src/Dynamics/MertonJumpDynamics.cpp.o -MF CMakeFiles/tests.dir/src/Dynamics/MertonJumpDynamics.cpp.o.d -o CMakeFiles/tests.dir/src/Dynamics/MertonJumpDynamics.cpp.o -c /home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/new/src/Dynamics/MertonJumpDynamics.cpp
+
+CMakeFiles/tests.dir/src/Dynamics/MertonJumpDynamics.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/tests.dir/src/Dynamics/MertonJumpDynamics.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/new/src/Dynamics/MertonJumpDynamics.cpp > CMakeFiles/tests.dir/src/Dynamics/MertonJumpDynamics.cpp.i
+
+CMakeFiles/tests.dir/src/Dynamics/MertonJumpDynamics.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/tests.dir/src/Dynamics/MertonJumpDynamics.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/new/src/Dynamics/MertonJumpDynamics.cpp -o CMakeFiles/tests.dir/src/Dynamics/MertonJumpDynamics.cpp.s
+
+CMakeFiles/tests.dir/src/PricingAlgorithm/UniformSampleEstimate.cpp.o: CMakeFiles/tests.dir/flags.make
+CMakeFiles/tests.dir/src/PricingAlgorithm/UniformSampleEstimate.cpp.o: /home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/new/src/PricingAlgorithm/UniformSampleEstimate.cpp
+CMakeFiles/tests.dir/src/PricingAlgorithm/UniformSampleEstimate.cpp.o: CMakeFiles/tests.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/new/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/tests.dir/src/PricingAlgorithm/UniformSampleEstimate.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/tests.dir/src/PricingAlgorithm/UniformSampleEstimate.cpp.o -MF CMakeFiles/tests.dir/src/PricingAlgorithm/UniformSampleEstimate.cpp.o.d -o CMakeFiles/tests.dir/src/PricingAlgorithm/UniformSampleEstimate.cpp.o -c /home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/new/src/PricingAlgorithm/UniformSampleEstimate.cpp
+
+CMakeFiles/tests.dir/src/PricingAlgorithm/UniformSampleEstimate.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/tests.dir/src/PricingAlgorithm/UniformSampleEstimate.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/new/src/PricingAlgorithm/UniformSampleEstimate.cpp > CMakeFiles/tests.dir/src/PricingAlgorithm/UniformSampleEstimate.cpp.i
+
+CMakeFiles/tests.dir/src/PricingAlgorithm/UniformSampleEstimate.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/tests.dir/src/PricingAlgorithm/UniformSampleEstimate.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/new/src/PricingAlgorithm/UniformSampleEstimate.cpp -o CMakeFiles/tests.dir/src/PricingAlgorithm/UniformSampleEstimate.cpp.s
+
+CMakeFiles/tests.dir/src/PricingAlgorithm/TaylorApproximation.cpp.o: CMakeFiles/tests.dir/flags.make
+CMakeFiles/tests.dir/src/PricingAlgorithm/TaylorApproximation.cpp.o: /home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/new/src/PricingAlgorithm/TaylorApproximation.cpp
+CMakeFiles/tests.dir/src/PricingAlgorithm/TaylorApproximation.cpp.o: CMakeFiles/tests.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/new/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/tests.dir/src/PricingAlgorithm/TaylorApproximation.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/tests.dir/src/PricingAlgorithm/TaylorApproximation.cpp.o -MF CMakeFiles/tests.dir/src/PricingAlgorithm/TaylorApproximation.cpp.o.d -o CMakeFiles/tests.dir/src/PricingAlgorithm/TaylorApproximation.cpp.o -c /home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/new/src/PricingAlgorithm/TaylorApproximation.cpp
+
+CMakeFiles/tests.dir/src/PricingAlgorithm/TaylorApproximation.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/tests.dir/src/PricingAlgorithm/TaylorApproximation.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/new/src/PricingAlgorithm/TaylorApproximation.cpp > CMakeFiles/tests.dir/src/PricingAlgorithm/TaylorApproximation.cpp.i
+
+CMakeFiles/tests.dir/src/PricingAlgorithm/TaylorApproximation.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/tests.dir/src/PricingAlgorithm/TaylorApproximation.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/new/src/PricingAlgorithm/TaylorApproximation.cpp -o CMakeFiles/tests.dir/src/PricingAlgorithm/TaylorApproximation.cpp.s
+
+CMakeFiles/tests.dir/src/PricingAlgorithm/EstimateGI.cpp.o: CMakeFiles/tests.dir/flags.make
+CMakeFiles/tests.dir/src/PricingAlgorithm/EstimateGI.cpp.o: /home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/new/src/PricingAlgorithm/EstimateGI.cpp
+CMakeFiles/tests.dir/src/PricingAlgorithm/EstimateGI.cpp.o: CMakeFiles/tests.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/new/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/tests.dir/src/PricingAlgorithm/EstimateGI.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/tests.dir/src/PricingAlgorithm/EstimateGI.cpp.o -MF CMakeFiles/tests.dir/src/PricingAlgorithm/EstimateGI.cpp.o.d -o CMakeFiles/tests.dir/src/PricingAlgorithm/EstimateGI.cpp.o -c /home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/new/src/PricingAlgorithm/EstimateGI.cpp
+
+CMakeFiles/tests.dir/src/PricingAlgorithm/EstimateGI.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/tests.dir/src/PricingAlgorithm/EstimateGI.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/new/src/PricingAlgorithm/EstimateGI.cpp > CMakeFiles/tests.dir/src/PricingAlgorithm/EstimateGI.cpp.i
+
+CMakeFiles/tests.dir/src/PricingAlgorithm/EstimateGI.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/tests.dir/src/PricingAlgorithm/EstimateGI.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/new/src/PricingAlgorithm/EstimateGI.cpp -o CMakeFiles/tests.dir/src/PricingAlgorithm/EstimateGI.cpp.s
+
 # Object files for target tests
 tests_OBJECTS = \
-"CMakeFiles/tests.dir/tests/test_first.cpp.o"
+"CMakeFiles/tests.dir/tests/test_first.cpp.o" \
+"CMakeFiles/tests.dir/tests/test_utils/TestDownAndOutPricing.cpp.o" \
+"CMakeFiles/tests.dir/src/Options/Barrier.cpp.o" \
+"CMakeFiles/tests.dir/src/Dynamics/BlackScholesDynamics.cpp.o" \
+"CMakeFiles/tests.dir/src/Dynamics/MertonJumpDynamics.cpp.o" \
+"CMakeFiles/tests.dir/src/PricingAlgorithm/UniformSampleEstimate.cpp.o" \
+"CMakeFiles/tests.dir/src/PricingAlgorithm/TaylorApproximation.cpp.o" \
+"CMakeFiles/tests.dir/src/PricingAlgorithm/EstimateGI.cpp.o"
 
 # External object files for target tests
 tests_EXTERNAL_OBJECTS =
 
 tests: CMakeFiles/tests.dir/tests/test_first.cpp.o
+tests: CMakeFiles/tests.dir/tests/test_utils/TestDownAndOutPricing.cpp.o
+tests: CMakeFiles/tests.dir/src/Options/Barrier.cpp.o
+tests: CMakeFiles/tests.dir/src/Dynamics/BlackScholesDynamics.cpp.o
+tests: CMakeFiles/tests.dir/src/Dynamics/MertonJumpDynamics.cpp.o
+tests: CMakeFiles/tests.dir/src/PricingAlgorithm/UniformSampleEstimate.cpp.o
+tests: CMakeFiles/tests.dir/src/PricingAlgorithm/TaylorApproximation.cpp.o
+tests: CMakeFiles/tests.dir/src/PricingAlgorithm/EstimateGI.cpp.o
 tests: CMakeFiles/tests.dir/build.make
 tests: libcore_lib.a
 tests: _deps/catch2-build/src/libCatch2Maind.a
 tests: _deps/catch2-build/src/libCatch2d.a
 tests: CMakeFiles/tests.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/new/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable tests"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/new/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable tests"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/tests.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
