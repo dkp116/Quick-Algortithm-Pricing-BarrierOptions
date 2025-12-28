@@ -53,7 +53,6 @@ double UniformSample::OneCycle() {
     jumpTimes = mertonDynamics_->createJumpTimes();      //generates exponenially distributed jump times
     double StockPriceAfterJump = stock_->GetLogStartPrice();
     int currentJumpInterval = 0;
-    bool hasCrossingOccured = 0;    // I do not think this is needed
     double StockPriceBeforeJump;
     while(currentJumpInterval+1 < jumpTimes.size()){
       StockPriceBeforeJump = mertonDynamics_->ContinuousDynamics(StockPriceAfterJump,jumpTimes[currentJumpInterval],jumpTimes[currentJumpInterval+1]); //returns stock value at the end of the continous interval 
@@ -66,9 +65,7 @@ double UniformSample::OneCycle() {
        if(Sample < jumpTimes[currentJumpInterval+1] )   //if there is a crossing during the bridge
        {
         double Payoff = evaluate_gi(mertonDynamics_ ,option_, StockPriceAfterJump,StockPriceBeforeJump, Sample,jumpTimes[currentJumpInterval],jumpTimes[currentJumpInterval+1] ) 
-                            * std::exp(-mertonDynamics_->GetRiskFree() * Sample) * option_->GetRebate() * extentionOfTimeInterval; 
-        hasCrossingOccured = 1;
-   
+                            * std::exp(-mertonDynamics_->GetRiskFree() * Sample) * option_->GetRebate() * extentionOfTimeInterval;    
         return Payoff;
        }
 
@@ -78,9 +75,7 @@ double UniformSample::OneCycle() {
     
       if(StockPriceAfterJump <= std::log(downAndOut_-> GetBarrier()))    //if there is a crossing during the jump
        { 
-        double Payoff = std::exp( - mertonDynamics_->GetRiskFree() * jumpTimes[currentJumpInterval+1]) * option_-> GetRebate();
-        hasCrossingOccured = 1;
-         
+        double Payoff = std::exp( - mertonDynamics_->GetRiskFree() * jumpTimes[currentJumpInterval+1]) * option_-> GetRebate();         
         return Payoff; 
        }
         
@@ -88,11 +83,8 @@ double UniformSample::OneCycle() {
 
     }
 
-    if(!hasCrossingOccured){    //if there is no crossing for the entire lifespan of the option
-        double TerminalValue = std::exp(StockPriceBeforeJump);
-       
-       return option_-> GetRebate() * std::exp(- mertonDynamics_->GetRiskFree() ) * option_->Payoff(TerminalValue) ; 
-    }   
+    double TerminalValue = std::exp(StockPriceBeforeJump);
+    return option_-> GetRebate() * std::exp(- mertonDynamics_->GetRiskFree() ) * option_->Payoff(TerminalValue) ;   
 
 }
 
