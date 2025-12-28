@@ -44,7 +44,9 @@ double UniformSample::evaluate_gi(  std::shared_ptr<MertonJumpDynamics> mertonDy
     return section1 * std::exp(-(expTerm1 + expTerm2));
 }
 
-
+double ExtentionOfTimeInterval(std::vector<double> jumpTimes, double probabilityOfCrossingWithinInterval, double currentJumpInterval){
+    return (jumpTimes[currentJumpInterval+1]- jumpTimes[currentJumpInterval]) / (1.0-probabilityOfCrossingWithinInterval);
+}
 
 double UniformSample::OneCycle() {
     std::vector<double> jumpTimes;
@@ -57,14 +59,14 @@ double UniformSample::OneCycle() {
       StockPriceBeforeJump = mertonDynamics_->ContinuousDynamics(StockPriceAfterJump,jumpTimes[currentJumpInterval],jumpTimes[currentJumpInterval+1]); //returns stock value at the end of the continous interval 
       double SizeOfJump = mertonDynamics_->Jumpsize();
       long double probabilityOfCrossingWithinInterval = NoCrossingDensity(mertonDynamics_ , option_ , StockPriceAfterJump, StockPriceBeforeJump,jumpTimes[currentJumpInterval],jumpTimes[currentJumpInterval+1]);
-      double ExtentionOfInterval = (jumpTimes[currentJumpInterval+1]- jumpTimes[currentJumpInterval]) / (1.0-probabilityOfCrossingWithinInterval);
-      std::uniform_real_distribution <> d{jumpTimes[currentJumpInterval], jumpTimes[currentJumpInterval]+ExtentionOfInterval}; 
+      double extentionOfTimeInterval = ExtentionOfTimeInterval(jumpTimes,probabilityOfCrossingWithinInterval,currentJumpInterval);
+      std::uniform_real_distribution <> d{jumpTimes[currentJumpInterval], jumpTimes[currentJumpInterval]+extentionOfTimeInterval}; 
        double Sample = d(RandomGenerator::getGenerator());
    
        if(Sample < jumpTimes[currentJumpInterval+1] )   //if there is a crossing during the bridge
        {
         double Payoff = evaluate_gi(mertonDynamics_ ,option_, StockPriceAfterJump,StockPriceBeforeJump, Sample,jumpTimes[currentJumpInterval],jumpTimes[currentJumpInterval+1] ) 
-                            * std::exp(-mertonDynamics_->GetRiskFree() * Sample) * option_->GetRebate() * ExtentionOfInterval; 
+                            * std::exp(-mertonDynamics_->GetRiskFree() * Sample) * option_->GetRebate() * extentionOfTimeInterval; 
         hasCrossingOccured = 1;
    
         return Payoff;
