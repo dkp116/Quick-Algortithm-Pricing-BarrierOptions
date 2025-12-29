@@ -32,6 +32,7 @@ public:
     double evaluate_gi(std::shared_ptr<MertonJumpDynamics> mertonDynamics , std::shared_ptr<Option> option,  double a, double b, double t, double T1, double T2);
     double NoCrossingDensity(std::shared_ptr<MertonJumpDynamics> mertonDynamics , std::shared_ptr<Option> option, double A,double B, double t1, double t2);
     std::optional<double> crossingDuringContinuousIntervalChecker(double StockPriceAfterJump, double StockPriceBeforeJump, std::vector<double> jumpTimesFromZeroToOne, double currentJumpInterval);
+    std::optional<double> CrossingDuringJump(double StockPriceAfterJump, std::vector<double>& jumpTimesFromZeroToOne , int currentJumpInterval);
     double OneCycle() override;
     double Price() override;
 };

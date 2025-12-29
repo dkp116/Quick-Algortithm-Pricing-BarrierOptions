@@ -73,6 +73,13 @@ bool isThisTheLastJump(double currentJumpInterval , std::vector<double>& jumpTim
     return 1;
 }
 
+std::optional<double> UniformSample::CrossingDuringJump(double StockPriceAfterJump, std::vector<double>& jumpTimesFromZeroToOne , int currentJumpInterval){
+    if(StockPriceAfterJump > std::log(downAndOut_-> GetBarrier())){return {};}    
+    double Payoff = std::exp( - mertonDynamics_->GetRiskFree() * jumpTimesFromZeroToOne[currentJumpInterval+1]) * option_-> GetRebate();         
+    return Payoff; 
+        
+}
+
 double UniformSample::OneCycle() {
     std::vector<double> jumpTimesFromZeroToOne;
     jumpTimesFromZeroToOne = mertonDynamics_->createJumpTimes();      //generates exponenially distributed jump times
@@ -86,15 +93,14 @@ double UniformSample::OneCycle() {
             return prices.value();
         }
         double SizeOfJump = mertonDynamics_->Jumpsize();
-        
+
         if(isThisTheLastJump){
             StockPriceAfterJump = StockPriceBeforeJump + SizeOfJump ; 
         }
         
-        if(StockPriceAfterJump <= std::log(downAndOut_-> GetBarrier()))    //if there is a crossing during the jump
-        { 
-            double Payoff = std::exp( - mertonDynamics_->GetRiskFree() * jumpTimesFromZeroToOne[currentJumpInterval+1]) * option_-> GetRebate();         
-            return Payoff; 
+        auto priceIfThereIsCrossingDuringJump = CrossingDuringJump( StockPriceAfterJump, jumpTimesFromZeroToOne ,  currentJumpInterval);
+        if(priceIfThereIsCrossingDuringJump.has_value()){
+            return priceIfThereIsCrossingDuringJump.value();
         }
         }
     
