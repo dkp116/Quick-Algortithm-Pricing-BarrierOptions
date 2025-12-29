@@ -2,6 +2,8 @@
 #include <cmath>
 #include <random>
 #include <iostream>
+#include <optional>
+
 
 double UniformSample::NoCrossingDensity(std::shared_ptr<MertonJumpDynamics> mertonDynamics , std::shared_ptr<Option> option, double A,double B, double t1, double t2)
 {  //Probability of stock not crossing in the brownian bridge
@@ -27,7 +29,7 @@ double UniformSample::gamma(std::shared_ptr<MertonJumpDynamics> mertonDynamics, 
                      / (2 * sigma * sigma * (T2 - T1)));
 }
 
-double UniformSample::evaluate_gi(  std::shared_ptr<MertonJumpDynamics> mertonDynamics , std::shared_ptr<Option> option,  double a, double b, double t, double T1, double T2) {     //Density of Crossing for the first time during the Brownian Bridge
+double UniformSample::evaluate_gi(std::shared_ptr<MertonJumpDynamics> mertonDynamics , std::shared_ptr<Option> option,  double a, double b, double t, double T1, double T2) {     //Density of Crossing for the first time during the Brownian Bridge
     double c = mertonDynamics->GetC();    
     double sigma = mertonDynamics->GetSigma();
     double gamma_val = gamma(mertonDynamics,a,b,T1, T2);
@@ -48,16 +50,8 @@ double ExtentionOfTimeInterval(std::vector<double> jumpTimesFromZeroToOne, doubl
     return (jumpTimesFromZeroToOne[currentJumpInterval+1]- jumpTimesFromZeroToOne[currentJumpInterval]) / (1.0-probabilityOfCrossingWithinInterval);
 }
 
-double UniformSample::OneCycle() {
-    std::vector<double> jumpTimesFromZeroToOne;
-    jumpTimesFromZeroToOne = mertonDynamics_->createJumpTimes();      //generates exponenially distributed jump times
-    double StockPriceAfterJump = stock_->GetLogStartPrice();
-    double StockPriceBeforeJump;
-    for(int currentJumpInterval = 0 ; currentJumpInterval + 1 < jumpTimesFromZeroToOne.size(); currentJumpInterval++){
-
-      StockPriceBeforeJump = mertonDynamics_->ContinuousDynamics(StockPriceAfterJump,jumpTimesFromZeroToOne[currentJumpInterval],jumpTimesFromZeroToOne[currentJumpInterval+1]); //returns stock value at the end of the continous interval 
-      double SizeOfJump = mertonDynamics_->Jumpsize();
-      long double probabilityOfCrossingWithinInterval = NoCrossingDensity(mertonDynamics_ , option_ , StockPriceAfterJump, StockPriceBeforeJump,jumpTimesFromZeroToOne[currentJumpInterval],jumpTimesFromZeroToOne[currentJumpInterval+1]);
+std::optional<double> UniformSample::crossingDuringContinuousIntervalChecker(double StockPriceAfterJump, double StockPriceBeforeJump, std::vector<double> jumpTimesFromZeroToOne, double currentJumpInterval){
+     long double probabilityOfCrossingWithinInterval = NoCrossingDensity(mertonDynamics_ , option_ , StockPriceAfterJump, StockPriceBeforeJump,jumpTimesFromZeroToOne[currentJumpInterval],jumpTimesFromZeroToOne[currentJumpInterval+1]);
       double extentionOfTimeInterval = ExtentionOfTimeInterval(jumpTimesFromZeroToOne,probabilityOfCrossingWithinInterval,currentJumpInterval);
       std::uniform_real_distribution <> d{jumpTimesFromZeroToOne[currentJumpInterval], jumpTimesFromZeroToOne[currentJumpInterval]+extentionOfTimeInterval}; 
        double Sample = d(RandomGenerator::getGenerator());
@@ -67,21 +61,37 @@ double UniformSample::OneCycle() {
         double Payoff = evaluate_gi(mertonDynamics_ ,option_, StockPriceAfterJump,StockPriceBeforeJump, Sample,jumpTimesFromZeroToOne[currentJumpInterval],jumpTimesFromZeroToOne[currentJumpInterval+1] ) 
                             * std::exp(-mertonDynamics_->GetRiskFree() * Sample) * option_->GetRebate() * extentionOfTimeInterval;    
         return Payoff;
-       }
+       }  
+       return {}; 
 
-    if(currentJumpInterval + 2 < jumpTimesFromZeroToOne.size()){
-         StockPriceAfterJump = StockPriceBeforeJump + SizeOfJump ; 
-    }
+}
+
+double UniformSample::OneCycle() {
+    std::vector<double> jumpTimesFromZeroToOne;
+    jumpTimesFromZeroToOne = mertonDynamics_->createJumpTimes();      //generates exponenially distributed jump times
+    double StockPriceAfterJump = stock_->GetLogStartPrice();
+    double StockPriceBeforeJump;
+    for(int currentJumpInterval = 0 ; currentJumpInterval + 1 < jumpTimesFromZeroToOne.size(); currentJumpInterval++){
+       
+        StockPriceBeforeJump = mertonDynamics_->ContinuousDynamics(StockPriceAfterJump,jumpTimesFromZeroToOne[currentJumpInterval],jumpTimesFromZeroToOne[currentJumpInterval+1]); 
+        auto prices = crossingDuringContinuousIntervalChecker( StockPriceAfterJump, StockPriceBeforeJump,  jumpTimesFromZeroToOne, currentJumpInterval);
+        if(prices.has_value()){
+            return prices.value();
+        }
+        double SizeOfJump = mertonDynamics_->Jumpsize();
+        if(currentJumpInterval + 2 < jumpTimesFromZeroToOne.size()){
+            StockPriceAfterJump = StockPriceBeforeJump + SizeOfJump ; 
+        }
+        
+        if(StockPriceAfterJump <= std::log(downAndOut_-> GetBarrier()))    //if there is a crossing during the jump
+        { 
+            double Payoff = std::exp( - mertonDynamics_->GetRiskFree() * jumpTimesFromZeroToOne[currentJumpInterval+1]) * option_-> GetRebate();         
+            return Payoff; 
+        }
+        }
     
-      if(StockPriceAfterJump <= std::log(downAndOut_-> GetBarrier()))    //if there is a crossing during the jump
-       { 
-        double Payoff = std::exp( - mertonDynamics_->GetRiskFree() * jumpTimesFromZeroToOne[currentJumpInterval+1]) * option_-> GetRebate();         
-        return Payoff; 
-       }
-    }
-
-    double TerminalValue = std::exp(StockPriceBeforeJump);
-    return option_-> GetRebate() * std::exp(- mertonDynamics_->GetRiskFree() ) * option_->Payoff(TerminalValue) ;   
+        double TerminalValue = std::exp(StockPriceBeforeJump);
+        return option_-> GetRebate() * std::exp(- mertonDynamics_->GetRiskFree() ) * option_->Payoff(TerminalValue) ;   
 
 }
 

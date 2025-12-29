@@ -6,6 +6,7 @@
 #include "Dynamics/IDynamics.h"
 #include "Dynamics/MertonJumpDynamics.h"
 #include "Options/Barrier.h"
+#include <optional>
 
 class UniformSample : public IPricing {
 private:
@@ -30,6 +31,7 @@ public:
     double gamma(std::shared_ptr<MertonJumpDynamics> mertonDynamics, double a, double b, double T1, double T2);
     double evaluate_gi(std::shared_ptr<MertonJumpDynamics> mertonDynamics , std::shared_ptr<Option> option,  double a, double b, double t, double T1, double T2);
     double NoCrossingDensity(std::shared_ptr<MertonJumpDynamics> mertonDynamics , std::shared_ptr<Option> option, double A,double B, double t1, double t2);
+    std::optional<double> crossingDuringContinuousIntervalChecker(double StockPriceAfterJump, double StockPriceBeforeJump, std::vector<double> jumpTimesFromZeroToOne, double currentJumpInterval);
     double OneCycle() override;
     double Price() override;
 };
