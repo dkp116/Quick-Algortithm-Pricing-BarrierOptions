@@ -88,22 +88,22 @@ double UniformSample::OneCycle() {
     for(int currentJumpInterval = 0 ; currentJumpInterval + 1 < jumpTimesFromZeroToOne.size(); currentJumpInterval++){
        
         StockPriceBeforeJump = mertonDynamics_->ContinuousDynamics(StockPriceAfterJump,jumpTimesFromZeroToOne[currentJumpInterval],jumpTimesFromZeroToOne[currentJumpInterval+1]); 
-        auto prices = crossingDuringContinuousIntervalChecker( StockPriceAfterJump, StockPriceBeforeJump,  jumpTimesFromZeroToOne, currentJumpInterval);
-        if(prices.has_value()){
-            return prices.value();
+        auto priceIfCrossingDuringBrownianBridge = crossingDuringContinuousIntervalChecker( StockPriceAfterJump, StockPriceBeforeJump,  jumpTimesFromZeroToOne, currentJumpInterval);
+        if(priceIfCrossingDuringBrownianBridge.has_value()){
+            return priceIfCrossingDuringBrownianBridge.value();
         }
         double SizeOfJump = mertonDynamics_->Jumpsize();
 
         if(isThisTheLastJump){
             StockPriceAfterJump = StockPriceBeforeJump + SizeOfJump ; 
         }
-        
+
         auto priceIfThereIsCrossingDuringJump = CrossingDuringJump( StockPriceAfterJump, jumpTimesFromZeroToOne ,  currentJumpInterval);
         if(priceIfThereIsCrossingDuringJump.has_value()){
             return priceIfThereIsCrossingDuringJump.value();
         }
         }
-    
+
         double TerminalValue = std::exp(StockPriceBeforeJump);
         return option_-> GetRebate() * std::exp(- mertonDynamics_->GetRiskFree() ) * option_->Payoff(TerminalValue) ;   
 
