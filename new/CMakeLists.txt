@@ -5,7 +5,7 @@ project(Refactor_Build_Test LANGUAGES CXX)
 # -------------------
 # C++ standard
 # -------------------
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # -------------------
