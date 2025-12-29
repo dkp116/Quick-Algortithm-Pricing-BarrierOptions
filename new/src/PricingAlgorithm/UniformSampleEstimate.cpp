@@ -66,6 +66,13 @@ std::optional<double> UniformSample::crossingDuringContinuousIntervalChecker(dou
 
 }
 
+bool isThisTheLastJump(double currentJumpInterval , std::vector<double>& jumpTimesFromZeroToOne){
+    if(currentJumpInterval + 1 >= jumpTimesFromZeroToOne.size()){
+        return 0;
+    }
+    return 1;
+}
+
 double UniformSample::OneCycle() {
     std::vector<double> jumpTimesFromZeroToOne;
     jumpTimesFromZeroToOne = mertonDynamics_->createJumpTimes();      //generates exponenially distributed jump times
@@ -79,7 +86,8 @@ double UniformSample::OneCycle() {
             return prices.value();
         }
         double SizeOfJump = mertonDynamics_->Jumpsize();
-        if(currentJumpInterval + 2 < jumpTimesFromZeroToOne.size()){
+        
+        if(isThisTheLastJump){
             StockPriceAfterJump = StockPriceBeforeJump + SizeOfJump ; 
         }
         
