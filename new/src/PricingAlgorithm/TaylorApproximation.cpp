@@ -22,6 +22,15 @@ double TaylorApproximation::NoCrossingDensity(std::shared_ptr<MertonJumpDynamics
     }
 }
 
+bool TaylorApproximation::isThereAJump(double currentJumpInterval, std::vector<double> &jumpTimesFromZeroToOne)
+{
+    if (currentJumpInterval == jumpTimesFromZeroToOne.size() - 1)
+    {
+        return 0;
+    }
+    return 1;
+}
+
 double TaylorApproximation::OneCycle()
 {
 
@@ -38,8 +47,7 @@ double TaylorApproximation::OneCycle()
     for (int currentJumpInterval = 0; currentJumpInterval + 1 < jumpTimesFromZeroToOne.size(); currentJumpInterval++)
     {
 
-        StockPriceBeforeJump = mertonDynamics_->ContinuousDynamics(StockPriceAfterJump, jumpTimesFromZeroToOne[currentJumpInterval], jumpTimesFromZeroToOne[currentJumpInterval + 1]); // returns stock value at the end of the continous interval
-        double SizeOfJump = mertonDynamics_->Jumpsize();
+        StockPriceBeforeJump = mertonDynamics_->ContinuousDynamics(StockPriceAfterJump, jumpTimesFromZeroToOne[currentJumpInterval], jumpTimesFromZeroToOne[currentJumpInterval + 1]);                                                          // returns stock value at the end of the continous interval
         long double probabilityOfCrossingWithinInterval = NoCrossingDensity(mertonDynamics_, option_, StockPriceAfterJump, StockPriceBeforeJump, jumpTimesFromZeroToOne[currentJumpInterval], jumpTimesFromZeroToOne[currentJumpInterval + 1]); // Probability that there is no corssing during the brownian bridge
         p.T1 = jumpTimesFromZeroToOne[currentJumpInterval];
         p.T2 = jumpTimesFromZeroToOne[currentJumpInterval + 1];
@@ -48,29 +56,28 @@ double TaylorApproximation::OneCycle()
         double J = EstimateGI(p);
 
         Pay = Pay + option_->GetRebate() * J * multiplyPi;
-        if (currentJumpInterval + 2 < jumpTimesFromZeroToOne.size())
+        if (isThereAJump(currentJumpInterval, jumpTimesFromZeroToOne))
         {
+            double SizeOfJump = mertonDynamics_->Jumpsize();
             StockPriceAfterJump = StockPriceBeforeJump + SizeOfJump;
         }
         multiplyPi = multiplyPi * probabilityOfCrossingWithinInterval;
-        if (StockPriceBeforeJump <= std::log(downAndOut_->GetBarrier()))
-        { // if there is a crossing during the bridge
+        if (StockPriceBeforeJump <= std::log(downAndOut_->GetBarrier())) // if there is a crossing during the bridge
+        {
 
             return Pay;
         }
-        else if (StockPriceAfterJump <= std::log(downAndOut_->GetBarrier())){
+        else if (StockPriceAfterJump <= std::log(downAndOut_->GetBarrier()))
+        {
 
             return Pay = Pay + option_->GetRebate() * std::exp(-mertonDynamics_->GetRiskFree() * jumpTimesFromZeroToOne[currentJumpInterval + 1]) * multiplyPi;
         }
-        
-        }
-        double TerminalValue = std::exp(StockPriceBeforeJump);
-    
-        return Pay + multiplyPi * downAndOut_->Payoff(TerminalValue) * std::exp(-mertonDynamics_->GetRiskFree());
     }
-     // if there is no crossing for the entire lifespan of the option
-    
+    double TerminalValue = std::exp(StockPriceBeforeJump);
 
+    return Pay + multiplyPi * downAndOut_->Payoff(TerminalValue) * std::exp(-mertonDynamics_->GetRiskFree());
+}
+// if there is no crossing for the entire lifespan of the option
 
 double TaylorApproximation::Price()
 {

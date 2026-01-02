@@ -27,7 +27,7 @@ public:
         downAndOut_ = std::dynamic_pointer_cast<DownAndOut>(option_);
     }
 
-
+    bool isThereAJump(double currentJumpInterval, std::vector<double> &jumpTimesFromZeroToOne);
     double NoCrossingDensity(std::shared_ptr<MertonJumpDynamics> mertonDynamics , std::shared_ptr<Option> option, double A,double B, double t1, double t2);
     double OneCycle() override;
     double Price() override;

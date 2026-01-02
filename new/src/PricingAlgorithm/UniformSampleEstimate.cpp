@@ -62,7 +62,7 @@ std::optional<double> UniformSample::crossingDuringContinuousIntervalChecker(dou
     return {};
 }
 
-bool isThereAJump(double currentJumpInterval, std::vector<double> &jumpTimesFromZeroToOne)
+bool UniformSample::isThereAJump(double currentJumpInterval, std::vector<double> &jumpTimesFromZeroToOne)
 {
     if (currentJumpInterval == jumpTimesFromZeroToOne.size() - 1)
     {
@@ -97,7 +97,7 @@ double UniformSample::OneCycle()
             return priceIfCrossingDuringBrownianBridge.value();
         }
 
-        if (isThereAJump)
+        if (isThereAJump(currentJumpInterval, jumpTimesFromZeroToOne))
         {
             double SizeOfJump = mertonDynamics_->Jumpsize();
             StockPriceAfterJump = StockPriceBeforeJump + SizeOfJump;
