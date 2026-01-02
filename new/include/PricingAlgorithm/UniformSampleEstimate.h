@@ -8,7 +8,8 @@
 #include "Options/Barrier.h"
 #include <optional>
 
-class UniformSample : public IPricing {
+class UniformSample : public IPricing
+{
 private:
     double iteration_;
     std::shared_ptr<IDynamics> stockDynamics_;
@@ -17,22 +18,22 @@ private:
 
 public:
     UniformSample(std::shared_ptr<Stock> stock,
-                   std::shared_ptr<Option> option,
-                   double iteration)
+                  std::shared_ptr<Option> option,
+                  double iteration)
         : IPricing(stock, option),
           iteration_(iteration),
-          stockDynamics_(stock_->GetDynamic()) 
+          stockDynamics_(stock_->GetDynamic())
     {
-       
+
         mertonDynamics_ = std::dynamic_pointer_cast<MertonJumpDynamics>(stockDynamics_);
         downAndOut_ = std::dynamic_pointer_cast<DownAndOut>(option_);
     }
 
     double gamma(std::shared_ptr<MertonJumpDynamics> mertonDynamics, double a, double b, double T1, double T2);
-    double evaluate_gi(std::shared_ptr<MertonJumpDynamics> mertonDynamics , std::shared_ptr<Option> option,  double a, double b, double t, double T1, double T2);
-    double NoCrossingDensity(std::shared_ptr<MertonJumpDynamics> mertonDynamics , std::shared_ptr<Option> option, double A,double B, double t1, double t2);
+    double evaluate_gi(std::shared_ptr<MertonJumpDynamics> mertonDynamics, std::shared_ptr<Option> option, double a, double b, double t, double T1, double T2);
+    double NoCrossingDensity(std::shared_ptr<MertonJumpDynamics> mertonDynamics, std::shared_ptr<Option> option, double A, double B, double t1, double t2);
     std::optional<double> crossingDuringContinuousIntervalChecker(double StockPriceAfterJump, double StockPriceBeforeJump, std::vector<double> jumpTimesFromZeroToOne, double currentJumpInterval);
-    std::optional<double> CrossingDuringJump(double StockPriceAfterJump, std::vector<double>& jumpTimesFromZeroToOne , int currentJumpInterval);
+    std::optional<double> CrossingDuringJump(double StockPriceAfterJump, std::vector<double> &jumpTimesFromZeroToOne, int currentJumpInterval);
     double OneCycle() override;
     double Price() override;
 };
