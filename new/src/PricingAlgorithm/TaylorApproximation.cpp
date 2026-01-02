@@ -34,7 +34,6 @@ double TaylorApproximation::OneCycle()
     p.LogBarrier = std::log(downAndOut_->GetBarrier());
     double StockPriceAfterJump = stock_->GetLogStartPrice();
     int currentJumpInterval = 0;
-    bool Checker = 1;
     double StockPriceBeforeJump;
     double multiplyPi = 1;
     for (int currentJumpInterval = 0; currentJumpInterval + 1 < jumpTimesFromZeroToOne.size(); currentJumpInterval++)
@@ -57,25 +56,22 @@ double TaylorApproximation::OneCycle()
         multiplyPi = multiplyPi * P_i;
         if (StockPriceBeforeJump <= std::log(downAndOut_->GetBarrier()))
         { // if there is a crossing during the bridge
-            Checker = 0;
+
             return Pay;
         }
-        else if (StockPriceAfterJump <= std::log(downAndOut_->GetBarrier()))
-        { // if there is a crossing during the jump
-            Checker = 0;
+        else if (StockPriceAfterJump <= std::log(downAndOut_->GetBarrier())){
 
             return Pay = Pay + option_->GetRebate() * std::exp(-mertonDynamics_->GetRiskFree() * jumpTimesFromZeroToOne[currentJumpInterval + 1]) * multiplyPi;
         }
-        currentJumpInterval++;
-    }
-
-    if (Checker)
-    { // if there is no crossing for the entire lifespan of the option
+        
+        }
         double TerminalValue = std::exp(StockPriceBeforeJump);
-
+    
         return Pay + multiplyPi * downAndOut_->Payoff(TerminalValue) * std::exp(-mertonDynamics_->GetRiskFree());
     }
-}
+     // if there is no crossing for the entire lifespan of the option
+    
+
 
 double TaylorApproximation::Price()
 {
