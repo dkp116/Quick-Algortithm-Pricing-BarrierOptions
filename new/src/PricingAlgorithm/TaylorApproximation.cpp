@@ -31,6 +31,25 @@ bool TaylorApproximation::isThereAJump(double currentJumpInterval, std::vector<d
     return 1;
 }
 
+bool isThereCrossingDuringBridge(double stockPriceBeforeJump, double barrier)
+{
+    if (stockPriceBeforeJump >= barrier)
+    {
+        return 0;
+    }
+
+    return 1;
+}
+
+bool isThereCrossingAfterJump(double stockPriceAfterJump, double barrier){
+    if (stockPriceAfterJump >= barrier)
+    {
+        return 0;
+    }
+
+    return 1;
+}
+
 double TaylorApproximation::OneCycle()
 {
 
@@ -56,7 +75,7 @@ double TaylorApproximation::OneCycle()
         double J = EstimateGI(p);
 
         Pay = Pay + option_->GetRebate() * J * multiplyPi;
-        if (StockPriceBeforeJump <= std::log(downAndOut_->GetBarrier())) // if there is a crossing during the bridge
+        if (isThereCrossingDuringBridge(StockPriceBeforeJump, std::log(downAndOut_->GetBarrier()))) // if there is a crossing during the bridge
         {
 
             return Pay;
@@ -68,7 +87,7 @@ double TaylorApproximation::OneCycle()
         }
         multiplyPi = multiplyPi * probabilityOfCrossingWithinInterval;
 
-         if (StockPriceAfterJump <= std::log(downAndOut_->GetBarrier()))
+        if (isThereCrossingAfterJump(StockPriceAfterJump , std::log(downAndOut_->GetBarrier()))) // crossing after jump
         {
 
             return Pay = Pay + option_->GetRebate() * std::exp(-mertonDynamics_->GetRiskFree() * jumpTimesFromZeroToOne[currentJumpInterval + 1]) * multiplyPi;
