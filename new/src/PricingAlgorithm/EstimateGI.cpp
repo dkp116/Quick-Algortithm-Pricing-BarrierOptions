@@ -56,3 +56,10 @@ long double EstimateGI(const ModelParams& p) {
                    (A2(p) + C2(p) * B(p));
     }
 }
+
+void ModelParams::setParameters(double T1_, double T2_, double stockPriceBeforeJump, double stockPriceAfterJump){
+    T1 = T1_;
+    T2 = T2_;
+    X2 = stockPriceBeforeJump;
+    X1 = stockPriceAfterJump;
+}

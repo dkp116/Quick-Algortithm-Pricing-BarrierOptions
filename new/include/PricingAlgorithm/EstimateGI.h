@@ -13,7 +13,8 @@ struct ModelParams {
     double X1 = 0.0;
     double X2 = 0.0;
     double LogBarrier = 0.0;
-    double sigma = 0.2;
+    double sigma = 0.0;
+    void setParameters(double T1_, double T2_, double stockPriceBeforeJump, double stockPriceAfterJump);
 
     double time() const { return T2 - T1; }
 };
