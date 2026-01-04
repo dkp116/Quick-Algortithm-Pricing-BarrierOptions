@@ -30,6 +30,9 @@ public:
     bool isThereAJump(double currentJumpInterval, std::vector<double> &jumpTimesFromZeroToOne);
     double NoCrossingDensity(std::shared_ptr<MertonJumpDynamics> mertonDynamics , std::shared_ptr<Option> option, double A,double B, double t1, double t2);
     double OneCycle() override;
+    bool isThereCrossingDuringBridge(double stockPriceBeforeJump);
+    bool isThereCrossingAfterJump(double stockPriceAfterJump);
+    double TerminalValue(double StockPriceBeforeJump, double Pay, double multiplyPi);
     double Price() override;
 };
 

@@ -5,6 +5,7 @@
 #include <iostream>
 #include "PricingAlgorithm/EstimateGI.h"
 
+
 double TaylorApproximation::NoCrossingDensity(std::shared_ptr<MertonJumpDynamics> mertonDynamics, std::shared_ptr<Option> option, double A, double B, double t1, double t2)
 { // Probability of stock not crossing in the brownian bridge
 
@@ -31,9 +32,9 @@ bool TaylorApproximation::isThereAJump(double currentJumpInterval, std::vector<d
     return 1;
 }
 
-bool isThereCrossingDuringBridge(double stockPriceBeforeJump, double barrier)
+bool TaylorApproximation::isThereCrossingDuringBridge(double stockPriceBeforeJump)
 {
-    if (stockPriceBeforeJump >= barrier)
+    if (stockPriceBeforeJump >= std::log(downAndOut_->GetBarrier()))
     {
         return 0;
     }
@@ -41,8 +42,8 @@ bool isThereCrossingDuringBridge(double stockPriceBeforeJump, double barrier)
     return 1;
 }
 
-bool isThereCrossingAfterJump(double stockPriceAfterJump, double barrier){
-    if (stockPriceAfterJump >= barrier)
+bool TaylorApproximation::isThereCrossingAfterJump(double stockPriceAfterJump){
+    if (stockPriceAfterJump >= std::log(downAndOut_->GetBarrier()))
     {
         return 0;
     }
@@ -75,7 +76,7 @@ double TaylorApproximation::OneCycle()
         double J = EstimateGI(p);
 
         Pay = Pay + option_->GetRebate() * J * multiplyPi;
-        if (isThereCrossingDuringBridge(StockPriceBeforeJump, std::log(downAndOut_->GetBarrier()))) // if there is a crossing during the bridge
+        if (isThereCrossingDuringBridge(StockPriceBeforeJump)) 
         {
 
             return Pay;
@@ -87,12 +88,17 @@ double TaylorApproximation::OneCycle()
         }
         multiplyPi = multiplyPi * probabilityOfCrossingWithinInterval;
 
-        if (isThereCrossingAfterJump(StockPriceAfterJump , std::log(downAndOut_->GetBarrier()))) // crossing after jump
+        if (isThereCrossingAfterJump(StockPriceAfterJump)) 
         {
 
             return Pay = Pay + option_->GetRebate() * std::exp(-mertonDynamics_->GetRiskFree() * jumpTimesFromZeroToOne[currentJumpInterval + 1]) * multiplyPi;
         }
     }
+    return TerminalValue(StockPriceBeforeJump, Pay, multiplyPi);
+}
+
+double TaylorApproximation::TerminalValue(double StockPriceBeforeJump, double Pay, double multiplyPi)
+{
     double TerminalValue = std::exp(StockPriceBeforeJump);
 
     return Pay + multiplyPi * downAndOut_->Payoff(TerminalValue) * std::exp(-mertonDynamics_->GetRiskFree());
