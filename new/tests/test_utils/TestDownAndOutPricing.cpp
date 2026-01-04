@@ -14,7 +14,7 @@ double price_down_and_out_call_with_taylor_series() {
     );
 
     // Create Monte Carlo pricing engine
-    UniformSample pricing(s, b, 100000);  // 1 million samples
+    TaylorApproximation pricing(s, b, 100000);  // 1 million samples
 
     // Compute the price
     return pricing.Price();
