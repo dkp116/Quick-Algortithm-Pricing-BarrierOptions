@@ -63,7 +63,7 @@ double TaylorApproximation::OneCycle()
     std::vector<double> jumpTimesFromZeroToOne;
     jumpTimesFromZeroToOne = mertonDynamics_->createJumpTimes(); // generates exponenially distributed jump jumpTimesFromZeroToOne
     double Pay = 0;
-    ModelParams p(mertonDynamics_->GetRiskFree(), mertonDynamics_->GetSigma(), std::log(downAndOut_->GetBarrier()));
+    ModelParams params(mertonDynamics_->GetRiskFree(), mertonDynamics_->GetSigma(), std::log(downAndOut_->GetBarrier()));
     double StockPriceAfterJump = stock_->GetLogStartPrice();
     double StockPriceBeforeJump;
     double probabilityOfNoCrossingDuringLifeTimeOfOption = 1;
@@ -72,9 +72,9 @@ double TaylorApproximation::OneCycle()
 
         StockPriceBeforeJump = mertonDynamics_->ContinuousDynamics(StockPriceAfterJump, jumpTimesFromZeroToOne[currentJumpInterval], jumpTimesFromZeroToOne[currentJumpInterval + 1]);                                                     // returns stock value at the end of the continous interval
         double probabilityOfCrossingWithinCurrentInterval = NoCrossingDensity(mertonDynamics_, option_, StockPriceAfterJump, StockPriceBeforeJump, jumpTimesFromZeroToOne[currentJumpInterval], jumpTimesFromZeroToOne[currentJumpInterval + 1]); // Probability that there is no corssing during the brownian bridge
-        p.setParameters(jumpTimesFromZeroToOne[currentJumpInterval], jumpTimesFromZeroToOne[currentJumpInterval + 1], StockPriceBeforeJump, StockPriceAfterJump);
+        params.setParameters(jumpTimesFromZeroToOne[currentJumpInterval], jumpTimesFromZeroToOne[currentJumpInterval + 1], StockPriceBeforeJump, StockPriceAfterJump);
 
-        double intergralOfCrossingDuringBrownianBridge = EstimateGI(p);
+        double intergralOfCrossingDuringBrownianBridge = EstimateGI(params);
 
         Pay = Pay + option_->GetRebate() * intergralOfCrossingDuringBrownianBridge * probabilityOfNoCrossingDuringLifeTimeOfOption;
         if (isThereCrossingDuringBridge(StockPriceBeforeJump))
