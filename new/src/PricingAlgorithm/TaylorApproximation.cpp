@@ -63,14 +63,14 @@ double TaylorApproximation::OneCycle()
     std::vector<double> jumpTimesFromZeroToOne;
     jumpTimesFromZeroToOne = mertonDynamics_->createJumpTimes(); // generates exponenially distributed jump jumpTimesFromZeroToOne
     double Pay = 0;
-    ModelParams p(mertonDynamics_->GetRiskFree(),  mertonDynamics_->GetSigma(), std::log(downAndOut_->GetBarrier()) );
+    ModelParams p(mertonDynamics_->GetRiskFree(), mertonDynamics_->GetSigma(), std::log(downAndOut_->GetBarrier()));
     double StockPriceAfterJump = stock_->GetLogStartPrice();
     double StockPriceBeforeJump;
     double multiplyPi = 1;
     for (int currentJumpInterval = 0; currentJumpInterval + 1 < jumpTimesFromZeroToOne.size(); currentJumpInterval++)
     {
 
-        StockPriceBeforeJump = mertonDynamics_->ContinuousDynamics(StockPriceAfterJump, jumpTimesFromZeroToOne[currentJumpInterval], jumpTimesFromZeroToOne[currentJumpInterval + 1]);                                                          // returns stock value at the end of the continous interval
+        StockPriceBeforeJump = mertonDynamics_->ContinuousDynamics(StockPriceAfterJump, jumpTimesFromZeroToOne[currentJumpInterval], jumpTimesFromZeroToOne[currentJumpInterval + 1]);                                                     // returns stock value at the end of the continous interval
         double probabilityOfCrossingWithinInterval = NoCrossingDensity(mertonDynamics_, option_, StockPriceAfterJump, StockPriceBeforeJump, jumpTimesFromZeroToOne[currentJumpInterval], jumpTimesFromZeroToOne[currentJumpInterval + 1]); // Probability that there is no corssing during the brownian bridge
         p.setParameters(jumpTimesFromZeroToOne[currentJumpInterval], jumpTimesFromZeroToOne[currentJumpInterval + 1], StockPriceBeforeJump, StockPriceAfterJump);
 
