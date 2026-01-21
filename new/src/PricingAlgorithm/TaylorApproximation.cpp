@@ -63,10 +63,7 @@ double TaylorApproximation::OneCycle()
     std::vector<double> jumpTimesFromZeroToOne;
     jumpTimesFromZeroToOne = mertonDynamics_->createJumpTimes(); // generates exponenially distributed jump jumpTimesFromZeroToOne
     double Pay = 0;
-    ModelParams p;
-    p.r = mertonDynamics_->GetRiskFree();
-    p.sigma = mertonDynamics_->GetSigma();
-    p.LogBarrier = std::log(downAndOut_->GetBarrier());
+    ModelParams p(mertonDynamics_->GetRiskFree(),  mertonDynamics_->GetSigma(), std::log(downAndOut_->GetBarrier()) );
     double StockPriceAfterJump = stock_->GetLogStartPrice();
     double StockPriceBeforeJump;
     double multiplyPi = 1;

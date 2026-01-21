@@ -15,6 +15,7 @@ struct ModelParams {
     double LogBarrier = 0.0;
     double sigma = 0.0;
     void setParameters(double T1_, double T2_, double stockPriceBeforeJump, double stockPriceAfterJump);
+    ModelParams(double riskfree, double standardDerviation, double Logbarrier_) : r(riskfree) , sigma(standardDerviation) , LogBarrier(Logbarrier_) {}
 
     double time() const { return T2 - T1; }
 };
