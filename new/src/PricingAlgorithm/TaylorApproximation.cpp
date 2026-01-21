@@ -74,9 +74,9 @@ double TaylorApproximation::OneCycle()
         double probabilityOfCrossingWithinInterval = NoCrossingDensity(mertonDynamics_, option_, StockPriceAfterJump, StockPriceBeforeJump, jumpTimesFromZeroToOne[currentJumpInterval], jumpTimesFromZeroToOne[currentJumpInterval + 1]); // Probability that there is no corssing during the brownian bridge
         p.setParameters(jumpTimesFromZeroToOne[currentJumpInterval], jumpTimesFromZeroToOne[currentJumpInterval + 1], StockPriceBeforeJump, StockPriceAfterJump);
 
-        double J = EstimateGI(p);
+        double intergralOfCrossingDuringBrownianBridge = EstimateGI(p);
 
-        Pay = Pay + option_->GetRebate() * J * multiplyPi;
+        Pay = Pay + option_->GetRebate() * intergralOfCrossingDuringBrownianBridge * multiplyPi;
         if (isThereCrossingDuringBridge(StockPriceBeforeJump))
         {
 
