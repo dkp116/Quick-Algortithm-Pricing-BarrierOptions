@@ -1,5 +1,10 @@
+/*
+    Taylor expnansion estimation of the intergral disounted density of gi.
+    Variable names align with formula in docs/Efficient_Barrier_Pricing_Daneel_Patel_final.pdf appendix
+*/ 
 
-#include "PricingAlgorithm/EstimateGI.h"         //Taylor expnansion estimation of the intergral disounted density of gi 
+#include "PricingAlgorithm/EstimateGI.h"   
+     
 double normal_cdf(double x) {
     return 0.5 * (1.0 + std::erf(x / std::sqrt(2.0)));
 }
