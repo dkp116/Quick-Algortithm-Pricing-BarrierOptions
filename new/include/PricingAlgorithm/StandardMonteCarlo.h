@@ -19,7 +19,8 @@ class StandardMonteCarlo : public IPricing{
         mertonDynamics_ = std::dynamic_pointer_cast<MertonJumpDynamics>(stockDynamics_);
         downAndOut_ = std::dynamic_pointer_cast<DownAndOut>(option_);
     }
-    double Price() override;        
+    double Price() override;  
+    double OneCycle() override;      
 };
 
 #endif

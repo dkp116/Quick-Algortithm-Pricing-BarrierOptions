@@ -3,7 +3,7 @@
 
 //this is for down and out barrier options
 
-double StandardMonteCarlo::Price(){
+double StandardMonteCarlo::OneCycle(){
 
     std::vector<double> jumpTimesFromZeroToOne;
     jumpTimesFromZeroToOne = mertonDynamics_->createJumpTimes();      //generates exponenially distributed jump times
@@ -37,3 +37,16 @@ double StandardMonteCarlo::Price(){
 
     return downAndOut_->Payoff(StockPrice) * std::exp(-mertonDynamics_->GetRiskFree()) * downAndOut_->GetRebate();
 }
+
+double StandardMonteCarlo::Price()
+{
+
+    double price = 0;
+    for (int z = 0; z < iteration_; z++)
+    {
+        price += OneCycle();
+    }
+
+    return price / iteration_;
+}
+
