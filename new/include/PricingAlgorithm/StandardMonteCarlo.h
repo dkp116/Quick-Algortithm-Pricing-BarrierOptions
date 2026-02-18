@@ -15,12 +15,20 @@ class StandardMonteCarlo : public IPricing{
     std::shared_ptr<MertonJumpDynamics> mertonDynamics_;
     std::shared_ptr<DownAndOut> downAndOut_;
     public:
-    StandardMonteCarlo(std::shared_ptr<Stock> stock , std::shared_ptr<Option> option , double iteration) : IPricing(stock, option) , iteration_(iteration), stockDynamics_(stock->GetDynamic()) {
+    StandardMonteCarlo(std::shared_ptr<Stock> stock , 
+                        std::shared_ptr<Option> option , 
+                        double iteration) :
+                         IPricing(stock, option) , 
+                         iteration_(iteration), 
+                         stockDynamics_(stock->GetDynamic()) {
         mertonDynamics_ = std::dynamic_pointer_cast<MertonJumpDynamics>(stockDynamics_);
         downAndOut_ = std::dynamic_pointer_cast<DownAndOut>(option_);
     }
     double Price() override;  
-    double OneCycle() override;      
+    double OneCycle() override; 
+   
+
+     
 };
 
 #endif

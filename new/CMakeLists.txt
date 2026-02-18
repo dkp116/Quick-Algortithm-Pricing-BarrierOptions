@@ -32,6 +32,7 @@ set(LIB_SOURCES
     src/PricingAlgorithm/UniformSampleEstimate.cpp
     src/PricingAlgorithm/TaylorApproximation.cpp
     src/PricingAlgorithm/EstimateGI.cpp
+    src/PricingAlgorithm/StandardMonteCarlo.cpp
 )
 
 add_library(core_lib STATIC ${LIB_SOURCES})
