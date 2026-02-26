@@ -24,13 +24,6 @@ int main()
 
     // Create Brownian Bridge pricing engine
 
-    UniformSample pricing(s, b, 1000000);
-    TaylorApproximation pricing2(s, b, 100000);
-
-    // Compute the price
-    double price = pricing.Price();
-    double price2 = pricing2.Price();
-    std::cout << "Option price: " << price << std::endl;
-    std::cout << "Option price: " << price2 << std::endl;
-    return 0;
+    StandardMonteCarlo pricing (s,b,100);
+    pricing.Price();
 }

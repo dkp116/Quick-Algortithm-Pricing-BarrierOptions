@@ -1,5 +1,6 @@
 # CMake build folder
 /build/
+/build_debug
 /CMakeFiles/
 /CMakeCache.txt
 Makefile
