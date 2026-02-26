@@ -42,7 +42,7 @@ double StandardMonteCarlo::Price()
 {
 
     double price = 0;
-    for (int z = 0; z < iteration_; z++)
+    for (int current_cycle = 0; current_cycle < iteration_; current_cycle++)
     {
         price += OneCycle();
     }
