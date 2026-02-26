@@ -11,31 +11,37 @@ double StandardMonteCarlo::OneCycle(){
     int i = 0;
     bool Checker = 1;
     double TimeStep = 100;
+    int jumpIncrement = 0;
 
-  for (int i = 0; i + 1 < jumpTimesFromZeroToOne.size(); ++i) {
+    while(jumpIncrement < jumpTimesFromZeroToOne.size()){
+
         double TimeIncrement = jumpTimesFromZeroToOne[i + 1] - jumpTimesFromZeroToOne[i];
-        double dt = TimeIncrement / TimeStep;
+        double dt = TimeIncrement / TimeStep;   
 
         for (int z = 0; z < TimeStep; ++z) {
-            StockPrice = mertonDynamics_->evolve(dt);
+            StockPrice = mertonDynamics_->evolve(dt);   //for each step we calculate dynamics 
             double t = jumpTimesFromZeroToOne[i] + z * dt;
-            if (StockPrice < std::log(downAndOut_->GetBarrier())) {
+            if (StockPrice < std::log(downAndOut_->GetBarrier())) { // if crossing of barrier 
                 return downAndOut_->GetRebate() * std::exp(-mertonDynamics_->GetRiskFree() * t);
             }
         }
 
-        if (i + 1 < jumpTimesFromZeroToOne.size() - 1) {
+        if (i + 1 < jumpTimesFromZeroToOne.size() - 1) {    //this calculates the jump
            
             double SizeOfJump = mertonDynamics_->Jumpsize();
             StockPrice *= std::exp(SizeOfJump);
            
-            if (StockPrice < std::log(downAndOut_->GetBarrier())) {
+            if (StockPrice < std::log(downAndOut_->GetBarrier())) { //calculates if barrier is crossed
                 return downAndOut_->GetRebate() * std::exp(-mertonDynamics_->GetRiskFree() * jumpTimesFromZeroToOne[i + 1]);
             }
         }
+
+
     }
 
-    return downAndOut_->Payoff(StockPrice) * std::exp(-mertonDynamics_->GetRiskFree()) * downAndOut_->GetRebate();
+  
+
+    return downAndOut_->Payoff(StockPrice) * std::exp(-mertonDynamics_->GetRiskFree()) * downAndOut_->GetRebate();  //no crossing
 }
 
 double StandardMonteCarlo::Price()
