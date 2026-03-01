@@ -51,7 +51,7 @@ double price_down_and_out_call_with_standard_monte_carlo(){
     );
 
     // Create Monte Carlo pricing engine
-    StandardMonteCarlo pricing(s, b, 100000);  
+    StandardMonteCarlo pricing(s, b, 10000);  
 
     // Compute the price
     return pricing.Price();

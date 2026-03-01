@@ -29,7 +29,7 @@ TEST_CASE("Down-and-Out call using Standard Monte Carlo price check", "[montecar
     CAPTURE(price, expected);
     INFO("Testing Standard Monte Carlo pricing for Down-and-Out Call");
 
-    REQUIRE(price == Catch::Approx(expected).epsilon(1.0));
+    REQUIRE(price == Catch::Approx(expected).epsilon(0.5));
 }
 
 
