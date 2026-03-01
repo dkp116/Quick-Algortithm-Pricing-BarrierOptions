@@ -116,7 +116,7 @@ https://github.com/dkp116/Quick-Algortithm-Pricing-BarrierOptions.git
 
 
 
-int main(){
+int mains(){
 
 
 

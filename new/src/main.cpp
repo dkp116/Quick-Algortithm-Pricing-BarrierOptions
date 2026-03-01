@@ -25,5 +25,6 @@ int main()
     // Create Brownian Bridge pricing engine
 
     StandardMonteCarlo pricing (s,b,100);
-    pricing.Price();
+    double  p = pricing.Price();
+    std::cout << p << std::endl;
 }
