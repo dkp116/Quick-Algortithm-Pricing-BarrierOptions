@@ -24,11 +24,11 @@ class StandardMonteCarlo : public IPricing{
         mertonDynamics_ = std::dynamic_pointer_cast<MertonJumpDynamics>(stockDynamics_);
         downAndOut_ = std::dynamic_pointer_cast<DownAndOut>(option_);
     }
-    double Price() override;  
-    double OneCycle() override; 
-   
-
-     
+    double Price() override;
+    double OneCycle() override;
+    double SimulateStockPath(std::vector<double> &jumpTimesFromZeroToOne, size_t jumpIncrement, int timeStep, double &StockPrice, bool &retFlag);
+    double JumpPath(double &StockPrice, std::vector<double> &jumpTimesFromZeroToOne, size_t jumpIncrement, bool &retFlag);
+    double ContinuousPath(double &StockPrice, double dt, std::vector<double> &jumpTimesFromZeroToOne, size_t jumpIncrement, int tStep, bool &retFlag);
 };
 
 #endif
