@@ -8,6 +8,7 @@
 #include "Options/Barrier.h"
 
 
+
 class StandardMonteCarlo : public IPricing{
     private:
     double iteration_;
