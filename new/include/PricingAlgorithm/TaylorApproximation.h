@@ -18,8 +18,7 @@ public:
     TaylorApproximation(std::shared_ptr<Stock> stock,
                    std::shared_ptr<Option> option,
                    double iteration, VarianceCalculation isVarienceIncluded)
-        : IPricing(stock, option, isVarienceIncluded),
-          iteration_(iteration),
+        : IPricing(stock, option, iteration, isVarienceIncluded),
           stockDynamics_(stock_->GetDynamic()) 
     {
        
@@ -33,7 +32,7 @@ public:
     bool isThereCrossingDuringBridge(double stockPriceBeforeJump);
     bool isThereCrossingAfterJump(double stockPriceAfterJump);
     double TerminalValue(double StockPriceBeforeJump, double Pay, double multiplyPi);
-    double Price() override;
+
 };
 
 #endif

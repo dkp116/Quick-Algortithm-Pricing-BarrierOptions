@@ -98,14 +98,3 @@ double TaylorApproximation::OneCycle()
     return TerminalValue(StockPriceBeforeJump, Pay, probabilityOfNoCrossingDuringLifeTimeOfOption);
 }
 
-double TaylorApproximation::Price()
-{
-
-    double price = 0;
-    for (int z = 0; z < iteration_; z++)
-    {
-        price += OneCycle();
-    }
-
-    return price / iteration_;
-}

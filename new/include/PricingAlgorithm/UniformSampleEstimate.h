@@ -20,8 +20,7 @@ public:
     UniformSample(std::shared_ptr<Stock> stock,
                   std::shared_ptr<Option> option,
                   double iteration, VarianceCalculation isVarienceIncluded)
-        : IPricing(stock, option, isVarienceIncluded),
-          iteration_(iteration),
+        : IPricing(stock, option, iteration , isVarienceIncluded),
           stockDynamics_(stock_->GetDynamic())
     {
 
@@ -36,7 +35,6 @@ public:
     std::optional<double> crossingDuringContinuousIntervalChecker(double StockPriceAfterJump, double StockPriceBeforeJump, std::vector<double> jumpTimesFromZeroToOne, double currentJumpInterval);
     std::optional<double> CrossingDuringJump(double StockPriceAfterJump, std::vector<double> &jumpTimesFromZeroToOne, int currentJumpInterval);
     double OneCycle() override;
-    double Price() override;
 };
 
 #endif

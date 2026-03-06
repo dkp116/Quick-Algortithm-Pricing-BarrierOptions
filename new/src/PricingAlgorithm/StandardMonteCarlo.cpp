@@ -1,6 +1,5 @@
 #include "PricingAlgorithm/StandardMonteCarlo.h"
 #include <vector>
-#include <iostream>
 
 
 double StandardMonteCarlo::OneCycle() {
@@ -68,43 +67,6 @@ double StandardMonteCarlo::ContinuousPath(double &StockPrice, double timeStepInc
         return downAndOut_->GetRebate() * std::exp(-mertonDynamics_->GetRiskFree() * t);
     }
     return {};
-}
-
-double StandardMonteCarlo::Price()      //this can be abstracted out lets just add it to this price
-{
-    if(varianceCalculation_ == VarianceCalculation::NotIncluded){
-        
-        double price = 0;
-        for (int current_cycle = 0; current_cycle < iteration_; current_cycle++)
-        {
-            price += OneCycle();
-        }
-    
-        return price / iteration_;
-    }
-
-    else {
-        double onGoingAverage = 0;
-        double onGoingSquareAverage = 0;
-        for (int current_cycle = 0; current_cycle < iteration_; current_cycle++)
-        {
-            CalculatePriceWithVariance(onGoingAverage,onGoingSquareAverage);
-        }
-
-        double MonteCarloVariance = pow((onGoingAverage / iteration_),2) - (onGoingSquareAverage/iteration_);
-
-        std::cout << "Varience is equal to: " << MonteCarloVariance;
-    
-        return onGoingAverage / iteration_;
-
-    }
-
-}
-
-void StandardMonteCarlo::CalculatePriceWithVariance(double& onGoingAverage, double& onGoingSquareAverage){
-    double singleCycle = OneCycle();
-    onGoingAverage += singleCycle;
-    onGoingSquareAverage += singleCycle * singleCycle;
 }
 
 

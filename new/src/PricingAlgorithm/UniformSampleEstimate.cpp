@@ -114,14 +114,4 @@ double UniformSample::OneCycle()
     return option_->GetRebate() * std::exp(-mertonDynamics_->GetRiskFree()) * option_->Payoff(TerminalValue);
 }
 
-double UniformSample::Price()
-{
-    double price = 0;
 
-    for (int currentJumpInterval = 0; currentJumpInterval < iteration_; currentJumpInterval++)
-    {
-        price += OneCycle();
-    }
-
-    return price / iteration_;
-}
