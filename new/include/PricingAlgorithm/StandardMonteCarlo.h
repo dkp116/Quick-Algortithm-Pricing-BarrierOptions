@@ -31,6 +31,7 @@ class StandardMonteCarlo : public IPricing{
     double SimulateStockPath(std::vector<double> &jumpTimesFromZeroToOne, size_t jumpIncrement, int timeStep, double &StockPrice, bool &retFlag);
     double JumpPath(double &StockPrice, std::vector<double> &jumpTimesFromZeroToOne, size_t jumpIncrement, bool &retFlag);
     double ContinuousPath(double &StockPrice, double dt, std::vector<double> &jumpTimesFromZeroToOne, size_t jumpIncrement, int tStep, bool &retFlag);
+    void CalculatePriceWithVariance(double& onGoingAverage, double& onGoingSquareAverage);
 };
 
 #endif
