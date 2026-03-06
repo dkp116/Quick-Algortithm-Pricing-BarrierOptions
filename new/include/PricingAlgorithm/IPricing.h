@@ -33,7 +33,7 @@ public:
     {
         double singleCycle = OneCycle();
         onGoingAverage += singleCycle;
-        onGoingSquareAverage += singleCycle * singleCycle;
+        onGoingSquareAverage += (singleCycle * singleCycle);
     }
     double Price()
     {
@@ -58,9 +58,13 @@ public:
                 CalculatePriceWithVariance(onGoingAverage, onGoingSquareAverage);
             }
 
-            double MonteCarloVariance = (onGoingSquareAverage / iteration_) - pow((onGoingAverage / iteration_), 2.0) ;
+            double variance =
+                (onGoingSquareAverage / iteration_) -
+                pow(onGoingAverage / iteration_, 2);
 
-            std::cout << "Varience is equal to: " << MonteCarloVariance;
+            double standard_error = sqrt(variance / iteration_);
+
+            std::cout << "Varience is equal to: " << standard_error << std::endl;
 
             return onGoingAverage / iteration_;
         }
