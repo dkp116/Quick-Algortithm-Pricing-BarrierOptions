@@ -40,34 +40,42 @@ public:
         if (varianceCalculation_ == VarianceCalculation::NotIncluded)
         {
 
-            double price = 0;
-            for (int current_cycle = 0; current_cycle < iteration_; current_cycle++)
-            {
-                price += OneCycle();
-            }
-
-            return price / iteration_;
+            return PriceWithoutVarience();
         }
 
         else
         {
-            double onGoingAverage = 0;
-            double onGoingSquareAverage = 0;
-            for (int current_cycle = 0; current_cycle < iteration_; current_cycle++)
-            {
-                CalculatePriceWithVariance(onGoingAverage, onGoingSquareAverage);
-            }
-
-            double variance =
-                (onGoingSquareAverage / iteration_) -
-                pow(onGoingAverage / iteration_, 2);
-
-            double standard_error = sqrt(variance / iteration_);
-
-            std::cout << "Varience is equal to: " << standard_error << std::endl;
-
-            return onGoingAverage / iteration_;
+            return PriceWithVarience();
         }
+    }
+    double PriceWithVarience()
+    {
+        double onGoingAverage = 0;
+        double onGoingSquareAverage = 0;
+        for (int current_cycle = 0; current_cycle < iteration_; current_cycle++)
+        {
+            CalculatePriceWithVariance(onGoingAverage, onGoingSquareAverage);
+        }
+
+        double variance =
+            (onGoingSquareAverage / iteration_) -
+            pow(onGoingAverage / iteration_, 2);
+
+        double standard_error = sqrt(variance / iteration_);
+
+        std::cout << "Varience is equal to: " << standard_error << std::endl;
+
+        return onGoingAverage / iteration_;
+    }
+    double PriceWithoutVarience()
+    {
+        double price = 0;
+        for (int current_cycle = 0; current_cycle < iteration_; current_cycle++)
+        {
+            price += OneCycle();
+        }
+
+        return price / iteration_;
     }
 };
 
