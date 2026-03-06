@@ -12,7 +12,10 @@
 #include <iostream>
 
 int main()
-{
+{   //so i want to add varience to be calculated here depending on what is inputted 
+    // add to constructer 
+    // then depending on if its true of false run the same functions
+    //seperate by an if statement shouldn't be too bad to add 
     // Create Merton jump diffusion dynamics
     auto dynamic = std::make_shared<MertonJumpDynamics>(0.05, 0.25, 2, 0, 0.1);
 
@@ -24,7 +27,7 @@ int main()
 
     // Create Brownian Bridge pricing engine
 
-    StandardMonteCarlo pricing (s,b,100);
+    StandardMonteCarlo pricing (s,b,100, VarianceCalculation::Included);
     double  p = pricing.Price();
     std::cout << p << std::endl;
 }

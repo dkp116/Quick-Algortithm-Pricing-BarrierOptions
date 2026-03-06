@@ -15,11 +15,12 @@ class StandardMonteCarlo : public IPricing{
     std::shared_ptr<IDynamics> stockDynamics_;
     std::shared_ptr<MertonJumpDynamics> mertonDynamics_;
     std::shared_ptr<DownAndOut> downAndOut_;
+
     public:
     StandardMonteCarlo(std::shared_ptr<Stock> stock , 
                         std::shared_ptr<Option> option , 
-                        double iteration) :
-                         IPricing(stock, option) , 
+                        double iteration, VarianceCalculation isVarienceIncluded) :
+                         IPricing(stock, option,isVarienceIncluded) , 
                          iteration_(iteration), 
                          stockDynamics_(stock->GetDynamic()) {
         mertonDynamics_ = std::dynamic_pointer_cast<MertonJumpDynamics>(stockDynamics_);

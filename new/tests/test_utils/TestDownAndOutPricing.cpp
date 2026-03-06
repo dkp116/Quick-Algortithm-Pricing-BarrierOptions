@@ -14,7 +14,7 @@ double price_down_and_out_call_with_taylor_series() {
     );
 
     // Create Monte Carlo pricing engine
-    TaylorApproximation pricing(s, b, 100000);  
+    TaylorApproximation pricing(s, b, 100000, VarianceCalculation::Included);  
 
     // Compute the price
     return pricing.Price();
@@ -33,7 +33,7 @@ double price_down_and_out_call_with_uniform_distribution() {
     );
 
     // Create Monte Carlo pricing engine
-    UniformSample pricing(s, b, 100000);  
+    UniformSample pricing(s, b, 100000, VarianceCalculation::Included);  
 
     // Compute the price
     return pricing.Price();
@@ -51,7 +51,7 @@ double price_down_and_out_call_with_standard_monte_carlo(){
     );
 
     // Create Monte Carlo pricing engine
-    StandardMonteCarlo pricing(s, b, 10000);  
+    StandardMonteCarlo pricing(s, b, 10000, VarianceCalculation::Included);  
 
     // Compute the price
     return pricing.Price();
