@@ -13,3 +13,4 @@
 double price_down_and_out_call_with_taylor_series();
 double price_down_and_out_call_with_uniform_distribution();
 double price_down_and_out_call_with_standard_monte_carlo();
+double price_down_and_out_call_with_standard_monte_carlo_and_varience();
