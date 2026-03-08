@@ -19,8 +19,8 @@ private:
 public:
     UniformSample(std::shared_ptr<Stock> stock,
                   std::shared_ptr<Option> option,
-                  double iteration, StandardErrorCalculation isVarienceIncluded,  Time isTimeIncluded)
-        : IPricing(stock, option, iteration , isVarienceIncluded, isTimeIncluded),
+                  double iteration, StandardErrorCalculation isVarienceIncluded,  Time isTimeIncluded, VarianceReduction isVarianceReductionIncluded )
+        : IPricing(stock, option, iteration , isVarienceIncluded, isTimeIncluded, isVarianceReductionIncluded),
           stockDynamics_(stock_->GetDynamic())
     {
 
