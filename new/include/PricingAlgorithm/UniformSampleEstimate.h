@@ -7,6 +7,8 @@
 #include "Dynamics/MertonJumpDynamics.h"
 #include "Options/Barrier.h"
 #include <optional>
+#include <unordered_map>
+#include <string>
 
 class UniformSample : public IPricing
 {
@@ -19,8 +21,8 @@ private:
 public:
     UniformSample(std::shared_ptr<Stock> stock,
                   std::shared_ptr<Option> option,
-                  double iteration, StandardErrorCalculation isVarienceIncluded,  Time isTimeIncluded, VarianceReduction isVarianceReductionIncluded )
-        : IPricing(stock, option, iteration , isVarienceIncluded, isTimeIncluded, isVarianceReductionIncluded),
+                  double iteration, StandardErrorCalculation isVarienceIncluded, Time isTimeIncluded, VarianceReduction isVarianceReductionIncluded)
+        : IPricing(stock, option, iteration, isVarienceIncluded, isTimeIncluded, isVarianceReductionIncluded),
           stockDynamics_(stock_->GetDynamic())
     {
 
@@ -35,6 +37,7 @@ public:
     std::optional<double> crossingDuringContinuousIntervalChecker(double StockPriceAfterJump, double StockPriceBeforeJump, std::vector<double> jumpTimesFromZeroToOne, double currentJumpInterval);
     std::optional<double> CrossingDuringJump(double StockPriceAfterJump, std::vector<double> &jumpTimesFromZeroToOne, int currentJumpInterval);
     double OneCycle() override;
+    std::unordered_map<std::string, double> OneCycleSimulatedToTheEnd();
 };
 
 #endif
