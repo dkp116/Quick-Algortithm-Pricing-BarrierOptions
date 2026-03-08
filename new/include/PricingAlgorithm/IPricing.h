@@ -12,7 +12,7 @@
 // the pricing algo should look like what then
 
 // the same just with a time right?
-enum class VarianceCalculation
+enum class StandardErrorCalculation
 {
     Included,
     NotIncluded
@@ -28,16 +28,16 @@ class IPricing
 protected:
     std::shared_ptr<Stock> stock_;
     std::shared_ptr<Option> option_;
-    VarianceCalculation includeVarience_;
+    StandardErrorCalculation includeStandardError_;
     Time includeTime_;
     double iteration_;
-    double varience_;
+    double standard_error_;
     double time_;
 
 public:
     IPricing(std::shared_ptr<Stock> stock, std::shared_ptr<Option> option,
-             double iteration, VarianceCalculation isVarienceIncluded,
-             Time isTimeIncluded) : stock_(stock), option_(option), iteration_(iteration), includeVarience_(isVarienceIncluded), includeTime_(isTimeIncluded) {}
+             double iteration, StandardErrorCalculation isStandardErrorIncluded,
+             Time isTimeIncluded) : stock_(stock), option_(option), iteration_(iteration), includeStandardError_(isStandardErrorIncluded), includeTime_(isTimeIncluded) {}
     virtual double OneCycle() = 0;
 
     void CalculatePriceWithVariance(double &onGoingAverage, double &onGoingSquareAverage)
@@ -51,7 +51,7 @@ public:
         if (includeTime_ == Time::Included)
         {
 
-            if (includeVarience_ == VarianceCalculation::NotIncluded)
+            if (includeStandardError_ == StandardErrorCalculation::NotIncluded)
             {
                 auto start = std::chrono::high_resolution_clock::now();
 
@@ -79,7 +79,7 @@ public:
         else
         {
 
-            if (includeVarience_ == VarianceCalculation::NotIncluded)
+            if (includeStandardError_ == StandardErrorCalculation::NotIncluded)
             {
 
                 return PriceWithoutVarience();
@@ -106,7 +106,7 @@ public:
 
         double standard_error = sqrt(variance / iteration_);
 
-        std::cout << "Varience is equal to: " << standard_error << std::endl;
+        standard_error_ = standard_error;
 
         return onGoingAverage / iteration_;
     }
