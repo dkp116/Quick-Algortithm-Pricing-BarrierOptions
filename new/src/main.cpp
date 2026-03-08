@@ -27,7 +27,7 @@ int main()
 
     // Create Brownian Bridge pricing engine
 
-    StandardMonteCarlo pricing (s,b,1000000, VarianceCalculation::Included);
+    StandardMonteCarlo pricing (s,b,1000000, VarianceCalculation::Included, Time::NotIncluded);
     double  p = pricing.Price();
     std::cout << p << std::endl;
 }

@@ -5,7 +5,13 @@
 #include "Stock/Stock.h"
 #include "Options/Option.h"
 #include <iostream>
+#include <chrono>
 
+// so I want to  be able to profile this
+// I want to generate a time for the calculations
+// the pricing algo should look like what then
+
+// the same just with a time right?
 enum class VarianceCalculation
 {
     Included,
@@ -22,11 +28,16 @@ class IPricing
 protected:
     std::shared_ptr<Stock> stock_;
     std::shared_ptr<Option> option_;
-    VarianceCalculation varianceCalculation_;
+    VarianceCalculation includeVarience_;
+    Time includeTime_;
     double iteration_;
+    double varience_;
+    double time_;
 
 public:
-    IPricing(std::shared_ptr<Stock> stock, std::shared_ptr<Option> option, double iteration, VarianceCalculation isVarienceIncluded) : stock_(stock), option_(option), iteration_(iteration), varianceCalculation_(isVarienceIncluded) {}
+    IPricing(std::shared_ptr<Stock> stock, std::shared_ptr<Option> option,
+             double iteration, VarianceCalculation isVarienceIncluded,
+             Time isTimeIncluded) : stock_(stock), option_(option), iteration_(iteration), includeVarience_(isVarienceIncluded), includeTime_(isTimeIncluded) {}
     virtual double OneCycle() = 0;
 
     void CalculatePriceWithVariance(double &onGoingAverage, double &onGoingSquareAverage)
@@ -37,15 +48,47 @@ public:
     }
     double Price()
     {
-        if (varianceCalculation_ == VarianceCalculation::NotIncluded)
+        if (includeTime_ == Time::Included)
         {
 
-            return PriceWithoutVarience();
-        }
+            if (includeVarience_ == VarianceCalculation::NotIncluded)
+            {
+                auto start = std::chrono::high_resolution_clock::now();
 
+                double priceWithoutVarience = PriceWithoutVarience();
+                auto end = std::chrono::high_resolution_clock::now();
+
+                std::chrono::duration<double> elapsed = end - start;
+                time_ = elapsed.count();
+                return PriceWithoutVarience();
+            }
+
+            else
+            {
+                auto start = std::chrono::high_resolution_clock::now();
+
+                double priceWithoutVarience = PriceWithVarience();
+                auto end = std::chrono::high_resolution_clock::now();
+
+                std::chrono::duration<double> elapsed = end - start;
+                time_ = elapsed.count();
+
+                return PriceWithVarience();
+            }
+        }
         else
         {
-            return PriceWithVarience();
+
+            if (includeVarience_ == VarianceCalculation::NotIncluded)
+            {
+
+                return PriceWithoutVarience();
+            }
+
+            else
+            {
+                return PriceWithVarience();
+            }
         }
     }
     double PriceWithVarience()
