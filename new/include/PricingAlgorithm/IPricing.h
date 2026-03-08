@@ -7,11 +7,6 @@
 #include <iostream>
 #include <chrono>
 
-// so I want to  be able to profile this
-// I want to generate a time for the calculations
-// the pricing algo should look like what then
-
-// the same just with a time right?
 enum class StandardErrorCalculation
 {
     Included,
@@ -34,6 +29,21 @@ protected:
     double standard_error_;
     double time_;
 
+    template <typename Func>
+    double ProfileUsingTime(Func func)
+    {
+        auto start = std::chrono::high_resolution_clock::now();
+
+        double result = func();
+
+        auto end = std::chrono::high_resolution_clock::now();
+
+        std::chrono::duration<double> elapsed = end - start;
+        time_ = elapsed.count();
+
+        return result;
+    }
+
 public:
     IPricing(std::shared_ptr<Stock> stock, std::shared_ptr<Option> option,
              double iteration, StandardErrorCalculation isStandardErrorIncluded,
@@ -46,51 +56,23 @@ public:
         onGoingAverage += singleCycle;
         onGoingSquareAverage += (singleCycle * singleCycle);
     }
+
     double Price()
     {
+        auto pricing = [&]()
+        {
+            if (includeStandardError_ == StandardErrorCalculation::NotIncluded)
+                return PriceWithoutVarience();
+            else
+                return PriceWithVarience();
+        };
+
         if (includeTime_ == Time::Included)
-        {
+            return ProfileUsingTime(pricing);
 
-            if (includeStandardError_ == StandardErrorCalculation::NotIncluded)
-            {
-                auto start = std::chrono::high_resolution_clock::now();
-
-                double priceWithoutVarience = PriceWithoutVarience();
-                auto end = std::chrono::high_resolution_clock::now();
-
-                std::chrono::duration<double> elapsed = end - start;
-                time_ = elapsed.count();
-                return PriceWithoutVarience();
-            }
-
-            else
-            {
-                auto start = std::chrono::high_resolution_clock::now();
-
-                double priceWithoutVarience = PriceWithVarience();
-                auto end = std::chrono::high_resolution_clock::now();
-
-                std::chrono::duration<double> elapsed = end - start;
-                time_ = elapsed.count();
-
-                return PriceWithVarience();
-            }
-        }
-        else
-        {
-
-            if (includeStandardError_ == StandardErrorCalculation::NotIncluded)
-            {
-
-                return PriceWithoutVarience();
-            }
-
-            else
-            {
-                return PriceWithVarience();
-            }
-        }
+        return pricing();
     }
+
     double PriceWithVarience()
     {
         double onGoingAverage = 0;
