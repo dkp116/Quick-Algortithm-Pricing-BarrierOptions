@@ -18,6 +18,12 @@ enum class Time
     NotIncluded
 };
 
+enum class VarianceReduction
+{
+    Included,
+    NotIncluded
+};
+
 class IPricing
 {
 protected:
@@ -25,6 +31,7 @@ protected:
     std::shared_ptr<Option> option_;
     StandardErrorCalculation includeStandardError_;
     Time includeTime_;
+    VarianceReduction includeVarienceReduction_; 
     double iteration_;
     double standard_error_;
     double time_;
@@ -47,7 +54,10 @@ protected:
 public:
     IPricing(std::shared_ptr<Stock> stock, std::shared_ptr<Option> option,
              double iteration, StandardErrorCalculation isStandardErrorIncluded,
-             Time isTimeIncluded) : stock_(stock), option_(option), iteration_(iteration), includeStandardError_(isStandardErrorIncluded), includeTime_(isTimeIncluded) {}
+             Time isTimeIncluded, VarianceReduction includeVarienceReduction) : 
+             stock_(stock), option_(option), iteration_(iteration), 
+             includeStandardError_(isStandardErrorIncluded), includeTime_(isTimeIncluded), 
+             includeVarienceReduction_(includeVarienceReduction){}
     virtual double OneCycle() = 0;
 
     void CalculatePriceWithVariance(double &onGoingAverage, double &onGoingSquareAverage)

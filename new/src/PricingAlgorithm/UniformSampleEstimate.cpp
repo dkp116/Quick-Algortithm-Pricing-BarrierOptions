@@ -115,3 +115,5 @@ double UniformSample::OneCycle()
 }
 
 
+//how can we do this ?
+//have a crossing variable? and 
