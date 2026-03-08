@@ -114,6 +114,41 @@ double UniformSample::OneCycle()
     return option_->GetRebate() * std::exp(-mertonDynamics_->GetRiskFree()) * option_->Payoff(TerminalValue);
 }
 
+std::unordered_map<std::string, double> UniformSample::OneCycleSimulatedToTheEnd()
+{
+    std::unordered_map<std::string, double> CycleWithSimulatedPath;
+    bool hasThereBeenACrossing= 0 ;
+  std::vector<double> jumpTimesFromZeroToOne;
+    jumpTimesFromZeroToOne = mertonDynamics_->createJumpTimes(); // generates exponenially distributed jump times
+    double StockPriceAfterJump = stock_->GetLogStartPrice();
+    double StockPriceBeforeJump;
+    for (int currentJumpInterval = 0; currentJumpInterval + 1 < jumpTimesFromZeroToOne.size(); currentJumpInterval++)
+    {
 
-//how can we do this ?
-//have a crossing variable? and 
+        StockPriceBeforeJump = mertonDynamics_->ContinuousDynamics(StockPriceAfterJump, jumpTimesFromZeroToOne[currentJumpInterval], jumpTimesFromZeroToOne[currentJumpInterval + 1]);
+        auto priceIfCrossingDuringBrownianBridge = crossingDuringContinuousIntervalChecker(StockPriceAfterJump, StockPriceBeforeJump, jumpTimesFromZeroToOne, currentJumpInterval);
+        if (priceIfCrossingDuringBrownianBridge.has_value() && !hasThereBeenACrossing)
+        {
+            CycleWithSimulatedPath["Payoff"] = priceIfCrossingDuringBrownianBridge.value();
+            hasThereBeenACrossing = 1;
+        }
+
+        if (isThereAJump(currentJumpInterval, jumpTimesFromZeroToOne))
+        {
+            double SizeOfJump = mertonDynamics_->Jumpsize();
+            StockPriceAfterJump = StockPriceBeforeJump + SizeOfJump;
+        }
+
+        auto priceIfThereIsCrossingDuringJump = CrossingDuringJump(StockPriceAfterJump, jumpTimesFromZeroToOne, currentJumpInterval);
+        if (priceIfThereIsCrossingDuringJump.has_value() && !hasThereBeenACrossing)
+        {
+             CycleWithSimulatedPath["Payoff"] = priceIfThereIsCrossingDuringJump.value();
+             hasThereBeenACrossing = 1;
+        }
+    }
+
+    double TerminalValue = std::exp(StockPriceBeforeJump);
+    CycleWithSimulatedPath["Payoff"] =  option_->GetRebate() * std::exp(-mertonDynamics_->GetRiskFree()) * option_->Payoff(TerminalValue);  
+    CycleWithSimulatedPath["TerminalStockValue"] = TerminalValue;
+    return CycleWithSimulatedPath;
+}
