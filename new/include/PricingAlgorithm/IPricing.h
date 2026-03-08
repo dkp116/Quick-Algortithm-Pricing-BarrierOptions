@@ -102,6 +102,14 @@ public:
 
         return price / iteration_;
     }
+
+    double GetTime(){
+        return time_;
+    }
+
+    double GetStandardError(){
+        return standard_error_;
+    }
 };
 
 #endif
