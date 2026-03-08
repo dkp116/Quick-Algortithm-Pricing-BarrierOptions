@@ -62,9 +62,9 @@ public:
         auto pricing = [&]()
         {
             if (includeStandardError_ == StandardErrorCalculation::NotIncluded)
-                return PriceWithoutVarience();
+                return PriceWithoutVariance();
             else
-                return PriceWithVarience();
+                return PriceWithVariance();
         };
 
         if (includeTime_ == Time::Included)
@@ -73,7 +73,7 @@ public:
         return pricing();
     }
 
-    double PriceWithVarience()
+    double PriceWithVariance()
     {
         double onGoingAverage = 0;
         double onGoingSquareAverage = 0;
@@ -92,7 +92,7 @@ public:
 
         return onGoingAverage / iteration_;
     }
-    double PriceWithoutVarience()
+    double PriceWithoutVariance()
     {
         double price = 0;
         for (int current_cycle = 0; current_cycle < iteration_; current_cycle++)
