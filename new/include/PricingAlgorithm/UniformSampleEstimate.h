@@ -17,6 +17,11 @@ private:
     std::shared_ptr<IDynamics> stockDynamics_;
     std::shared_ptr<MertonJumpDynamics> mertonDynamics_;
     std::shared_ptr<DownAndOut> downAndOut_;
+    double onGoingOptionPayoff =0;
+    double onGoingOptionPayoffSquared = 0;
+    double onGoingVanillaCallPayoff=0;
+    double onGoingVanillaCallPayoffSquared = 0;
+    double onGoingMixedCorrelation = 0;
 
 public:
     UniformSample(std::shared_ptr<Stock> stock,
@@ -42,6 +47,7 @@ public:
     double PriceMJD(int N);
     double black_scholes_call(double S, double K, double T, double r, double sigma);
     double norm_cdf(double x);
+    void calculateVarienceAndExpectation(std::unordered_map<std::string, double>& oneCycleSimulatedToTheEnd);
 };
 
 #endif
