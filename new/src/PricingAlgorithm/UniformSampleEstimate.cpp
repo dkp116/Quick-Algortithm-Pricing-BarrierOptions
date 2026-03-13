@@ -196,3 +196,14 @@ double UniformSample::black_scholes_call(double S, double K, double T, double r,
 
     return S * norm_cdf(d1) - K * std::exp(-r * T) * norm_cdf(d2);
 }
+
+
+void UniformSample::calculateVarienceAndExpectation(std::unordered_map<std::string, double>& oneCycleSimulatedToTheEnd){
+    onGoingOptionPayoff += oneCycleSimulatedToTheEnd["Payoff"];
+    double VanillaCallPayoff = std::max(oneCycleSimulatedToTheEnd["TerminalStockValue"] - downAndOut_->GetStrike(), 0.0);
+    onGoingVanillaCallPayoff += VanillaCallPayoff;
+    onGoingOptionPayoffSquared += oneCycleSimulatedToTheEnd["Payoff"] * oneCycleSimulatedToTheEnd["Payoff"]  ;
+    onGoingVanillaCallPayoffSquared = VanillaCallPayoff * VanillaCallPayoff;
+    onGoingMixedCorrelation += oneCycleSimulatedToTheEnd["Payoff"] * VanillaCallPayoff;
+}
+
