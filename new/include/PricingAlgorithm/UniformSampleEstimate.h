@@ -49,6 +49,7 @@ public:
     double norm_cdf(double x);
     void calculateVarienceAndExpectation(std::unordered_map<std::string, double>& oneCycleSimulatedToTheEnd);
     std::unordered_map<std::string, double> calculateBetaCovarienceVarienceAndExpectation(double simulation);
+    double calculateVarienceReductedPrice(std::unordered_map<std::string, double>& resultsFromSimulation);
 };
 
 #endif

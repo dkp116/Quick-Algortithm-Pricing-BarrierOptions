@@ -230,3 +230,9 @@ std::unordered_map<std::string, double> UniformSample::calculateBetaCovarienceVa
 
     return results;
 }
+
+double UniformSample::calculateVarienceReductedPrice(std::unordered_map<std::string, double> &resultsFromSimulation)
+{
+
+    return resultsFromSimulation["ExpectedOption"] - resultsFromSimulation["Beta"] * (resultsFromSimulation["ExpectedVanillaCall"] - PriceMJD(100));
+}
