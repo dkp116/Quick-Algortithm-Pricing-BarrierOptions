@@ -236,3 +236,8 @@ double UniformSample::calculateVarienceReductedPrice(std::unordered_map<std::str
 
     return resultsFromSimulation["ExpectedOption"] - resultsFromSimulation["Beta"] * (resultsFromSimulation["ExpectedVanillaCall"] - PriceMJD(100));
 }
+
+double UniformSample::StandardErrorOfVarienceReducitonCalculation(std::unordered_map<std::string, double> &resultsFromSimulation){
+    return std::sqrt((resultsFromSimulation["varianceOption"] - 2.0 * resultsFromSimulation["Beta"] * resultsFromSimulation["Covariance"] 
+            + resultsFromSimulation["Beta"] * resultsFromSimulation["Beta"]) / iteration_);
+}
