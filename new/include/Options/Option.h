@@ -18,7 +18,7 @@ class Option{
     double strike_;
     ExerciseType exerciseType_;
     OptionType optionType_;
-    double rebate_;
+    double rebate_;     //Should we have the price of a vanilla call here? 
 };
 
 

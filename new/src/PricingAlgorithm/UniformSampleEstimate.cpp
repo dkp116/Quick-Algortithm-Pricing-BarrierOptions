@@ -117,8 +117,8 @@ double UniformSample::OneCycle()
 std::unordered_map<std::string, double> UniformSample::OneCycleSimulatedToTheEnd()
 {
     std::unordered_map<std::string, double> CycleWithSimulatedPath;
-    bool hasThereBeenACrossing= 0 ;
-  std::vector<double> jumpTimesFromZeroToOne;
+    bool hasThereBeenACrossing = 0;
+    std::vector<double> jumpTimesFromZeroToOne;
     jumpTimesFromZeroToOne = mertonDynamics_->createJumpTimes(); // generates exponenially distributed jump times
     double StockPriceAfterJump = stock_->GetLogStartPrice();
     double StockPriceBeforeJump;
@@ -142,13 +142,57 @@ std::unordered_map<std::string, double> UniformSample::OneCycleSimulatedToTheEnd
         auto priceIfThereIsCrossingDuringJump = CrossingDuringJump(StockPriceAfterJump, jumpTimesFromZeroToOne, currentJumpInterval);
         if (priceIfThereIsCrossingDuringJump.has_value() && !hasThereBeenACrossing)
         {
-             CycleWithSimulatedPath["Payoff"] = priceIfThereIsCrossingDuringJump.value();
-             hasThereBeenACrossing = 1;
+            CycleWithSimulatedPath["Payoff"] = priceIfThereIsCrossingDuringJump.value();
+            hasThereBeenACrossing = 1;
         }
     }
 
     double TerminalValue = std::exp(StockPriceBeforeJump);
-    CycleWithSimulatedPath["Payoff"] =  option_->GetRebate() * std::exp(-mertonDynamics_->GetRiskFree()) * option_->Payoff(TerminalValue);  
+    CycleWithSimulatedPath["Payoff"] = option_->GetRebate() * std::exp(-mertonDynamics_->GetRiskFree()) * option_->Payoff(TerminalValue);
     CycleWithSimulatedPath["TerminalStockValue"] = TerminalValue;
     return CycleWithSimulatedPath;
+}
+
+double UniformSample::PriceMJD(int N)
+{
+    double price = 0.0;
+
+    double S0 = stock_->GetS0();
+    double muJ = mertonDynamics_->GetJumpMu();
+    double sigJ = mertonDynamics_->GetJumpSigma();
+    double sigma = mertonDynamics_->GetSigma();
+    double r = mertonDynamics_->GetRiskFree();
+    double lambda = mertonDynamics_->GetLambda();
+    double T = 1.0;
+    double Strike = downAndOut_->GetStrike();
+    // Compute kappa = E[Y - 1], where Y = e^Z is the jump multiplier
+    double kappa = exp(muJ + 0.5 * sigJ * sigJ) - 1.0;
+
+    for (int n = 0; n < N; ++n)
+    {
+
+        double sigma_n = std::sqrt(sigma * sigma + (n * sigJ * sigJ) / T);
+        double r_n = r - lambda * kappa + (n * (muJ + 0.5 * sigJ * sigJ)) / T;
+
+        double poisson_prob = exp(-lambda * T) * std::pow(lambda * T, n) / std::tgamma(n + 1.0);
+
+        price += poisson_prob * black_scholes_call(S0, Strike, T, r_n, sigma_n);
+    }
+
+    return price;
+}
+
+double UniformSample::norm_cdf(double x)
+{
+    return 0.5 * std::erfc(-x / std::sqrt(2));
+}
+
+// Black-Scholes formula for a European call option
+double UniformSample::black_scholes_call(double S, double K, double T, double r, double sigma)
+{
+    double d1 = (std::log(S / K) + (r + 0.5 * sigma * sigma) * T) /
+                (sigma * std::sqrt(T));
+    double d2 = d1 - sigma * std::sqrt(T);
+
+    return S * norm_cdf(d1) - K * std::exp(-r * T) * norm_cdf(d2);
 }

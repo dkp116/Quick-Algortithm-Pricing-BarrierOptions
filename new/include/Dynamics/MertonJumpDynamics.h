@@ -24,9 +24,14 @@ class MertonJumpDynamics : public IDynamics{
         SetDrift();};
     
     void SetDrift(){ c_ = riskfree_ - (sigma_ * sigma_ * 0.5) - (lambda_ * expectedValueJump_); }
-    double GetC(){return c_;}
-    double GetSigma(){return sigma_;}
-    double GetRiskFree(){return riskfree_;}
+    double GetC() const { return c_; }
+    double GetSigma() const { return sigma_; }
+    double GetRiskFree() const { return riskfree_; }
+    double GetDrift() const { return drift; }
+    double GetLambda() const { return lambda_; }
+    double GetExpectedValueJump() const { return expectedValueJump_; }
+    double GetJumpMu() const { return jumpMu_; }
+    double GetJumpSigma() const { return jumpSigma_; }
     double evolve(double TimeIncrement) override;
     double Jumpsize();
     std::vector<double> createJumpTimes(); 
