@@ -207,7 +207,7 @@ void UniformSample::calculateVarienceAndExpectation(std::unordered_map<std::stri
     onGoingMixedCorrelation += oneCycleSimulatedToTheEnd["Payoff"] * VanillaCallPayoff;
 }
 
-std::unordered_map<std::string, double> UniformSample::calculateVarienceReductionPrice(double simulation)
+std::unordered_map<std::string, double> UniformSample::calculateBetaCovarienceVarienceAndExpectation(double simulation)
 {
     std::unordered_map<std::string, double> results;
     double expectedVanillaCall = onGoingVanillaCallPayoff / simulation;
