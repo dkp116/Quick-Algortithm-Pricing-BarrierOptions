@@ -100,6 +100,7 @@ double PriceMJD(MJD stock, int N, double Strike) {
 
     return price;
 }
+// just need 
 
 
 

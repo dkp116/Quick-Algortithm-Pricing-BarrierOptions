@@ -38,6 +38,10 @@ public:
     std::optional<double> CrossingDuringJump(double StockPriceAfterJump, std::vector<double> &jumpTimesFromZeroToOne, int currentJumpInterval);
     double OneCycle() override;
     std::unordered_map<std::string, double> OneCycleSimulatedToTheEnd();
+
+    double PriceMJD(int N);
+    double black_scholes_call(double S, double K, double T, double r, double sigma);
+    double norm_cdf(double x);
 };
 
 #endif

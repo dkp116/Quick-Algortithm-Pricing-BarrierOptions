@@ -21,6 +21,7 @@ public:
      std::shared_ptr<IDynamics> GetDynamic() const  {return dynamics;}
 
      double GetLogStartPrice(){return logStartPrice_;}
+     double GetS0(){return StartPrice;}
 };
 
 #endif
