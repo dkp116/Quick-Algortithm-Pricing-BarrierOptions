@@ -197,13 +197,36 @@ double UniformSample::black_scholes_call(double S, double K, double T, double r,
     return S * norm_cdf(d1) - K * std::exp(-r * T) * norm_cdf(d2);
 }
 
-
-void UniformSample::calculateVarienceAndExpectation(std::unordered_map<std::string, double>& oneCycleSimulatedToTheEnd){
+void UniformSample::calculateVarienceAndExpectation(std::unordered_map<std::string, double> &oneCycleSimulatedToTheEnd)
+{
     onGoingOptionPayoff += oneCycleSimulatedToTheEnd["Payoff"];
     double VanillaCallPayoff = std::max(oneCycleSimulatedToTheEnd["TerminalStockValue"] - downAndOut_->GetStrike(), 0.0);
     onGoingVanillaCallPayoff += VanillaCallPayoff;
-    onGoingOptionPayoffSquared += oneCycleSimulatedToTheEnd["Payoff"] * oneCycleSimulatedToTheEnd["Payoff"]  ;
+    onGoingOptionPayoffSquared += oneCycleSimulatedToTheEnd["Payoff"] * oneCycleSimulatedToTheEnd["Payoff"];
     onGoingVanillaCallPayoffSquared = VanillaCallPayoff * VanillaCallPayoff;
     onGoingMixedCorrelation += oneCycleSimulatedToTheEnd["Payoff"] * VanillaCallPayoff;
 }
 
+std::unordered_map<std::string, double> UniformSample::calculateVarienceReductionPrice(double simulation)
+{
+    std::unordered_map<std::string, double> results;
+    double expectedVanillaCall = onGoingVanillaCallPayoff / simulation;
+    double expectedOptionValue = onGoingOptionPayoff / simulation;
+    double expectedMixedCorrelation = (onGoingMixedCorrelation / simulation);
+    double expectedVanillaCallSquared = onGoingVanillaCallPayoffSquared / simulation;
+    double expectedOptionValueSquared = onGoingOptionPayoffSquared / simulation;
+    double varianceVanillaCall = expectedVanillaCallSquared - expectedVanillaCall * expectedVanillaCall;
+    double varianceOption = expectedOptionValueSquared - expectedOptionValue * expectedOptionValue;
+    double covariance = expectedMixedCorrelation - expectedVanillaCall * expectedOptionValue;
+
+    double beta = covariance / varianceVanillaCall;
+
+    results["ExpectedVanillaCall"] = expectedVanillaCall;
+    results["ExpectedOption"] = expectedOptionValue;
+    results["VarianceVanillaCall"] = varianceVanillaCall;
+    results["VarianceOption"] = varianceOption;
+    results["Covariance"] = covariance;
+    results["Beta"] = beta;
+
+    return results;
+}

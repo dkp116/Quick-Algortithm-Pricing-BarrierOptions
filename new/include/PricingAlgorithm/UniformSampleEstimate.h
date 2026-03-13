@@ -48,6 +48,7 @@ public:
     double black_scholes_call(double S, double K, double T, double r, double sigma);
     double norm_cdf(double x);
     void calculateVarienceAndExpectation(std::unordered_map<std::string, double>& oneCycleSimulatedToTheEnd);
+    std::unordered_map<std::string, double> calculateVarienceReductionPrice(double simulation);
 };
 
 #endif
