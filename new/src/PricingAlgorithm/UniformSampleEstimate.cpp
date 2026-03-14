@@ -117,7 +117,7 @@ double UniformSample::OneCycle()
 std::unordered_map<std::string, double> UniformSample::OneCycleSimulatedToTheEnd()
 {
     std::unordered_map<std::string, double> CycleWithSimulatedPath;
-    bool hasThereBeenACrossing = 0;
+    bool hasThereBeenACrossingPreviously = false;
     std::vector<double> jumpTimesFromZeroToOne;
     jumpTimesFromZeroToOne = mertonDynamics_->createJumpTimes(); // generates exponenially distributed jump times
     double StockPriceAfterJump = stock_->GetLogStartPrice();
@@ -127,10 +127,11 @@ std::unordered_map<std::string, double> UniformSample::OneCycleSimulatedToTheEnd
 
         StockPriceBeforeJump = mertonDynamics_->ContinuousDynamics(StockPriceAfterJump, jumpTimesFromZeroToOne[currentJumpInterval], jumpTimesFromZeroToOne[currentJumpInterval + 1]);
         auto priceIfCrossingDuringBrownianBridge = crossingDuringContinuousIntervalChecker(StockPriceAfterJump, StockPriceBeforeJump, jumpTimesFromZeroToOne, currentJumpInterval);
-        if (priceIfCrossingDuringBrownianBridge.has_value() && !hasThereBeenACrossing)
+
+        if (priceIfCrossingDuringBrownianBridge.has_value() && !hasThereBeenACrossingPreviously)
         {
             CycleWithSimulatedPath["Payoff"] = priceIfCrossingDuringBrownianBridge.value();
-            hasThereBeenACrossing = 1;
+            hasThereBeenACrossingPreviously = true;
         }
 
         if (isThereAJump(currentJumpInterval, jumpTimesFromZeroToOne))
@@ -140,16 +141,16 @@ std::unordered_map<std::string, double> UniformSample::OneCycleSimulatedToTheEnd
         }
 
         auto priceIfThereIsCrossingDuringJump = CrossingDuringJump(StockPriceAfterJump, jumpTimesFromZeroToOne, currentJumpInterval);
-        if (priceIfThereIsCrossingDuringJump.has_value() && !hasThereBeenACrossing)
+        if (priceIfThereIsCrossingDuringJump.has_value() && !hasThereBeenACrossingPreviously)
         {
             CycleWithSimulatedPath["Payoff"] = priceIfThereIsCrossingDuringJump.value();
-            hasThereBeenACrossing = 1;
+            hasThereBeenACrossingPreviously = true;
         }
     }
 
     double TerminalValue = std::exp(StockPriceBeforeJump);
     CycleWithSimulatedPath["TerminalStockValue"] = TerminalValue;
-    if (!hasThereBeenACrossing)
+    if (!hasThereBeenACrossingPreviously)
     {
         CycleWithSimulatedPath["Payoff"] = option_->GetRebate() * std::exp(-mertonDynamics_->GetRiskFree()) * option_->Payoff(TerminalValue);
     }
@@ -205,16 +206,15 @@ void UniformSample::calculateVarienceAndExpectation(std::unordered_map<std::stri
     onGoingOptionPayoff += oneCycleSimulatedToTheEnd["Payoff"];
     double VanillaCallPayoff = std::max(oneCycleSimulatedToTheEnd["TerminalStockValue"] - downAndOut_->GetStrike(), 0.0);
     onGoingVanillaCallPayoff += VanillaCallPayoff;
-    onGoingOptionPayoffSquared += oneCycleSimulatedToTheEnd["Payoff"] * oneCycleSimulatedToTheEnd["Payoff"];
-    onGoingVanillaCallPayoffSquared += VanillaCallPayoff * VanillaCallPayoff;
-    onGoingMixedCorrelation += oneCycleSimulatedToTheEnd["Payoff"] * VanillaCallPayoff;
+    onGoingOptionPayoffSquared += (oneCycleSimulatedToTheEnd["Payoff"] * oneCycleSimulatedToTheEnd["Payoff"]);
+    onGoingVanillaCallPayoffSquared += (VanillaCallPayoff * VanillaCallPayoff);
+    onGoingMixedCorrelation += (oneCycleSimulatedToTheEnd["Payoff"] * VanillaCallPayoff);
 }
 
 std::unordered_map<std::string, double> UniformSample::calculateBetaCovarienceVarienceAndExpectation(double simulation)
 {
     std::unordered_map<std::string, double> results;
-    double vanillacall = onGoingVanillaCallPayoff;
-   double expectedVanillaCall = onGoingVanillaCallPayoff / simulation;
+    double expectedVanillaCall = onGoingVanillaCallPayoff / simulation;
     double expectedOptionValue = onGoingOptionPayoff / simulation;
     double expectedMixedCorrelation = (onGoingMixedCorrelation / simulation);
     double expectedVanillaCallSquared = onGoingVanillaCallPayoffSquared / simulation;
@@ -248,17 +248,13 @@ double UniformSample::StandardErrorOfVarienceReducitonCalculation(std::unordered
 
 double UniformSample::PriceWithVarianceReducion()
 {
-   for (int it = 0; it < iteration_; it++)
-{
-    
+    for (int it = 0; it < iteration_; it++)
+    {
 
-    auto SimulatedCycle = OneCycleSimulatedToTheEnd();
+        auto SimulatedCycle = OneCycleSimulatedToTheEnd();
 
-
-
-    calculateVarienceAndExpectation(SimulatedCycle);
-
-}
+        calculateVarienceAndExpectation(SimulatedCycle);
+    }
     std::unordered_map<std::string, double> result = calculateBetaCovarienceVarienceAndExpectation(iteration_);
     double price = calculateVarienceReductedPrice(result);
     return price;
