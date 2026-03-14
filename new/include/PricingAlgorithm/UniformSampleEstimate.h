@@ -13,7 +13,6 @@
 class UniformSample : public IPricing
 {
 private:
-    double iteration_;
     std::shared_ptr<IDynamics> stockDynamics_;
     std::shared_ptr<MertonJumpDynamics> mertonDynamics_;
     std::shared_ptr<DownAndOut> downAndOut_;
@@ -51,6 +50,7 @@ public:
     std::unordered_map<std::string, double> calculateBetaCovarienceVarienceAndExpectation(double simulation);
     double calculateVarienceReductedPrice(std::unordered_map<std::string, double>& resultsFromSimulation);
     double StandardErrorOfVarienceReducitonCalculation(std::unordered_map<std::string, double> &resultsFromSimulation);
+    double PriceWithVarianceReducion();
 };
 
 #endif
