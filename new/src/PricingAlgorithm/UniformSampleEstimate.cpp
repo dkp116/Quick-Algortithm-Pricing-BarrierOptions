@@ -148,8 +148,11 @@ std::unordered_map<std::string, double> UniformSample::OneCycleSimulatedToTheEnd
     }
 
     double TerminalValue = std::exp(StockPriceBeforeJump);
-    CycleWithSimulatedPath["Payoff"] = option_->GetRebate() * std::exp(-mertonDynamics_->GetRiskFree()) * option_->Payoff(TerminalValue);
     CycleWithSimulatedPath["TerminalStockValue"] = TerminalValue;
+    if (!hasThereBeenACrossing)
+    {
+        CycleWithSimulatedPath["Payoff"] = option_->GetRebate() * std::exp(-mertonDynamics_->GetRiskFree()) * option_->Payoff(TerminalValue);
+    }
     return CycleWithSimulatedPath;
 }
 
@@ -203,14 +206,15 @@ void UniformSample::calculateVarienceAndExpectation(std::unordered_map<std::stri
     double VanillaCallPayoff = std::max(oneCycleSimulatedToTheEnd["TerminalStockValue"] - downAndOut_->GetStrike(), 0.0);
     onGoingVanillaCallPayoff += VanillaCallPayoff;
     onGoingOptionPayoffSquared += oneCycleSimulatedToTheEnd["Payoff"] * oneCycleSimulatedToTheEnd["Payoff"];
-    onGoingVanillaCallPayoffSquared = VanillaCallPayoff * VanillaCallPayoff;
+    onGoingVanillaCallPayoffSquared += VanillaCallPayoff * VanillaCallPayoff;
     onGoingMixedCorrelation += oneCycleSimulatedToTheEnd["Payoff"] * VanillaCallPayoff;
 }
 
 std::unordered_map<std::string, double> UniformSample::calculateBetaCovarienceVarienceAndExpectation(double simulation)
 {
     std::unordered_map<std::string, double> results;
-    double expectedVanillaCall = onGoingVanillaCallPayoff / simulation;
+    double vanillacall = onGoingVanillaCallPayoff;
+   double expectedVanillaCall = onGoingVanillaCallPayoff / simulation;
     double expectedOptionValue = onGoingOptionPayoff / simulation;
     double expectedMixedCorrelation = (onGoingMixedCorrelation / simulation);
     double expectedVanillaCallSquared = onGoingVanillaCallPayoffSquared / simulation;
@@ -237,7 +241,25 @@ double UniformSample::calculateVarienceReductedPrice(std::unordered_map<std::str
     return resultsFromSimulation["ExpectedOption"] - resultsFromSimulation["Beta"] * (resultsFromSimulation["ExpectedVanillaCall"] - PriceMJD(100));
 }
 
-double UniformSample::StandardErrorOfVarienceReducitonCalculation(std::unordered_map<std::string, double> &resultsFromSimulation){
-    return std::sqrt((resultsFromSimulation["varianceOption"] - 2.0 * resultsFromSimulation["Beta"] * resultsFromSimulation["Covariance"] 
-            + resultsFromSimulation["Beta"] * resultsFromSimulation["Beta"]) / iteration_);
+double UniformSample::StandardErrorOfVarienceReducitonCalculation(std::unordered_map<std::string, double> &resultsFromSimulation)
+{
+    return std::sqrt((resultsFromSimulation["VarianceOption"] - 2.0 * resultsFromSimulation["Beta"] * resultsFromSimulation["Covariance"] + resultsFromSimulation["Beta"] * resultsFromSimulation["Beta"]) / iteration_);
+}
+
+double UniformSample::PriceWithVarianceReducion()
+{
+   for (int it = 0; it < iteration_; it++)
+{
+    
+
+    auto SimulatedCycle = OneCycleSimulatedToTheEnd();
+
+
+
+    calculateVarienceAndExpectation(SimulatedCycle);
+
+}
+    std::unordered_map<std::string, double> result = calculateBetaCovarienceVarienceAndExpectation(iteration_);
+    double price = calculateVarienceReductedPrice(result);
+    return price;
 }
