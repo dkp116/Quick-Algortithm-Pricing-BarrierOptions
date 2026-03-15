@@ -243,7 +243,10 @@ double UniformSample::calculateVarienceReductedPrice(std::unordered_map<std::str
 
 double UniformSample::StandardErrorOfVarienceReducitonCalculation(std::unordered_map<std::string, double> &resultsFromSimulation)
 {
-    return std::sqrt((resultsFromSimulation["VarianceOption"] - 2.0 * resultsFromSimulation["Beta"] * resultsFromSimulation["Covariance"] + resultsFromSimulation["Beta"] * resultsFromSimulation["Beta"]) / iteration_);
+    double standardErrorOfMonteCarlo = std::sqrt((resultsFromSimulation["VarianceOption"] - 2.0 * resultsFromSimulation["Beta"] 
+                    * resultsFromSimulation["Covariance"] + resultsFromSimulation["Beta"] 
+                    * resultsFromSimulation["Beta"] * resultsFromSimulation["VarianceVanillaCall"]) / iteration_);
+    return standardErrorOfMonteCarlo;
 }
 
 double UniformSample::PriceWithVarianceReducion()
@@ -257,5 +260,9 @@ double UniformSample::PriceWithVarianceReducion()
     }
     std::unordered_map<std::string, double> result = calculateBetaCovarienceVarienceAndExpectation(iteration_);
     double price = calculateVarienceReductedPrice(result);
+    double standardError = StandardErrorOfVarienceReducitonCalculation(result);
+    std::cout<<standardError << std::endl;
     return price;
 }
+
+//so we could in interface make a void function with price with var and if var reduction used then we could run this?
