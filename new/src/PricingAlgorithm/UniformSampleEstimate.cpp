@@ -204,7 +204,7 @@ double UniformSample::black_scholes_call(double S, double K, double T, double r,
 void UniformSample::calculateVarienceAndExpectation(std::unordered_map<std::string, double> &oneCycleSimulatedToTheEnd)
 {
     onGoingOptionPayoff += oneCycleSimulatedToTheEnd["Payoff"];
-    double VanillaCallPayoff = std::max(oneCycleSimulatedToTheEnd["TerminalStockValue"] - downAndOut_->GetStrike(), 0.0);
+    double VanillaCallPayoff = std::max(oneCycleSimulatedToTheEnd["TerminalStockValue"] - downAndOut_->GetStrike(), 0.0) * std::exp(-mertonDynamics_->GetRiskFree());
     onGoingVanillaCallPayoff += VanillaCallPayoff;
     onGoingOptionPayoffSquared += (oneCycleSimulatedToTheEnd["Payoff"] * oneCycleSimulatedToTheEnd["Payoff"]);
     onGoingVanillaCallPayoffSquared += (VanillaCallPayoff * VanillaCallPayoff);
