@@ -33,7 +33,7 @@ These techniques provide faster and more reliable pricing, especially when barri
 
 
 
-- **[code/](new/README.md)**  
+- **[code/](code/README.md)**  
   Contains an ongoing refactor using **Strategy** and **Factory** patterns for improved modularity and extensibility. This will include the build instructions as well.
 
 ---
