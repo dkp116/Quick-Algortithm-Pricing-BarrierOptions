@@ -1,9 +1,9 @@
 # CMake build folder
 /build/
-new/build/
-new/CMakeFiles/
-new/CMakeCache.txt
-new/Makefile
+code/build/
+code/CMakeFiles/
+code/CMakeCache.txt
+code/Makefile
 /newcmake_install.cmake
 *.o
 *.obj
