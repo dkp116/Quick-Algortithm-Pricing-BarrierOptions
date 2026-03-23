@@ -260,8 +260,8 @@ double UniformSample::PriceWithVarianceReduction()
     }
     std::unordered_map<std::string, double> result = calculateBetaCovarienceVarienceAndExpectation(iteration_);
     double price = calculateVarienceReductedPrice(result);
-    double standardError = StandardErrorOfVarienceReducitonCalculation(result);
-    std::cout<<standardError << std::endl;
+    StandardErrorOfVarienceReduciton  = StandardErrorOfVarienceReducitonCalculation(result);
+    std::cout<<StandardErrorOfVarienceReduciton << std::endl;
     return price;
 }
 

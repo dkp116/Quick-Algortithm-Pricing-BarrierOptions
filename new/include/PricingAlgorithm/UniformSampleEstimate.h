@@ -21,6 +21,7 @@ private:
     double onGoingVanillaCallPayoff=0;
     double onGoingVanillaCallPayoffSquared = 0;
     double onGoingMixedCorrelation = 0;
+    double StandardErrorOfVarienceReduciton=0;
 
 public:
     UniformSample(std::shared_ptr<Stock> stock,
@@ -51,6 +52,7 @@ public:
     double calculateVarienceReductedPrice(std::unordered_map<std::string, double>& resultsFromSimulation);
     double StandardErrorOfVarienceReducitonCalculation(std::unordered_map<std::string, double> &resultsFromSimulation);
     double PriceWithVarianceReduction() override;
+    double GetStandardErrorOfVarianceReduction(){return StandardErrorOfVarienceReduciton;}
 };
 
 #endif
