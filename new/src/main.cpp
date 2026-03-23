@@ -27,8 +27,8 @@ int main()
 
     // Create Brownian Bridge pricing engine
 
-    UniformSample pricing (s,b,1000000, StandardErrorCalculation::Included, Time::Included,  VarianceReduction::NotIncluded);
-    double  p = pricing.PriceWithVarianceReducion();
+    UniformSample pricing (s,b,1000000, StandardErrorCalculation::Included, Time::Included);
+    double  p = pricing.PriceWithVarianceReduction();
     double p1 = pricing.Price();
     
     std::cout<< p << "    normal   " << p1 << " se " << pricing.GetStandardError(); 

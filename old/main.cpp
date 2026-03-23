@@ -117,7 +117,7 @@ https://github.com/dkp116/Quick-Algortithm-Pricing-BarrierOptions.git
 
 
 
-int mains(){
+int main(){
 
 
 
@@ -134,7 +134,7 @@ int mains(){
   
    double ControlDeri =  PriceMJD(stock,100,110);       //control variate (stock,100, strikeprice)
      auto start = std::chrono::high_resolution_clock::now();
-   std::vector<double> Simulations ={1000,2000,5000,10000,20000,50000,100000};
+   std::vector<double> Simulations ={100000};
    for(double simulation : Simulations){
 
     // double simulation = 100000;
@@ -185,21 +185,24 @@ int mains(){
 
 
     
-    std::cout << " SE Uniform " << simulation << ": " << std::sqrt( ((UU/ simulation) - EUni * EUni)/simulation )<< std::endl;
-    std::cout << totalUniform / simulation << std::endl;
+    // std::cout << " SE Uniform " << simulation << ": " << std::sqrt( ((UU/ simulation) - EUni * EUni)/simulation )<< std::endl;
+    // std::cout << totalUniform / simulation << std::endl;
 
-    std::cout << "SE Varience Control: " <<simulation <<" " <<  std::sqrt(( VarX - 2.0 * Beta * Cov + Beta * Beta * VarY)/simulation) << std::endl;
-    std::cout << EUni - Beta * (Econtrol - ControlDeri) << std::endl;
+    // std::cout << "SE Varience Control: " <<simulation <<" " <<  std::sqrt(( VarX - 2.0 * Beta * Cov + Beta * Beta * VarY)/simulation) << std::endl;
+    // std::cout << EUni - Beta * (Econtrol - ControlDeri) << std::endl;
 
-    std::cout << "SE Varience Monte: " <<std::sqrt(V1/simulation) << std::endl;
-    std::cout << totalMonte / simulation << std::endl;
+    // std::cout << "SE Varience Monte: " <<std::sqrt(V1/simulation) << std::endl;
+    // std::cout << totalMonte / simulation << std::endl;
 
-    std::cout << "SE Varience Taylor: " <<std::sqrt(V2/simulation) << std::endl;
-    std::cout << totalTaylor/simulation << std::endl;
+    // std::cout << "SE Varience Taylor: " <<std::sqrt(V2/simulation) << std::endl;
+    // std::cout << totalTaylor/simulation << std::endl;
   
-    auto end = std::chrono::high_resolution_clock::now();
-    auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
-     std::cout << "Function took " << duration.count() << " milliseconds.\n";       
+    // auto end = std::chrono::high_resolution_clock::now();
+    // auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
+    //  std::cout << "Function took " << duration.count() << " milliseconds.\n";    
+
+     std::cout<< Econtrol << std::endl;   
+      std::cout<< Beta << std::endl;  
    
 
 

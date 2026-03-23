@@ -47,17 +47,15 @@ protected:
 
         std::chrono::duration<double> elapsed = end - start;
         time_ = elapsed.count();
-s
         return result;
     }
 
 public:
     IPricing(std::shared_ptr<Stock> stock, std::shared_ptr<Option> option,
              double iteration, StandardErrorCalculation isStandardErrorIncluded,
-             Time isTimeIncluded, VarianceReduction includeVarienceReduction) : 
+             Time isTimeIncluded) : 
              stock_(stock), option_(option), iteration_(iteration), 
-             includeStandardError_(isStandardErrorIncluded), includeTime_(isTimeIncluded), 
-             includeVarienceReduction_(includeVarienceReduction){}
+             includeStandardError_(isStandardErrorIncluded), includeTime_(isTimeIncluded) {}
     virtual double OneCycle() = 0;
     virtual double PriceWithVarianceReduction() = 0;
 
