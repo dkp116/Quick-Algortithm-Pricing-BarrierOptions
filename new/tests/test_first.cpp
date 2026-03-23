@@ -45,5 +45,18 @@ TEST_CASE("Down-and-Out call using Standard Monte Carlo price check with Varienc
 
 
 
+TEST_CASE("Down-and-Out call using Uniform Sampling algo  with Varience Reduction", "[montecarlo]") {
+    double price = price_down_and_out_call_with_variance_reduction_using_Uniform_dist();
+    double expected = 9.0;
+
+    CAPTURE(price, expected);
+    INFO("Testing Standard Monte Carlo pricing for Down-and-Out Call");
+
+    REQUIRE(price == Catch::Approx(expected).epsilon(0.2));
+}
+
+
+
+
 
 
