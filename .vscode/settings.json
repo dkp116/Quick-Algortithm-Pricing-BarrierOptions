@@ -80,5 +80,5 @@
         "deque": "cpp",
         "map": "cpp"
     },
-    "cmake.sourceDirectory": "/home/dkp116/Quick-Algortithm-Pricing-BarrierOptions/old"
+    "cmake.sourceDirectory": "${workspaceFolder}/new"
 }

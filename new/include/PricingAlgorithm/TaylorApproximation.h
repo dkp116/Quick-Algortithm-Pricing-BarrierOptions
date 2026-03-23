@@ -17,8 +17,8 @@ private:
 public:
     TaylorApproximation(std::shared_ptr<Stock> stock,
                    std::shared_ptr<Option> option,
-                   double iteration, StandardErrorCalculation isVarienceIncluded, Time isTimeIncluded, VarianceReduction isVarianceReductionIncluded)
-        : IPricing(stock, option, iteration, isVarienceIncluded, isTimeIncluded, isVarianceReductionIncluded),
+                   double iteration, StandardErrorCalculation isVarienceIncluded, Time isTimeIncluded)
+        : IPricing(stock, option, iteration, isVarienceIncluded, isTimeIncluded),
           stockDynamics_(stock_->GetDynamic()) 
     {
        

@@ -19,8 +19,8 @@ class StandardMonteCarlo : public IPricing{
     public:
     StandardMonteCarlo(std::shared_ptr<Stock> stock , 
                         std::shared_ptr<Option> option , 
-                        double iteration, StandardErrorCalculation isVarienceIncluded, Time isTimeIncluded, VarianceReduction isVarianceReductionIncluded) :
-                         IPricing(stock, option,iteration, isVarienceIncluded, isTimeIncluded, isVarianceReductionIncluded ) , 
+                        double iteration, StandardErrorCalculation isVarienceIncluded, Time isTimeIncluded) :
+                         IPricing(stock, option,iteration, isVarienceIncluded, isTimeIncluded ) , 
                          stockDynamics_(stock->GetDynamic()) {
         mertonDynamics_ = std::dynamic_pointer_cast<MertonJumpDynamics>(stockDynamics_);
         downAndOut_ = std::dynamic_pointer_cast<DownAndOut>(option_);
