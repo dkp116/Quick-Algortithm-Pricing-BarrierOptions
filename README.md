@@ -2,7 +2,7 @@
 
 This repository contains high-performance C++ implementations of advanced Monte Carlo algorithms for pricing **down-and-out barrier options** under the **Merton Jump Diffusion (MJD)** model.  
 The project was developed as part of my MSc dissertation in Mathematical Finance.
-[📄 Please read the dissertation PDF](docs/Efficient_Barrier_Pricing_Daneel_Patel_final.pdf)
+[Please read the dissertation PDF](docs/Efficient_Barrier_Pricing_Daneel_Patel_final.pdf)
 
 ---
 
@@ -31,18 +31,14 @@ These techniques provide faster and more reliable pricing, especially when barri
 
 ---
 
-##  Repository Structure
 
 
-- **[old/](old/README.md)**  
-  Contains the original C++ implementation from the dissertation.
-
-- **[new/](new/README.md)**  
-  Contains an ongoing refactor using **Strategy** and **Factory** patterns for improved modularity and extensibility.
+- **[code/](new/README.md)**  
+  Contains an ongoing refactor using **Strategy** and **Factory** patterns for improved modularity and extensibility. This will include the build instructions as well.
 
 ---
 
-## 🛠️ Technologies
+## Technologies
 
 - **C++**
 - Monte Carlo simulation
@@ -50,7 +46,7 @@ These techniques provide faster and more reliable pricing, especially when barri
 
 ---
 
-## 📄 Future Work
+## Future Work
 
 - Extend to *up-and-out* and *double* barrier options  
 - Explore quasi-Monte Carlo and additional variance reduction  
