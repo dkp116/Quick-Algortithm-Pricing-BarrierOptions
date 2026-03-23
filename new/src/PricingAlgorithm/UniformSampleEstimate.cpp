@@ -249,7 +249,7 @@ double UniformSample::StandardErrorOfVarienceReducitonCalculation(std::unordered
     return standardErrorOfMonteCarlo;
 }
 
-double UniformSample::PriceWithVarianceReducion()
+double UniformSample::PriceWithVarianceReduction()
 {
     for (int it = 0; it < iteration_; it++)
     {
