@@ -32,6 +32,7 @@ public:
     bool isThereCrossingDuringBridge(double stockPriceBeforeJump);
     bool isThereCrossingAfterJump(double stockPriceAfterJump);
     double TerminalValue(double StockPriceBeforeJump, double Pay, double multiplyPi);
+    double PriceWithVarianceReduction() override;
 
 };
 

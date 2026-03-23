@@ -98,3 +98,8 @@ double TaylorApproximation::OneCycle()
     return TerminalValue(StockPriceBeforeJump, Pay, probabilityOfNoCrossingDuringLifeTimeOfOption);
 }
 
+
+double TaylorApproximation::PriceWithVarianceReduction(){
+    return 0;
+}
+

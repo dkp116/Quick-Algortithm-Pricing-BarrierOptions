@@ -50,7 +50,7 @@ public:
     std::unordered_map<std::string, double> calculateBetaCovarienceVarienceAndExpectation(double simulation);
     double calculateVarienceReductedPrice(std::unordered_map<std::string, double>& resultsFromSimulation);
     double StandardErrorOfVarienceReducitonCalculation(std::unordered_map<std::string, double> &resultsFromSimulation);
-    double PriceWithVarianceReducion();
+    double PriceWithVarianceReduction() override;
 };
 
 #endif

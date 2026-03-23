@@ -70,4 +70,8 @@ double StandardMonteCarlo::ContinuousPath(double &StockPrice, double timeStepInc
 }
 
 
+double StandardMonteCarlo::PriceWithVarianceReduction(){
+    return 0;
+}
+
 

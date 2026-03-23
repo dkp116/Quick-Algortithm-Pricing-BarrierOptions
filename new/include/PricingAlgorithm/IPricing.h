@@ -47,7 +47,7 @@ protected:
 
         std::chrono::duration<double> elapsed = end - start;
         time_ = elapsed.count();
-
+s
         return result;
     }
 
@@ -59,6 +59,7 @@ public:
              includeStandardError_(isStandardErrorIncluded), includeTime_(isTimeIncluded), 
              includeVarienceReduction_(includeVarienceReduction){}
     virtual double OneCycle() = 0;
+    virtual double PriceWithVarianceReduction() = 0;
 
     void CalculatePriceWithVariance(double &onGoingAverage, double &onGoingSquareAverage)
     {
