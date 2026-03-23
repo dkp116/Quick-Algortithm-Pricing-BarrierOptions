@@ -94,7 +94,7 @@ FetchContent_MakeAvailable(Catch2)
 # -------------------
 set(TEST_SOURCES
     tests/test_utils/TestDownAndOutPricing.cpp
-    tests/test_first.cpp
+    tests/intergration_tests.cpp
     # add other test files explicitly here
 )
 
