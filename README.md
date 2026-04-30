@@ -1,54 +1,90 @@
 # Quick-Algorithm-Pricing-BarrierOptions
 
-This repository contains high-performance C++ implementations of advanced Monte Carlo algorithms for pricing **down-and-out barrier options** under the **Merton Jump Diffusion (MJD)** model.  
-The project was developed as part of my MSc dissertation in Mathematical Finance.
-[Please read the dissertation PDF](docs/Efficient_Barrier_Pricing_Daneel_Patel_final.pdf)
+A C++ implementation of fast Monte Carlo pricing methods for **down-and-out barrier options** under the **Merton Jump Diffusion** model.
+This repository contains a modular pricing system, example executable, and a test suite used to validate the pricing algorithms.
 
----
+## Repository contents
 
-## Project Overview
+- `code/` — main C++ implementation, headers, source files, and build configuration
+- `code/src/main.cpp` — example program that constructs a barrier option and computes prices
+- `code/tests/` — Catch2-based tests for pricing methods
+- `docs/` — dissertation document with mathematical derivation and research results
 
-Accurate pricing of path-dependent derivatives remains a central challenge in quantitative finance — especially when markets exhibit sudden jumps that classical models cannot capture. Barrier options are particularly sensitive to the trajectory of the underlying asset, making their valuation both mathematically and computationally demanding.
+> See `docs/Efficient_Barrier_Pricing_Daneel_Patel_final.pdf` for the full dissertation and theoretical background.
 
-This project explores and extends two specialised Monte Carlo algorithms designed for pricing barrier options in the MJD framework. These algorithms were originally proposed with only sketch-level derivations; the dissertation develops them rigorously from first principles and implements them in C++ for high-performance simulation.
+## What this code does
 
----
+The code implements pricing for barrier options using several numerical methods.
+It is designed for modularity and extensibility, separating:
 
-## Summary of the Research
+- asset dynamics (`Dynamics`)
+- underlying security (`Stock`)
+- option payoffs and barriers (`Option`, `Barrier`)
+- pricing algorithms (`IPricing` implementations)
 
-The work focuses on overcoming the difficulties traditional Monte Carlo methods face when pricing barrier options under jump–diffusion dynamics.
+Supported pricing engines include:
 
-### Key Contributions
+- `StandardMonteCarlo`
+- `UniformSample`
+- `TaylorApproximation`
 
-- **Rigorous derivation** of two efficient barrier-crossing algorithms:
-  - **Uniform Sampling Method** – samples a random point in an extended interval and uses Brownian bridge logic to detect crossings.
-  - **Taylor Expansion Method** – approximates the barrier-crossing probability using a truncated Taylor series and numerical integration.
-- **Use of Brownian bridge interpolation** to capture barrier hits between time steps.
-- **Variance reduction via a tailored control variate**, achieving up to **50% reduction in estimator variance**.
-- **Full C++ implementation** for speed and reproducibility.
+## Build and run
 
-These techniques provide faster and more reliable pricing, especially when barrier hits are rare — a setting where standard Monte Carlo often performs poorly.
+In the `code/` directory:
 
----
+```bash
+cd code
+mkdir -p build
+cd build
+cmake ..
+cmake --build .
+```
 
+Then run the example:
 
+```bash
+./main
+```
 
-- **[code/](code/README.md)**  
-  Contains an ongoing refactor using **Strategy** and **Factory** patterns for improved modularity and extensibility. This will include the build instructions as well.
+Run the test suite:
 
----
+```bash
+ctest --output-on-failure
+```
 
-## Technologies
+## Example usage
 
-- **C++**
-- Monte Carlo simulation
-- Stochastic calculus & jump-diffusion modelling
+The example program demonstrates a workflow with:
 
----
+1. `MertonJumpDynamics(r, sigma, lambda, mu_jump, sigma_jump)`
+2. `Stock(S0, dynamics)`
+3. `DownAndOut(ExerciseType::European, OptionType::Call, strike, barrier, maturity)`
+4. a pricing engine such as `UniformSample`, `TaylorApproximation`, or `StandardMonteCarlo`
+5. calling `Price()` or `PriceWithVarianceReduction()`
 
-## Future Work
+The `main` executable prints a price estimate and the standard error.
 
-- Extend to *up-and-out* and *double* barrier options  
-- Explore quasi-Monte Carlo and additional variance reduction  
-- GPU-accelerated versions (CUDA/OpenCL)
+## Tests and validation
 
+The project includes integration tests that verify down-and-out call pricing for different methods.
+The tests use a reference price and validate the algorithms with Catch2.
+
+## Project structure
+
+- `code/include/` — header files for dynamics, options, stock, and pricing algorithms
+- `code/src/` — implementation of the library and the example program
+- `code/tests/` — test implementations and helper functions
+
+## Extending the project
+
+To add new models or products:
+
+- implement a new `IDynamics` model for a different stochastic process
+- extend the `Option` hierarchy for new derivative payoffs
+- reuse existing pricing engines or add a new `IPricing` implementation
+
+## Notes
+
+- The project is built with C++23.
+- The example program currently prices a down-and-out European call under a Merton jump diffusion model.
+- The modular design allows easy swapping of models, products, and pricing engines.

@@ -1,243 +1,99 @@
-# New refactored Build — Documentation
+ # Barrier Option Pricing — Code Documentation
 
-This directory contains the refactored implementation of the barrier option pricing system.  
-The `main.cpp` file demonstrates how to price a **down-and-out European call option** using a **Merton Jump Diffusion model** and a **Strategy-based pricing engine**.
+ This folder contains a refactored C++ implementation of barrier option pricing under the Merton Jump Diffusion model.
+ It uses a modular design to separate stochastic dynamics, option definitions, and pricing algorithms.
 
----
+ ## Build Instructions
 
-# Build Instructions
+ ```bash
+ cd code
+ mkdir -p build
+ cd build
+ cmake ..
+ cmake --build .
+ ```
 
-```bash
-mkdir build
-cd build
-cmake ..
-make
-./Main
+ The build produces:
 
-```
----
+ - `main` — the example pricing executable
+ - `tests` — the Catch2 test binary (enabled by default)
 
-# Example Pricing Function
+ ## Running the example
 
-The function below prices a down-and-out European call option using a Taylor approximation pricing engine under Merton Jump Diffusion dynamics.
+ ```bash
+ ./main
+ ```
 
-```cpp
-double price_down_and_out_call_with_taylor_series()
-{
-    // Define Merton Jump Diffusion dynamics
-    auto dynamics = std::make_shared<MertonJumpDynamics>(
-        0.05,  // risk-free rate
-        0.25,  // diffusion volatility
-        2.0,   // jump intensity (lambda)
-        0.0,   // mean jump size
-        0.1    // jump volatility
-    );
+ ## Running tests
 
-    // Create underlying asset
-    auto stock = std::make_shared<Stock>(
-        100.0,     // initial price
-        dynamics
-    );
+ ```bash
+ ctest --output-on-failure
+ ```
 
-    // Define Down-and-Out European call option
-    auto option = std::make_shared<DownAndOut>(
-        ExerciseType::European,
-        OptionType::Call,
-        110.0,   // strike price
-        85.0,    // barrier level
-        1.0      // maturity in years
-    );
+ ## What the example does
 
-    // Select pricing engine
-    TaylorApproximation pricing(
-        stock,
-        option,
-        100000,  // number of simulations
-        StandardErrorCalculation::NotIncluded,
-        Time::NotIncluded
-    );
+ The executable in `src/main.cpp` demonstrates pricing a down-and-out European call option using:
 
-    // Compute option price
-    return pricing.Price();
-}
-```
+ - `MertonJumpDynamics` for asset dynamics
+ - `Stock` for the underlying asset
+ - `DownAndOut` for the barrier option product
+ - `UniformSample` as the pricing engine
 
-## Architecture Overview
+ The example computes:
 
-The system separates responsibilities into three independent components:
+ - `PriceWithVarianceReduction()`
+ - `Price()`
+ - standard error via `GetStandardError()`
 
-- **Dynamics** → how the underlying asset evolves
-- **Products** → what payoff is being priced
-- **Pricing Engines** → how the price is computed
+ ## Available components
 
-This separation promotes **modularity**, **testability**, and **extensibility**, allowing components to be modified or replaced without affecting the rest of the system.
+ ### Dynamics
 
----
+ Implemented dynamics models live under `src/Dynamics/` and are exposed through `include/Dynamics/`.
+ 
+ Current implementations:
 
-### Dynamics
+ - `MertonJumpDynamics` — jump-diffusion with Poisson jumps
+ - `BlackScholesDynamics` — continuous diffusion without jumps
 
-The dynamics layer defines the stochastic process governing asset price evolution.
+ ### Stock
 
-All models implement the `IDynamics` interface.
+ `Stock` binds an initial price to a dynamics model so pricing engines can simulate the underlying asset.
 
-Current implementation:
+ ### Options
 
-- **Merton Jump Diffusion**
-  - continuous diffusion component (Brownian motion)
-  - discontinuous jump component (Poisson arrivals)
+ The option hierarchy defines payoffs and barrier parameters.
+ Current implementation:
 
-Key benefits:
+ - `DownAndOut` — down-and-out barrier option
 
-- models are interchangeable
-- pricing logic remains unchanged when switching models
-- new processes (e.g. Black–Scholes, Heston) can be added easily
+ ### Pricing engines
 
----
+ Implemented pricing methods include:
 
-### Stock
+ - `StandardMonteCarlo`
+ - `UniformSample`
+ - `TaylorApproximation`
 
-The `Stock` class represents the underlying asset.
+ Each pricing engine implements `IPricing` and can price any supported product under any supported dynamics model.
 
-Responsibilities:
+ ## How to use the code
 
-- stores the initial asset price
-- holds a reference to the chosen dynamics model
+ 1. Choose a dynamics model, e.g. `std::make_shared<MertonJumpDynamics>(...)`
+ 2. Create a `Stock` using the dynamics model
+ 3. Create an `Option` product such as `DownAndOut`
+ 4. Construct a pricing engine with the stock, option, and simulation settings
+ 5. Call `Price()` or `PriceWithVarianceReduction()`
 
-This design separates:
+ ## Why this design
 
-- asset identity
-- price evolution behaviour
+ The architecture is built for flexibility:
 
-allowing the same product to be evaluated under different stochastic models.
+ - pricing methods are independent of option product definitions
+ - option products are independent of model dynamics
+ - new models or pricing algorithms can be added with minimal changes
 
----
+ ## Notes
 
-### Options (Products)
-
-The `Option` hierarchy represents derivative contracts.
-
-Base class:
-
-- `Option`
-
-Example implementation:
-
-- **Down-and-Out European Call**
-
-Each product defines:
-
-- strike price
-- maturity
-- barrier level (if applicable)
-- exercise type (European, American, etc.)
-- payoff structure
-
-New products can be introduced by extending the base `Option` class without modifying pricing logic.
-
----
-
-### Pricing Engines
-
-Pricing engines implement numerical valuation methods via the `IPricing` interface.
-
-Example implementations:
-
-- `StandardMonteCarlo`
-- `TaylorApproximation`
-
-Key properties:
-
-- pricing algorithms are independent of product definition
-- pricing algorithms are independent of stochastic model
-- engines can be swapped without changing product or model code
-
-Future extensions may include:
-
-- quasi-Monte Carlo methods
-- Fourier transform methods
-- PDE solvers
-- adjoint differentiation methods
-
----
-
-## Program Flow
-
-Typical usage follows the workflow below:
-
-1. Select a stochastic model  
-   (e.g. Merton Jump Diffusion)
-
-2. Construct the underlying asset
-   (binds initial price and dynamics)
-
-3. Define the derivative product
-   (option type, strike, maturity, barrier)
-
-4. Select a pricing engine
-   (implementation of `IPricing`)
-
-5. Compute the option price
-
-6. Output the numerical result
-
----
-
-## Design Patterns
-
-### Strategy Pattern
-
-Encapsulates interchangeable algorithms behind common interfaces.
-
-Interfaces:
-
-- `IDynamics` → defines asset price evolution
-- `IPricing` → defines pricing methodology
-- `Option` → defines payoff structure
-
-Benefits:
-
-- models are interchangeable
-- pricing methods are interchangeable
-- new functionality can be introduced with minimal modification to existing code
-
----
-
-### Composition
-
-Objects are constructed using composition rather than deep inheritance hierarchies.
-
-Relationships:
-
-- `Stock` contains a dynamics object
-- pricing engines contain both stock and option objects
-
-Advantages:
-
-- improved flexibility
-- simpler class hierarchies
-- easier unit testing
-- reduced coupling
-
----
-
-### Factory Pattern (Planned)
-
-The architecture is designed to support factory-based object creation.
-
-Planned factories:
-
-- `DynamicsFactory`
-- `OptionFactory`
-- `PricingEngineFactory`
-
-Factories will:
-
-- centralise object creation logic
-- reduce direct use of `std::make_shared`
-- simplify configuration-based workflows
-- improve usability for library users
-
-Example future usage:
-
-```cpp
-auto option = OptionFactory::Create("DownAndOutCall", parameters);
+ - The code is written in modern C++ (C++23).
+ - The current example focuses on a down-and-out European call under a Merton jump diffusion process.
